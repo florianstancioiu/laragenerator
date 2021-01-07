@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-9">
+            <ul class="nav nav-tabs">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="table-fields-tab" data-toggle="tab" href="#table-fields" role="tab" aria-controls="table-fields" aria-selected="true">Table Fields</a>
+                </li>
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link" id="seeder-tab" data-toggle="tab" href="#seeder" role="tab" aria-controls="seeder" aria-selected="false">Seeder</a>
+                </li>
+                -->
+                <li class="nav-item">
+                    <a class="nav-link" id="model-tab" data-toggle="tab" href="#model" role="tab" aria-controls="home" aria-selected="false">Model</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="relationships-tab" data-toggle="tab" href="#relationships" role="tab" aria-controls="relationships" aria-selected="false">Relationships</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="validation-tab" data-toggle="tab" href="#validation" role="tab" aria-controls="validation" aria-selected="false">Validation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="controller-tab" data-toggle="tab" href="#controller" role="tab" aria-controls="controller" aria-selected="false">Controller</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="forms-tab" data-toggle="tab" href="#forms" role="tab" aria-controls="forms" aria-selected="false">Forms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="index-fields-tab" data-toggle="tab" href="#index-fields" role="tab" aria-controls="index-fields" aria-selected="false">Index Fields</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="tab-content">
+                <div class="tab-pane fade show active" id="table-fields" role="tabpanel" aria-labelledby="table-fields-tab">
+                    <h3>Table fields</h3>
+                    <span>generate the table fields for the selected table</span>
+
+                    <table id="table-fields-wrapper" class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Length</th>
+                                <th scope="col">Default</th>
+                                <th scope="col">Nullable</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="row">
+                                    <input id="table-fields-title-input" type="text" class="form-control" placeholder="Title">
+                                </th>
+                                <td>
+                                    <select name="" id="table-fields-type-input" class="form-control">
+                                        <option value="" selected disabled>Type</option>
+                                        <option value="bigIncrements">bigIncrements</option>
+                                        <option value="string">string</option>
+                                        <option value="text">text</option>
+                                        <option value="integer">integer</option>
+                                        <option value="tinyInteger">tinyInteger</option>
+                                        <option value="bigInteger">bigInteger</option>
+                                        <option value="dateTime">dateTime</option>
+                                        <option value="uuid">uuid</option>
+                                        <option value="binary">binary</option>
+                                        <option value="boolean">boolean</option>
+                                        <option value="date">date</option>
+                                        <option value="float">float</option>
+                                        <option value="ipAddress">ipAddress</option>
+                                        <option value="json">json</option>
+                                        <option value="longText">longText</option>
+                                        <option value="unsignedInteger">unsignedInteger</option>
+                                        <option value="mediumInteger">mediumInteger</option>
+                                        <option value="timestamp">timestamp</option>
+                                        <option value="mediumText">mediumText</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input id="table-fields-length-input" type="text" class="form-control" placeholder="Length">
+                                </td>
+                                <td>
+                                    <input id="table-fields-default-input" type="text" class="form-control" placeholder="Default">
+                                </td>
+                                <td>
+                                    <input id="table-fields-nullable-input" type="checkbox" />
+                                </td>
+                                <td>
+                                    <button id="table-fields-add-btn" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade show" id="seeder" role="tabpanel" aria-labelledby="seeder-tab">
+                    <h3>Seeder</h3>
+                    <span>generate the seeder for the selected table</span>
+                </div>
+
+                <div class="tab-pane fade show" id="model" role="tabpanel" aria-labelledby="model-tab">
+                    <h3>Model</h3>
+                    <span>generate the model for the selected table</span>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Fillable</th>
+                                <th scope="col">Hidden</th>
+                            </tr>
+                        </thead>
+                        <tbody class="model-section-tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade show" id="relationships" role="tabpanel" aria-labelledby="relationships-tab">
+                    <h3>Relationships</h3>
+                    <span>generate the relationships for the selected table</span>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Title/Method</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Foreign Model</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">users</th>
+                                <td>Belongs To</td>
+                                <td>User::class</td>
+                                <td>
+                                    <button class="btn btn-danger">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">users</th>
+                                <td>Belongs To</td>
+                                <td>User::class</td>
+                                <td>
+                                    <button class="btn btn-danger">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="row">
+                                    <input type="text" class="form-control" placeholder="Title/Method" />
+                                </th>
+                                <td>
+                                    <select name="" id="" class="form-control">
+                                        <option value="" selected disabled>Type</option>
+                                        <option value="">string</option>
+                                        <option value="">integer</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="" id="" class="form-control">
+                                        <option value="" selected disabled>Foreign Model</option>
+                                        <option value="">User</option>
+                                        <option value="">Post</option>
+                                        <option value="">Products</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade show" id="validation" role="tabpanel" aria-labelledby="validation-tab">
+                    <h3>Validation</h3>
+                    <span>generate the validation for the selected table</span>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Rules</th>
+                            </tr>
+                        </thead>
+                        <tbody class="validation-section-tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade show" id="controller" role="tabpanel" aria-labelledby="controller-tab">
+                    <h3>Controller</h3>
+                    <span>generate the controller for the selected table</span>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Method</th>
+                                <th scope="col">Include</th>
+                            </tr>
+                        </thead>
+                        <tbody class="controller-section-tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade show" id="forms" role="tabpanel" aria-labelledby="forms-tab">
+                    <h3>Forms</h3>
+                    <span>generate the (create and edit) form inputs for the selected table</span>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Inputs</th>
+                                <th scope="col">Show</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Type Options</th>
+                            </tr>
+                        </thead>
+                        <tbody class="forms-section-tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade show" id="index-fields" role="tabpanel" aria-labelledby="index-fields-tab">
+                    <h3>Index fields</h3>
+                    <span>select the index fields (to show in the index route) for the curent table</span>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Method</th>
+                                <th scope="col">Show</th>
+                            </tr>
+                        </thead>
+                        <tbody class="index-fields-section-tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MUSTACHE TEMPLATES -->
+    <script id="list-group-item-template" type="x-tmpl-mustache">
+        <li class="list-group-item">
+            <i class="fas fa-crosshairs"></i>
+            <span class="table-title">{{ tableTitle }}</span>
+            <button type="button" name="button" class="btn btn-danger">
+                <i class="fas fa-times"></i>
+            </button>
+        </li>
+    </script>
+
+    <script id="list-group-item-multiple-template" type="x-tmpl-mustache">
+        {{#tables}}
+            <li class="list-group-item">
+                <i class="fas fa-crosshairs"></i>
+                <span class="table-title">{{ tableTitle }}</span>
+                <button type="button" name="button" class="btn btn-danger">
+                    <i class="fas fa-times"></i>
+                </button>
+            </li>
+        {{/tables}}
+    </script>
+
+    <script id="table-fields-row-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <i class="fas fa-crosshairs"></i>
+                <span class="field-title">{{ title }}</span>
+            </th>
+            <td class="field-type">{{ type }}</td>
+            <td class="field-length">{{ length }}</td>
+            <td class="field-default">{{ default }}</td>
+            <td class="field-nullable">{{ nullable }}</td>
+            <td>
+                <button class="btn btn-danger">
+                    <i class="fas fa-times"></i>
+                </button>
+            </td>
+        </tr>
+    </script>
+
+    <script id="table-fields-row-multiple-template" type="x-tmpl-mustache">
+        {{#fields}}
+            <tr>
+                <th scope="row">
+                    <i class="fas fa-crosshairs"></i>
+                    <span class="field-title">{{ title }}</span>
+                </th>
+                <td class="field-type">{{ type }}</td>
+                <td class="field-length">{{ length }}</td>
+                <td class="field-default">{{ default }}</td>
+                <td class="field-nullable">{{ nullable }}</td>
+                <td>
+                    <button class="btn btn-danger">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </td>
+            </tr>
+        {{/fields}}
+    </script>
+
+    <script id="model-row-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <span class="field-title">{{ fieldTitle }}</span>
+            </th>
+            <td>
+                {{#fillable}}
+                    <input class="fillable" name="fillable[]" type="checkbox" class="" checked>
+                {{/fillable}}
+                {{^fillable}}
+                    <input class="fillable" name="fillable[]" type="checkbox" class="">
+                {{/fillable}}
+            </td>
+            <td>
+                {{#hidden}}
+                    <input class="hidden" name="hidden[]" type="checkbox" class="" checked>
+                {{/hidden}}
+                {{^hidden}}
+                    <input class="hidden" name="hidden[]" type="checkbox" class="">
+                {{/hidden}}
+            </td>
+        </tr>
+    </script>
+
+    <script id="model-row-multiple-template" type="x-tmpl-mustache">
+        {{#fields}}
+            <tr>
+                <th scope="row">
+                    <span class="field-title">{{ fieldTitle }}</span>
+                </th>
+                <td>
+                    {{#fillable}}
+                        <input class="fillable" name="fillable[]" type="checkbox" class="" checked>
+                    {{/fillable}}
+                    {{^fillable}}
+                        <input class="fillable" name="fillable[]" type="checkbox" class="">
+                    {{/fillable}}
+                </td>
+                <td>
+                    {{#hidden}}
+                        <input class="hidden" name="hidden[]" type="checkbox" class="" checked>
+                    {{/hidden}}
+                    {{^hidden}}
+                        <input class="hidden" name="hidden[]" type="checkbox" class="">
+                    {{/hidden}}
+                </td>
+            </tr>
+        {{/fields}}
+    </script>
+
+    <script id="validation-row-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">{{ fieldTitle }}</th>
+            <td>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </td>
+        </tr>
+    </script>
+
+    <script id="validation-row-multiple-template" type="x-tmpl-mustache">
+        {{#validations}}
+            <tr>
+                <th scope="row">{{ fieldTitle }}</th>
+                <td>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </td>
+            </tr>
+        {{/validations}}
+    </script>
+
+    <script id="form-input-row-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">{{ fieldTitle }}</th>
+            <td>
+                <input type="checkbox" name="" value="" checked="">
+            </td>
+            <td>
+                <select class="form-control" name="">
+                    <option value="" selected="" disabled="">Type</option>
+                    <option value="Text">Text</option>
+                    <option value="Number">Number</option>
+                    <option value="Password">Password</option>
+                    <option value="Email">Email</option>
+                    <option value="Textarea">Textarea</option>
+                    <!--
+                    <option value="Dropdown">Dropdown</option>
+                    <option value="Radio List">Radio List</option>
+                    <option value="Checkbox">Checkbox</option>
+                    <option value="Checkbox List">Checkbox List</option>
+                    <option value="Code Editor">Code Editor</option>
+                    <option value="Color Picker">Color Picker</option>
+                    <option value="Data Table">Data Table</option>
+                    <option value="File Upload">File Upload</option>
+                    <option value="Markdown Editor">Markdown Editor</option>
+                    -->
+                </select>
+            </td>
+            <td>
+                <button class="btn btn-primary form-input-type-options">
+                    <i class="fas fa-wrench"></i>
+                </button>
+            </td>
+        </tr>
+    </script>
+
+    <script id="form-input-row-multiple-template" type="x-tmpl-mustache">
+        {{#inputs}}
+            <tr>
+                <th scope="row">{{ fieldTitle }}</th>
+                <td>
+                    <input type="checkbox" name="" value="" checked="">
+                </td>
+                <td>
+                    <select class="form-control" name="">
+                        <option value="" selected="" disabled="">Type</option>
+                        <option value="Text">Text</option>
+                        <option value="Number">Number</option>
+                        <option value="Password">Password</option>
+                        <option value="Email">Email</option>
+                        <option value="Textarea">Textarea</option>
+                        <!--
+                        <option value="Dropdown">Dropdown</option>
+                        <option value="Radio List">Radio List</option>
+                        <option value="Checkbox">Checkbox</option>
+                        <option value="Checkbox List">Checkbox List</option>
+                        <option value="Code Editor">Code Editor</option>
+                        <option value="Color Picker">Color Picker</option>
+                        <option value="Data Table">Data Table</option>
+                        <option value="File Upload">File Upload</option>
+                        <option value="Markdown Editor">Markdown Editor</option>
+                        -->
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-primary form-input-type-options">
+                        <i class="fas fa-wrench"></i>
+                    </button>
+                </td>
+            </tr>
+        {{/inputs}}
+    </script>
+
+    <script id="index-field-row-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row" class="field-title">{{ fieldTitle }}</th>
+            <td>
+                {{#show}}
+                    <input class="show" name="show[]" type="checkbox" checked>
+                {{/show}}
+                {{^show}}
+                    <input class="show" name="show[]" type="checkbox">
+                {{/show}}
+            </td>
+        </tr>
+    </script>
+
+    <script id="index-field-row-multiple-template" type="x-tmpl-mustache">
+        {{#fields}}
+            <tr>
+                <th scope="row" class="field-title">{{ fieldTitle }}</th>
+                <td>
+                    {{#show}}
+                        <input class="show" name="show[]" type="checkbox" checked>
+                    {{/show}}
+                    {{^show}}
+                        <input class="show" name="show[]" type="checkbox">
+                    {{/show}}
+                </td>
+            </tr>
+        {{/fields}}
+    </script>
+
+    <script id="controller-row-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <span class="method">{{ method }}</span>
+            </th>
+            <td>
+                {{#include}}
+                    <input class="include" name="include[]" type="checkbox" class="" checked>
+                {{/include}}
+                {{^include}}
+                    <input class="include" name="include[]" type="checkbox" class="">
+                {{/include}}
+            </td>
+        </tr>
+    </script>
+
+    <script id="controller-row-multiple-template" type="x-tmpl-mustache">
+        {{#methods}}
+            <tr>
+                <th scope="row">
+                    <span class="method">{{ method }}</span>
+                </th>
+                <td>
+                    {{#include}}
+                        <input class="include" name="include[]" type="checkbox" class="" checked>
+                    {{/include}}
+                    {{^include}}
+                        <input class="include" name="include[]" type="checkbox" class="">
+                    {{/include}}
+                </td>
+            </tr>
+        {{/methods}}
+    </script>
+</body>
+</html>

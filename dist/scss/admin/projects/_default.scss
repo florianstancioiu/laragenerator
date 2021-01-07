@@ -1,0 +1,65 @@
+.admin-project {
+    .content-wrapper {
+        background-color: white;
+    }
+    section.content {
+        padding-top: 30px;
+        padding-left: 30px;
+    }
+    #tab-content {
+        padding-top: 20px;
+    }
+    .tab-pane h3 {
+        display: inline-block;
+    }
+    #tables-list li {
+        cursor: pointer;
+        &.no-cursor {
+            cursor: default;
+        }
+    }
+    .add-table-wrapper {
+        position: relative;
+        .btn {
+            position: absolute;
+            right: 20px;
+            top: 12px;
+        }
+        #add-table {
+            padding-right: 40px;
+        }
+    }
+    #tables-list {
+        max-height: 491px;
+        overflow-y: scroll;
+        li {
+            position: relative;
+            &.active {
+                background-color: #e9ecef;
+                border-color: #ccc;
+                color: #222;
+                span {
+                    font-weight: bold;
+                }
+            }
+            .btn-danger {
+                position: absolute;
+                top: 5px;
+                right: 20px;
+            }
+            .fa-crosshairs {
+                bottom: -1px;
+                position: relative;
+                margin-right: 5px;
+            }
+        }
+    }
+    .tab-pane:not(.active) {
+         display: none;
+     }
+     #validation {
+         .tab-pane {
+             padding-top: 10px;
+         }
+     }
+}
