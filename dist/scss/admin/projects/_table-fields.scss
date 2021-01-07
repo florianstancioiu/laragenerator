@@ -1,0 +1,12 @@
+.admin-project {
+    #table-fields-wrapper {
+        tbody tr {
+            cursor: move;
+        }
+
+        input[type=checkbox] {
+            display: block;
+            margin: 10px auto;
+        }
+    }
+}
