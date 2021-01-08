@@ -1,0 +1,91 @@
+.admin-project {
+  padding: 20px;
+}
+
+.admin-project .content-wrapper {
+  background-color: white;
+}
+
+.admin-project section.content {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+.admin-project #tab-content {
+  padding-top: 20px;
+}
+
+.admin-project .tab-pane h3 {
+  display: inline-block;
+}
+
+.admin-project #tables-list li {
+  cursor: pointer;
+}
+
+.admin-project #tables-list li.no-cursor {
+  cursor: default;
+}
+
+.admin-project .add-table-wrapper {
+  position: relative;
+}
+
+.admin-project .add-table-wrapper .btn {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+}
+
+.admin-project .add-table-wrapper #add-table {
+  padding-right: 40px;
+}
+
+.admin-project #tables-list {
+  max-height: 491px;
+  overflow-y: scroll;
+}
+
+.admin-project #tables-list li {
+  position: relative;
+}
+
+.admin-project #tables-list li.active {
+  background-color: #e9ecef;
+  border-color: #ccc;
+  color: #222;
+}
+
+.admin-project #tables-list li.active span {
+  font-weight: bold;
+}
+
+.admin-project #tables-list li .btn-danger {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.admin-project #tables-list li .fa-crosshairs {
+  bottom: -1px;
+  position: relative;
+  margin-right: 5px;
+}
+
+.admin-project .tab-pane:not(.active) {
+  display: none;
+}
+
+.admin-project #validation .tab-pane {
+  padding-top: 10px;
+}
+
+.admin-project #table-fields-wrapper tbody tr {
+  cursor: move;
+}
+
+.admin-project #table-fields-wrapper input[type=checkbox] {
+  display: block;
+  margin: 10px auto;
+}
+

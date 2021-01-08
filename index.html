@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="public/css/libraries.css" />
+    <link rel="stylesheet" href="public/css/projects.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 </head>
-<body>
+<body class="admin-project">
     <div class="row">
+        <div class="col-md-3">
+            <h3 class="text-center">Tables</h3>
+            <ul id="tables-list" class="list-group">
+
+            </ul>
+            <ul style="width: 100%;padding: 0;margin-top: 6px;">
+                <li class="list-group-item no-cursor add-table-wrapper">
+                    <input class="form-control" type="text" id="add-table-input" placeholder="Table name" />
+                    <button class="btn btn-primary" id="add-table-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </li>
+                <li class="list-group-item no-cursor">
+                    <button class="btn btn-primary" style="width: 100%" id="download-project-btn">
+                        <i class="fas fa-download"></i>
+                        Download Project
+                    </button>
+                </li>
+            </ul>
+        </div>
+
         <div class="col-md-9">
             <ul class="nav nav-tabs">
                 <li class="nav-item" role="presentation">
@@ -538,5 +562,8 @@
             </tr>
         {{/methods}}
     </script>
+
+    <script src="public/js/libraries.js"></script>
+    <script src="public/js/projects.js"></script>
 </body>
 </html>
