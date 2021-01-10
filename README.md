@@ -1,5 +1,7 @@
 # LaraGenerator JS
 
-A JavaScript application that generates basic PHP files for Laravel (migrations, models, controllers, requests and views)
+A JavaScript application that generates basic PHP files for Laravel
 
-It was intended to be used using [MiniCMS](https://github.com/florianstancioiu/laravel-admin) 
+The application generates a ZIP file with migrations, models, controllers, requests and views.
+
+It was intended to be used with [MiniCMS](https://github.com/florianstancioiu/laravel-admin)
