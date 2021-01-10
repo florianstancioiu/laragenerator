@@ -89,7 +89,7 @@ export default class TableFields extends Section {
         const _this = event.data;
         const $this = $(this);
         const $parent = $this.parents('tr');
-
+        const tableId = _this.getTableId();
         const $title = $parent.find('#table-fields-title-input');
         const $type = $parent.find('#table-fields-type-input');
         const $length = $parent.find('#table-fields-length-input');
@@ -115,7 +115,6 @@ export default class TableFields extends Section {
 
             return false;
         }
-
 
         let regex = new RegExp("^[a-z]{1}[a-z_0-9]*$");
         if (! regex.test($title.val())) {
@@ -143,6 +142,15 @@ export default class TableFields extends Section {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'The default field can only take alphanumeric characters plus spaces!',
+            });
+            return false;
+        }
+
+        if (tableId == null) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You have to add at least one table before adding table fields!',
             });
             return false;
         }

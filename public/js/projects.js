@@ -1126,6 +1126,7 @@ var Section = /*#__PURE__*/function () {
     value: function getProjectId() {
       var url = window.location.href;
       var splits = url.split('/');
+      return 1;
       return parseInt(splits[splits.length - 1], 10);
     }
   }, {
@@ -2445,6 +2446,9 @@ var TableFields = /*#__PURE__*/function (_Section) {
       var _this = event.data;
       var $this = $(this);
       var $parent = $this.parents('tr');
+
+      var tableId = _this.getTableId();
+
       var $title = $parent.find('#table-fields-title-input');
       var $type = $parent.find('#table-fields-type-input');
       var $length = $parent.find('#table-fields-length-input');
@@ -2498,6 +2502,15 @@ var TableFields = /*#__PURE__*/function (_Section) {
           icon: 'error',
           title: 'Oops...',
           text: 'The default field can only take alphanumeric characters plus spaces!'
+        });
+        return false;
+      }
+
+      if (tableId == null) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You have to add at least one table before adding table fields!'
         });
         return false;
       }
