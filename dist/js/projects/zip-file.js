@@ -23,6 +23,7 @@ export default class ZipFile {
         const url = window.location.href;
         const splits = url.split('/');
 
+        return 1;
         return parseInt(splits[splits.length - 1], 10);
     }
 

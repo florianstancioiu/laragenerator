@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>LaraGenerator JS</title>
     <link rel="stylesheet" href="public/css/libraries.css" />
     <link rel="stylesheet" href="public/css/projects.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
@@ -407,9 +407,7 @@
         <tr>
             <th scope="row">{{ fieldTitle }}</th>
             <td>
-                <button class="btn btn-primary">
-                    <i class="fas fa-plus"></i>
-                </button>
+                <input type="text" class="validation" name="validation[]" value="" />
             </td>
         </tr>
     </script>
@@ -419,9 +417,7 @@
             <tr>
                 <th scope="row">{{ fieldTitle }}</th>
                 <td>
-                    <button class="btn btn-primary">
-                        <i class="fas fa-plus"></i>
-                    </button>
+                    <input type="text" class="validation" name="validation[]" value="" />
                 </td>
             </tr>
         {{/validations}}

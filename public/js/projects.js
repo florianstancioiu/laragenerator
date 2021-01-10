@@ -517,7 +517,7 @@ var Model = /*#__PURE__*/function (_Download) {
       var fillableFields = this.getFillableFields();
       var hiddenFields = this.getHiddenFields();
       var relationships = this.getRelationships();
-      return _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{relationshipsNamespaces}}/g, relationshipsNamespaces).replace(/{{model}}/g, model).replace(/{{fillableFields}}/g, fillableFields).replace(/{{hiddenFields}}/g, hiddenFields).replace(/{{relationships}}/g, relationships);
+      return _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{relationshipsNamespaces}}/g, relationshipsNamespaces).replace(/{{model}}/g, model).replace(/{{table}}/g, table).replace(/{{fillableFields}}/g, fillableFields).replace(/{{hiddenFields}}/g, hiddenFields).replace(/{{relationships}}/g, relationships);
     }
   }, {
     key: "getRelationshipsNamespaces",
@@ -800,7 +800,7 @@ var migrationFile = "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var modelFile = "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n{{relationshipsNamespaces}}\n\nclass {{model}} extends Model\n{\n    use HasFactory;\n\n    protected $fillable = [\n        {{fillableFields}}\n    ];\n\n    protected $hidden = [\n        {{hiddenFields}}\n    ];\n\n    {{relationships}}\n}";
+var modelFile = "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n{{relationshipsNamespaces}}\n\nclass {{model}} extends Model\n{\n    use HasFactory;\n\n    protected $table = \"{{table}}\";\n\n    protected $fillable = [\n        {{fillableFields}}\n    ];\n\n    protected $hidden = [\n        {{hiddenFields}}\n    ];\n\n    {{relationships}}\n}";
 /* harmony default export */ __webpack_exports__["default"] = (modelFile);
 
 /***/ }),
@@ -2848,6 +2848,7 @@ var ZipFile = /*#__PURE__*/function () {
     value: function getProjectId() {
       var url = window.location.href;
       var splits = url.split('/');
+      return 1;
       return parseInt(splits[splits.length - 1], 10);
     }
   }, {

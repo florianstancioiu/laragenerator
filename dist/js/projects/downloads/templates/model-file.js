@@ -10,6 +10,8 @@ class {{model}} extends Model
 {
     use HasFactory;
 
+    protected $table = "{{table}}";
+
     protected $fillable = [
         {{fillableFields}}
     ];

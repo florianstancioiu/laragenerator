@@ -23,6 +23,7 @@ export default class Model extends Download {
         return modelFile
             .replace(/{{relationshipsNamespaces}}/g, relationshipsNamespaces)
             .replace(/{{model}}/g, model)
+            .replace(/{{table}}/g, table)
             .replace(/{{fillableFields}}/g, fillableFields)
             .replace(/{{hiddenFields}}/g, hiddenFields)
             .replace(/{{relationships}}/g, relationships);
