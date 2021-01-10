@@ -57,9 +57,6 @@
                 <li class="nav-item">
                     <a class="nav-link" id="forms-tab" data-toggle="tab" href="#forms" role="tab" aria-controls="forms" aria-selected="false">Forms</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="index-fields-tab" data-toggle="tab" href="#index-fields" role="tab" aria-controls="index-fields" aria-selected="false">Index Fields</a>
-                </li>
             </ul>
             <div class="tab-content" id="tab-content">
                 <div class="tab-pane fade show active" id="table-fields" role="tabpanel" aria-labelledby="table-fields-tab">
@@ -164,27 +161,8 @@
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">users</th>
-                                <td>Belongs To</td>
-                                <td>User::class</td>
-                                <td>
-                                    <button class="btn btn-danger">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">users</th>
-                                <td>Belongs To</td>
-                                <td>User::class</td>
-                                <td>
-                                    <button class="btn btn-danger">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                        <tbody class="relationships-section-tbody">
+
                         </tbody>
                         <tfoot>
                             <tr>
@@ -194,8 +172,9 @@
                                 <td>
                                     <select name="" id="" class="form-control">
                                         <option value="" selected disabled>Type</option>
-                                        <option value="">string</option>
-                                        <option value="">integer</option>
+                                        <option value="hasOne">hasOne</option>
+                                        <option value="hasMany">hasMany</option>
+                                        <option value="belongsTo">belongsTo</option>
                                     </select>
                                 </td>
                                 <td>
@@ -252,35 +231,18 @@
 
                 <div class="tab-pane fade show" id="forms" role="tabpanel" aria-labelledby="forms-tab">
                     <h3>Forms</h3>
-                    <span>generate the (create and edit) form inputs for the selected table</span>
+                    <span>generate the (create, edit and index) form inputs for the selected table</span>
 
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Inputs</th>
-                                <th scope="col">Show</th>
                                 <th scope="col">Type</th>
-                                <th scope="col">Type Options</th>
+                                <th scope="col">Include in create and edit</th>
+                                <th scope="col">Include in index</th>
                             </tr>
                         </thead>
                         <tbody class="forms-section-tbody">
-
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="tab-pane fade show" id="index-fields" role="tabpanel" aria-labelledby="index-fields-tab">
-                    <h3>Index fields</h3>
-                    <span>select the index fields (to show in the index route) for the curent table</span>
-
-                    <table class="table">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Method</th>
-                                <th scope="col">Show</th>
-                            </tr>
-                        </thead>
-                        <tbody class="index-fields-section-tbody">
 
                         </tbody>
                     </table>
@@ -405,9 +367,9 @@
 
     <script id="validation-row-template" type="x-tmpl-mustache">
         <tr>
-            <th scope="row">{{ fieldTitle }}</th>
+            <th scope="row field">{{ fieldTitle }}</th>
             <td>
-                <input type="text" class="validation" name="validation[]" value="" />
+                <input type="text" class="validation form-control" name="validation[]" value="" />
             </td>
         </tr>
     </script>
@@ -415,9 +377,9 @@
     <script id="validation-row-multiple-template" type="x-tmpl-mustache">
         {{#validations}}
             <tr>
-                <th scope="row">{{ fieldTitle }}</th>
+                <th scope="row field">{{ fieldTitle }}</th>
                 <td>
-                    <input type="text" class="validation" name="validation[]" value="" />
+                    <input type="text" class="validation form-control" name="validation[]" value="" />
                 </td>
             </tr>
         {{/validations}}
@@ -426,9 +388,6 @@
     <script id="form-input-row-template" type="x-tmpl-mustache">
         <tr>
             <th scope="row">{{ fieldTitle }}</th>
-            <td>
-                <input type="checkbox" name="" value="" checked="">
-            </td>
             <td>
                 <select class="form-control" name="">
                     <option value="" selected="" disabled="">Type</option>
@@ -451,9 +410,20 @@
                 </select>
             </td>
             <td>
-                <button class="btn btn-primary form-input-type-options">
-                    <i class="fas fa-wrench"></i>
-                </button>
+                {{#includeCreate}}
+                    <input type="checkbox" class="include-create" name="include-create[]" value="" checked>
+                {{/includeCreate}}
+                {{^includeCreate}}
+                    <input type="checkbox" class="include-create" name="include-create[]" value="">
+                {{/includeCreate}}
+            </td>
+            <td>
+                {{#includeIndex}}
+                    <input type="checkbox" class="include-index" name="include-index[]" value="" checked>
+                {{/includeIndex}}
+                {{^includeIndex}}
+                    <input type="checkbox" class="include-index" name="include-index[]" value="">
+                {{/includeIndex}}
             </td>
         </tr>
     </script>
@@ -462,9 +432,6 @@
         {{#inputs}}
             <tr>
                 <th scope="row">{{ fieldTitle }}</th>
-                <td>
-                    <input type="checkbox" name="" value="" checked="">
-                </td>
                 <td>
                     <select class="form-control" name="">
                         <option value="" selected="" disabled="">Type</option>
@@ -487,9 +454,20 @@
                     </select>
                 </td>
                 <td>
-                    <button class="btn btn-primary form-input-type-options">
-                        <i class="fas fa-wrench"></i>
-                    </button>
+                    {{#includeCreate}}
+                        <input type="checkbox" class="include-create" name="include-create[]" value="" checked>
+                    {{/includeCreate}}
+                    {{^includeCreate}}
+                        <input type="checkbox" class="include-create" name="include-create[]" value="">
+                    {{/includeCreate}}
+                </td>
+                <td>
+                    {{#includeIndex}}
+                        <input type="checkbox" class="include-index" name="include-index[]" value="" checked>
+                    {{/includeIndex}}
+                    {{^includeIndex}}
+                        <input type="checkbox" class="include-index" name="include-index[]" value="">
+                    {{/includeIndex}}
                 </td>
             </tr>
         {{/inputs}}

@@ -86,6 +86,12 @@
 
 .admin-project #table-fields-wrapper input[type=checkbox] {
   display: block;
-  margin: 10px auto;
+  margin: 10px;
+}
+
+.admin-project .forms-section-tbody .include-create,
+.admin-project .forms-section-tbody .include-index {
+  display: block;
+  margin: 10px;
 }
 

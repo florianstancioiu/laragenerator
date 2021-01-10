@@ -1,5 +1,9 @@
 import Section from '../section';
 
+/**
+* OBSOLETE
+* TODO: Extract all useful code from here
+*/
 export default class IndexFields extends Section {
 
     constructor() {
