@@ -6,4 +6,4 @@ The application generates a ZIP file with migrations, models, controllers, reque
 
 It was intended to be used with [MiniCMS](https://github.com/florianstancioiu/minicms).
 
-__This project is in its early stages, some features are not functional yet.__
+__The project is in its early stages, expect errors and missing features.__
