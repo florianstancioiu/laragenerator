@@ -2125,6 +2125,7 @@ var Sidebar = /*#__PURE__*/function (_Section) {
       $("#add-table-btn").on('click', this, this.onAddTableBtnClick);
       $("#tables-list").on('click', '.btn-danger', this, this.onBtnDangerClick);
       $("#tables-list").on('click', '.list-group-item', this, this.onListGroupItemClick);
+      $("#new-project-btn").on('click', this, this.onNewProjectBtnClick);
     }
   }, {
     key: "loadLocalStorageData",
@@ -2309,6 +2310,24 @@ var Sidebar = /*#__PURE__*/function (_Section) {
         tableTitle: tableTitle
       });
       $this.addClass('active');
+    }
+  }, {
+    key: "onNewProjectBtnClick",
+    value: function onNewProjectBtnClick(event) {
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+        title: 'Are you sure?',
+        text: "The data you entered up until now will be deleted",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, I\'m sure'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          localStorage.clear();
+          location.reload(false);
+        }
+      });
     }
   }]);
 

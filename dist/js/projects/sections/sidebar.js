@@ -14,6 +14,7 @@ export default class Sidebar extends Section {
         $("#add-table-btn").on('click', this, this.onAddTableBtnClick);
         $("#tables-list").on('click', '.btn-danger', this, this.onBtnDangerClick);
         $("#tables-list").on('click', '.list-group-item', this, this.onListGroupItemClick);
+        $("#new-project-btn").on('click', this, this.onNewProjectBtnClick);
     }
 
     loadLocalStorageData() {
@@ -198,5 +199,22 @@ export default class Sidebar extends Section {
         $("body").trigger('laragenerator.table.active', {tableTitle: tableTitle});
 
         $this.addClass('active');
+    }
+
+    onNewProjectBtnClick(event) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "The data you entered up until now will be deleted",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, I\'m sure'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.clear();
+                location.reload(false); 
+            }
+        });
     }
 }
