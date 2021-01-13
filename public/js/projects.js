@@ -157,6 +157,7 @@ var Download = /*#__PURE__*/function () {
     value: function getProjectId() {
       var url = window.location.href;
       var splits = url.split('/');
+      return 1;
       return parseInt(splits[splits.length - 1], 10);
     }
   }, {
@@ -429,14 +430,24 @@ var Migration = /*#__PURE__*/function (_Download) {
 
       for (var i = 0; i < this.localStorage.length; i++) {
         var record = this.localStorage[i];
+        fields += "$table->".concat(record.type, "('").concat(record.title, "')");
+
+        if (record["default"] !== '') {
+          fields += "->default('".concat(record["default"], "')");
+        }
+
+        if (record.nullable == true) {
+          fields += "->nullable()";
+        }
+
+        fields += ";";
 
         if (i !== this.localStorage.length - 1) {
-          fields += "$table->".concat(record.type, "('").concat(record.title, "');\n\t\t\t");
-        } else {
-          fields += "$table->".concat(record.type, "('").concat(record.title, "');");
+          fields += "\n\t\t\t";
         }
       }
 
+      fields += "\n\t\t\t$table->timestamps();";
       return fields;
     }
   }, {
@@ -539,9 +550,9 @@ var Model = /*#__PURE__*/function (_Download) {
 
         if (record.fillable == true) {
           if (i == this.localStorage.length - 1) {
-            fillableFields += "".concat(record.fieldTitle);
+            fillableFields += "'".concat(record.fieldTitle, "'");
           } else {
-            fillableFields += "".concat(record.fieldTitle, ",\n\t\t");
+            fillableFields += "'".concat(record.fieldTitle, "',\n\t\t");
           }
         }
       }
@@ -558,9 +569,9 @@ var Model = /*#__PURE__*/function (_Download) {
 
         if (record.hidden == true) {
           if (i == this.localStorage.length - 1) {
-            hiddenFields += "".concat(record.fieldTitle);
+            hiddenFields += "'".concat(record.fieldTitle, "'");
           } else {
-            hiddenFields += "".concat(record.fieldTitle, ",\n\t\t");
+            hiddenFields += "'".concat(record.fieldTitle, "',\n\t\t");
           }
         }
       }

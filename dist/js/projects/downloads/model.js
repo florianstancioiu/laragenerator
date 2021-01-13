@@ -44,9 +44,9 @@ export default class Model extends Download {
 
             if (record.fillable == true) {
                 if (i == this.localStorage.length - 1) {
-                    fillableFields += `${record.fieldTitle}`;
+                    fillableFields += `'${record.fieldTitle}'`;
                 } else {
-                    fillableFields += `${record.fieldTitle},\n\t\t`;
+                    fillableFields += `'${record.fieldTitle}',\n\t\t`;
                 }
             }
         }
@@ -61,9 +61,9 @@ export default class Model extends Download {
 
             if (record.hidden == true) {
                 if (i == this.localStorage.length - 1) {
-                    hiddenFields += `${record.fieldTitle}`;
+                    hiddenFields += `'${record.fieldTitle}'`;
                 } else {
-                    hiddenFields += `${record.fieldTitle},\n\t\t`;
+                    hiddenFields += `'${record.fieldTitle}',\n\t\t`;
                 }
             }
         }

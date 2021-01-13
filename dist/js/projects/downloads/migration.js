@@ -28,12 +28,24 @@ export default class Migration extends Download {
         for (let i = 0; i<this.localStorage.length; i++) {
             let record = this.localStorage[i];
 
+            fields += `$table->${record.type}('${record.title}')`;
+
+            if (record.default !== '') {
+                fields += `->default('${record.default}')`;
+            }
+
+            if (record.nullable == true) {
+                fields += `->nullable()`;
+            }
+
+            fields += `;`;
+
             if (i !== this.localStorage.length - 1) {
-                fields += `$table->${record.type}('${record.title}');\n\t\t\t`;
-            } else {
-                fields += `$table->${record.type}('${record.title}');`;
+                fields += `\n\t\t\t`;
             }
         }
+
+        fields += `\n\t\t\t$table->timestamps();`;
 
         return fields;
     }
