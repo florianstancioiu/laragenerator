@@ -10,6 +10,7 @@ export default class Sidebar extends Section {
     }
 
     bindEvents() {
+        $("#add-table-input").on('keypress', this, this.onKeyPressAddTableInput);
         $("#add-table-btn").on('click', this, this.onAddTableBtnClick);
         $("#tables-list").on('click', '.btn-danger', this, this.onBtnDangerClick);
         $("#tables-list").on('click', '.list-group-item', this, this.onListGroupItemClick);
@@ -43,6 +44,15 @@ export default class Sidebar extends Section {
         $("#tables-list").sortable({
             revert: true
         });
+    }
+
+    onKeyPressAddTableInput(event) {
+        const _this = event.data;
+        const $this = $('#add-table-btn');
+
+        if (event.which == 13) {
+            $("#add-table-btn").trigger('click');
+        }
     }
 
     onAddTableBtnClick(event) {

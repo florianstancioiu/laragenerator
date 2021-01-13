@@ -2121,6 +2121,7 @@ var Sidebar = /*#__PURE__*/function (_Section) {
   _createClass(Sidebar, [{
     key: "bindEvents",
     value: function bindEvents() {
+      $("#add-table-input").on('keypress', this, this.onKeyPressAddTableInput);
       $("#add-table-btn").on('click', this, this.onAddTableBtnClick);
       $("#tables-list").on('click', '.btn-danger', this, this.onBtnDangerClick);
       $("#tables-list").on('click', '.list-group-item', this, this.onListGroupItemClick);
@@ -2151,6 +2152,16 @@ var Sidebar = /*#__PURE__*/function (_Section) {
       $("#tables-list").sortable({
         revert: true
       });
+    }
+  }, {
+    key: "onKeyPressAddTableInput",
+    value: function onKeyPressAddTableInput(event) {
+      var _this = event.data;
+      var $this = $('#add-table-btn');
+
+      if (event.which == 13) {
+        $("#add-table-btn").trigger('click');
+      }
     }
   }, {
     key: "onAddTableBtnClick",
