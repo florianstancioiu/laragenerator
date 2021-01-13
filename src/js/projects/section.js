@@ -1,6 +1,7 @@
 import Mustache from 'mustache/mustache.min';
 
 export default class Section {
+    
     constructor() {
         this.bindEvents();
     }
