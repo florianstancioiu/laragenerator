@@ -86,2953 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./dist/js/projects.js":
-/*!*****************************!*\
-  !*** ./dist/js/projects.js ***!
-  \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _projects_sections_sidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects/sections/sidebar */ "./dist/js/projects/sections/sidebar.js");
-/* harmony import */ var _projects_sections_table_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects/sections/table-fields */ "./dist/js/projects/sections/table-fields.js");
-/* harmony import */ var _projects_sections_seeder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projects/sections/seeder */ "./dist/js/projects/sections/seeder.js");
-/* harmony import */ var _projects_sections_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projects/sections/model */ "./dist/js/projects/sections/model.js");
-/* harmony import */ var _projects_sections_relationships__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./projects/sections/relationships */ "./dist/js/projects/sections/relationships.js");
-/* harmony import */ var _projects_sections_validation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./projects/sections/validation */ "./dist/js/projects/sections/validation.js");
-/* harmony import */ var _projects_sections_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./projects/sections/controller */ "./dist/js/projects/sections/controller.js");
-/* harmony import */ var _projects_sections_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./projects/sections/forms */ "./dist/js/projects/sections/forms.js");
-/* harmony import */ var _projects_sections_index_fields__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./projects/sections/index-fields */ "./dist/js/projects/sections/index-fields.js");
-/* harmony import */ var _projects_zip_file__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./projects/zip-file */ "./dist/js/projects/zip-file.js");
-
-
-
-
-
-
-
-
-
-
-
-if ($('.admin-project').length) {
-  new _projects_sections_sidebar__WEBPACK_IMPORTED_MODULE_0__["default"]();
-  new _projects_sections_table_fields__WEBPACK_IMPORTED_MODULE_1__["default"]();
-  new _projects_sections_seeder__WEBPACK_IMPORTED_MODULE_2__["default"]();
-  new _projects_sections_model__WEBPACK_IMPORTED_MODULE_3__["default"]();
-  new _projects_sections_relationships__WEBPACK_IMPORTED_MODULE_4__["default"]();
-  new _projects_sections_validation__WEBPACK_IMPORTED_MODULE_5__["default"]();
-  new _projects_sections_controller__WEBPACK_IMPORTED_MODULE_6__["default"]();
-  new _projects_sections_forms__WEBPACK_IMPORTED_MODULE_7__["default"]();
-  new _projects_sections_index_fields__WEBPACK_IMPORTED_MODULE_8__["default"]();
-  new _projects_zip_file__WEBPACK_IMPORTED_MODULE_9__["default"]();
-}
-
-/***/ }),
-
-/***/ "./dist/js/projects/download.js":
-/*!**************************************!*\
-  !*** ./dist/js/projects/download.js ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Download; });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Download = /*#__PURE__*/function () {
-  function Download() {
-    _classCallCheck(this, Download);
-  }
-
-  _createClass(Download, [{
-    key: "getProjectId",
-    value: function getProjectId() {
-      var url = window.location.href;
-      var splits = url.split('/');
-      return 1;
-      return parseInt(splits[splits.length - 1], 10);
-    }
-  }, {
-    key: "getStorageData",
-    value: function getStorageData(sectionId, tableId) {
-      var projectId = this.getProjectId();
-      var identifier = "".concat(sectionId, "_").concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        return JSON.parse(existingLocalStorage);
-      }
-
-      return [];
-    }
-  }]);
-
-  return Download;
-}();
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/controller.js":
-/*!**************************************************!*\
-  !*** ./dist/js/projects/downloads/controller.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Controller; });
-/* harmony import */ var _templates_controller_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/controller-file.js */ "./dist/js/projects/downloads/templates/controller-file.js");
-/* harmony import */ var _templates_controller_index_method_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./templates/controller/index-method.js */ "./dist/js/projects/downloads/templates/controller/index-method.js");
-/* harmony import */ var _templates_controller_create_method_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./templates/controller/create-method.js */ "./dist/js/projects/downloads/templates/controller/create-method.js");
-/* harmony import */ var _templates_controller_store_method_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./templates/controller/store-method.js */ "./dist/js/projects/downloads/templates/controller/store-method.js");
-/* harmony import */ var _templates_controller_edit_method_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./templates/controller/edit-method.js */ "./dist/js/projects/downloads/templates/controller/edit-method.js");
-/* harmony import */ var _templates_controller_update_method_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./templates/controller/update-method.js */ "./dist/js/projects/downloads/templates/controller/update-method.js");
-/* harmony import */ var _templates_controller_destroy_method_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./templates/controller/destroy-method.js */ "./dist/js/projects/downloads/templates/controller/destroy-method.js");
-/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../download */ "./dist/js/projects/download.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-
-
-
-
-
-
-var Controller = /*#__PURE__*/function (_Download) {
-  _inherits(Controller, _Download);
-
-  var _super = _createSuper(Controller);
-
-  function Controller(options) {
-    var _this;
-
-    _classCallCheck(this, Controller);
-
-    _this = _super.call(this);
-    _this.table = options.table;
-    _this.model = options.model;
-    _this.includes = {}; // retrieve the localStorage item requiered for this tab
-
-    _this.localStorage = _this.getStorageData('controller', _this.table);
-
-    _this.processLocalStorage();
-
-    return _this;
-  }
-
-  _createClass(Controller, [{
-    key: "processLocalStorage",
-    value: function processLocalStorage() {
-      for (var i = 0; i < this.localStorage.length; i++) {
-        var method = this.localStorage[i].method;
-        var include = this.localStorage[i].include;
-        this.includes[method] = include;
-      }
-    }
-  }, {
-    key: "getContent",
-    value: function getContent() {
-      var table = this.table;
-      var model = this.model;
-      var modelNamespaceImport = this.getModelNamespaceImport(table);
-      var requestNamespaceImports = this.getRequestNamespaceImports(table);
-      var tableSingular = this.getTableSingular();
-      var indexMethod = this.getIndexMethod(table);
-      var createMethod = this.getCreateMethod(table);
-      var storeMethod = this.getStoreMethod(table);
-      var editMethod = this.getEditMethod(table);
-      var updateMethod = this.getUpdateMethod(table);
-      var destroyMethod = this.getDestroyMethod(table);
-      return _templates_controller_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{modelNamespaceImport}}/g, modelNamespaceImport).replace(/{{requestNamespaceImports}}/g, requestNamespaceImports).replace(/{{indexMethod}}/g, indexMethod).replace(/{{createMethod}}/g, createMethod).replace(/{{storeMethod}}/g, storeMethod).replace(/{{editMethod}}/g, editMethod).replace(/{{updateMethod}}/g, updateMethod).replace(/{{destroyMethod}}/g, destroyMethod).replace(/{{model}}/g, model).replace(/{{table}}/g, table).replace(/{{tableSingular}}/g, tableSingular);
-    }
-  }, {
-    key: "getTableSingular",
-    value: function getTableSingular() {
-      if (this.table.charAt(this.table.length - 1) == "s") {
-        return this.table.slice(0, -1);
-      }
-
-      return this.table;
-    }
-  }, {
-    key: "getModelNamespaceImport",
-    value: function getModelNamespaceImport() {
-      return "use App\\Models\\{{model}};\n";
-    }
-  }, {
-    key: "getRequestNamespaceImports",
-    value: function getRequestNamespaceImports(table) {
-      return "use App\\Models\\{{model}};\n";
-    }
-  }, {
-    key: "getIndexMethod",
-    value: function getIndexMethod(table) {
-      if (!this.includes.index) {
-        return "";
-      }
-
-      return _templates_controller_index_method_js__WEBPACK_IMPORTED_MODULE_1__["default"];
-    }
-  }, {
-    key: "getCreateMethod",
-    value: function getCreateMethod(table) {
-      if (!this.includes.create) {
-        return "";
-      }
-
-      return _templates_controller_create_method_js__WEBPACK_IMPORTED_MODULE_2__["default"];
-    }
-  }, {
-    key: "getStoreMethod",
-    value: function getStoreMethod(table) {
-      if (!this.includes.store) {
-        return "";
-      }
-
-      return _templates_controller_store_method_js__WEBPACK_IMPORTED_MODULE_3__["default"];
-    }
-  }, {
-    key: "getEditMethod",
-    value: function getEditMethod(table) {
-      if (!this.includes.edit) {
-        return "";
-      }
-
-      return _templates_controller_edit_method_js__WEBPACK_IMPORTED_MODULE_4__["default"];
-    }
-  }, {
-    key: "getUpdateMethod",
-    value: function getUpdateMethod(table) {
-      if (!this.includes.update) {
-        return "";
-      }
-
-      return _templates_controller_update_method_js__WEBPACK_IMPORTED_MODULE_5__["default"];
-    }
-  }, {
-    key: "getDestroyMethod",
-    value: function getDestroyMethod(table) {
-      if (!this.includes.destroy) {
-        return "";
-      }
-
-      return _templates_controller_destroy_method_js__WEBPACK_IMPORTED_MODULE_6__["default"];
-    }
-  }]);
-
-  return Controller;
-}(_download__WEBPACK_IMPORTED_MODULE_7__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/migration.js":
-/*!*************************************************!*\
-  !*** ./dist/js/projects/downloads/migration.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Migration; });
-/* harmony import */ var _templates_migration_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/migration-file.js */ "./dist/js/projects/downloads/templates/migration-file.js");
-/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../download */ "./dist/js/projects/download.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-var Migration = /*#__PURE__*/function (_Download) {
-  _inherits(Migration, _Download);
-
-  var _super = _createSuper(Migration);
-
-  function Migration(options) {
-    var _this;
-
-    _classCallCheck(this, Migration);
-
-    _this = _super.call(this);
-    _this.table = options.table;
-    _this.model = options.model; // retrieve the localStorage item requiered for this tab
-
-    _this.localStorage = _this.getStorageData('table_fields', _this.table);
-    return _this;
-  }
-
-  _createClass(Migration, [{
-    key: "getContent",
-    value: function getContent() {
-      var table = this.table;
-      var uppercaseTable = this.getUpperCaseTable(table);
-      var tableFields = this.getFields();
-      return _templates_migration_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{uppercaseTable}}/g, uppercaseTable).replace(/{{table}}/g, table).replace(/{{tableFields}}/g, tableFields);
-    }
-  }, {
-    key: "getFields",
-    value: function getFields() {
-      var fields = "";
-
-      for (var i = 0; i < this.localStorage.length; i++) {
-        var record = this.localStorage[i];
-        fields += "$table->".concat(record.type, "('").concat(record.title, "')");
-
-        if (record["default"] !== '') {
-          fields += "->default('".concat(record["default"], "')");
-        }
-
-        if (record.nullable == true) {
-          fields += "->nullable()";
-        }
-
-        fields += ";";
-
-        if (i !== this.localStorage.length - 1) {
-          fields += "\n\t\t\t";
-        }
-      }
-
-      fields += "\n\t\t\t$table->timestamps();";
-      return fields;
-    }
-  }, {
-    key: "getUpperCaseTable",
-    value: function getUpperCaseTable(table) {
-      return table.charAt(0).toUpperCase() + table.slice(1);
-    }
-  }]);
-
-  return Migration;
-}(_download__WEBPACK_IMPORTED_MODULE_1__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/model.js":
-/*!*********************************************!*\
-  !*** ./dist/js/projects/downloads/model.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Model; });
-/* harmony import */ var _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/model-file.js */ "./dist/js/projects/downloads/templates/model-file.js");
-/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../download */ "./dist/js/projects/download.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-var Model = /*#__PURE__*/function (_Download) {
-  _inherits(Model, _Download);
-
-  var _super = _createSuper(Model);
-
-  function Model(options) {
-    var _this;
-
-    _classCallCheck(this, Model);
-
-    _this = _super.call(this);
-    _this.table = options.table;
-    _this.model = options.model; // retrieve the localStorage item requiered for this tab
-
-    _this.localStorage = _this.getStorageData('model', _this.table);
-    return _this;
-  }
-
-  _createClass(Model, [{
-    key: "getContent",
-    value: function getContent() {
-      var table = this.table;
-      var relationshipsNamespaces = this.getRelationshipsNamespaces();
-      var model = this.getModel(table);
-      var fillableFields = this.getFillableFields();
-      var hiddenFields = this.getHiddenFields();
-      var relationships = this.getRelationships();
-      return _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{relationshipsNamespaces}}/g, relationshipsNamespaces).replace(/{{model}}/g, model).replace(/{{table}}/g, table).replace(/{{fillableFields}}/g, fillableFields).replace(/{{hiddenFields}}/g, hiddenFields).replace(/{{relationships}}/g, relationships);
-    }
-  }, {
-    key: "getRelationshipsNamespaces",
-    value: function getRelationshipsNamespaces() {
-      return "";
-    }
-  }, {
-    key: "getModel",
-    value: function getModel() {
-      return this.model;
-    }
-  }, {
-    key: "getFillableFields",
-    value: function getFillableFields() {
-      var fillableFields = "";
-
-      for (var i = 0; i < this.localStorage.length; i++) {
-        var record = this.localStorage[i];
-
-        if (record.fillable == true) {
-          if (i == this.localStorage.length - 1) {
-            fillableFields += "'".concat(record.fieldTitle, "'");
-          } else {
-            fillableFields += "'".concat(record.fieldTitle, "',\n\t\t");
-          }
-        }
-      }
-
-      return fillableFields;
-    }
-  }, {
-    key: "getHiddenFields",
-    value: function getHiddenFields() {
-      var hiddenFields = "";
-
-      for (var i = 0; i < this.localStorage.length; i++) {
-        var record = this.localStorage[i];
-
-        if (record.hidden == true) {
-          if (i == this.localStorage.length - 1) {
-            hiddenFields += "'".concat(record.fieldTitle, "'");
-          } else {
-            hiddenFields += "'".concat(record.fieldTitle, "',\n\t\t");
-          }
-        }
-      }
-
-      return hiddenFields;
-    }
-  }, {
-    key: "getRelationships",
-    value: function getRelationships() {
-      return "";
-    }
-  }]);
-
-  return Model;
-}(_download__WEBPACK_IMPORTED_MODULE_1__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/routes.js":
-/*!**********************************************!*\
-  !*** ./dist/js/projects/downloads/routes.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Routes; });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Routes = /*#__PURE__*/function () {
-  function Routes(localStorage) {
-    _classCallCheck(this, Routes);
-
-    this.localStorage = localStorage;
-  }
-
-  _createClass(Routes, [{
-    key: "getContent",
-    value: function getContent() {
-      var prefix = this.getPrefix();
-      var resourceRoutes = this.getResourceRoutes();
-      var suffix = this.getSuffix();
-      return "".concat(prefix).concat(resourceRoutes).concat(suffix);
-    }
-  }, {
-    key: "getPrefix",
-    value: function getPrefix() {
-      var namespaceImports = this.getNamespaceImports(this.localStorage);
-      var string = "<?php\n\nuse Illuminate\\Support\\Facades\\Auth;\nuse Illuminate\\Support\\Facades\\Route;\nuse App\\Http\\Controllers\\Admin\\DashboardController;\n{{namespaceImports}}\nAuth::routes();\n\nRoute::prefix('admin')->middleware(['auth'])->group(function () {\n    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');\n\n    ";
-      string = string.replace(/{{namespaceImports}}/g, namespaceImports);
-      return string;
-    }
-  }, {
-    key: "getResourceRoutes",
-    value: function getResourceRoutes() {
-      var localStorage = this.localStorage;
-      var string = "";
-
-      for (var i = 0; i < localStorage.length; i++) {
-        var table = localStorage[i].tableTitle;
-        var model = this.getModel(table);
-
-        if (i === localStorage.length - 1) {
-          string += "Route::resource('admin-{{table}}', {{model}}Controller::class);\n";
-        } else {
-          string += "Route::resource('admin-{{table}}', {{model}}Controller::class);\n\n\t";
-        }
-
-        string = string.replace(/{{table}}/g, table).replace(/{{model}}/g, model);
-      }
-
-      return string;
-    }
-  }, {
-    key: "getNamespaceImports",
-    value: function getNamespaceImports(localStorage) {
-      var string = "";
-
-      for (var i = 0; i < localStorage.length; i++) {
-        var model = this.getModel(localStorage[i].tableTitle);
-        string += "use App\\Http\\Controllers\\Admin\\{{model}}Controller;\n";
-        string = string.replace(/{{model}}/g, model);
-      }
-
-      return string;
-    }
-  }, {
-    key: "getSuffix",
-    value: function getSuffix() {
-      return "});";
-    }
-  }, {
-    key: "getModel",
-    value: function getModel(tableName) {
-      tableName = tableName.charAt(0).toUpperCase() + tableName.slice(1);
-
-      if (tableName.charAt(tableName.length - 1) == "s") {
-        tableName = tableName.slice(0, -1);
-      }
-
-      return tableName;
-    }
-  }]);
-
-  return Routes;
-}();
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/controller-file.js":
-/*!*****************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/controller-file.js ***!
-  \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var controllerFile = "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse Illuminate\\Http\\Request;\nuse App\\Http\\Controllers\\Controller;\nuse App\\Http\\Requests\\Store{{model}};\nuse App\\Http\\Requests\\Update{{model}};\nuse App\\Models\\{{model}};\n\nclass {{model}}Controller extends Controller\n{\n{{indexMethod}}{{createMethod}}{{storeMethod}}{{editMethod}}{{updateMethod}}{{destroyMethod}}\n}\n";
-/* harmony default export */ __webpack_exports__["default"] = (controllerFile);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/controller/create-method.js":
-/*!**************************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/controller/create-method.js ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var createMethod = "\n    public function create()\n    {\n        return view('admin.{{table}}.create');\n    }\n    ";
-/* harmony default export */ __webpack_exports__["default"] = (createMethod);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/controller/destroy-method.js":
-/*!***************************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/controller/destroy-method.js ***!
-  \***************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var destroyMethod = "\n    public function destroy(Request $request, int $id)\n    {\n        ${{tableSingular}} = {{model}}::findOrFail($id);\n        ${{tableSingular}}->delete();\n\n        return redirect()\n            ->route('admin.{{table}}.index')\n            ->with('message', 'The record has been successfully deleted');\n    }";
-/* harmony default export */ __webpack_exports__["default"] = (destroyMethod);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/controller/edit-method.js":
-/*!************************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/controller/edit-method.js ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var editMethod = "\n    public function edit(int $id)\n    {\n        ${{tableSingular}} = {{model}}::findOrFail($id);\n\n        return view('admin.{{table}}.edit', compact('{{tableSingular}}'));\n    }\n    ";
-/* harmony default export */ __webpack_exports__["default"] = (editMethod);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/controller/index-method.js":
-/*!*************************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/controller/index-method.js ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var indexMethod = "\n    public function index()\n    {\n        ${{table}} = {{model}}::orderBy('id', 'DESC')->paginate();\n\n        return view('admin.{{table}}.index', compact('{{table}}'));\n    }\n    ";
-/* harmony default export */ __webpack_exports__["default"] = (indexMethod);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/controller/store-method.js":
-/*!*************************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/controller/store-method.js ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var storeMethod = "\n    public function store(Store{{model}} $request)\n    {\n        ${{tableSingular}} = new {{model}}($request->validated());\n        ${{tableSingular}}->save();\n\n        return redirect()\n            ->route('admin.{{table}}.index')\n            ->with('message', 'The record has been successfully stored');\n    }\n    ";
-/* harmony default export */ __webpack_exports__["default"] = (storeMethod);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/controller/update-method.js":
-/*!**************************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/controller/update-method.js ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var updateMethod = "\n    public function update(Update{{model}} $request, int $id)\n    {\n        ${{tableSingular}} = {{model}}::findOrFail($id);\n        ${{tableSingular}} = $post->fill($request->validated());\n        ${{tableSingular}}->save();\n\n        return redirect()\n            ->route('admin.{{table}}.index')\n            ->with('message', 'The {{tableSingular}} record has been successfully updated');\n    }\n    ";
-/* harmony default export */ __webpack_exports__["default"] = (updateMethod);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/migration-file.js":
-/*!****************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/migration-file.js ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var migrationFile = "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass Create{{uppercaseTable}}Table extends Migration\n{\n    /**\n     * Run the migrations.\n     *\n     * @return void\n     */\n    public function up()\n    {\n        Schema::create('{{table}}', function (Blueprint $table) {\n            {{tableFields}}\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     *\n     * @return void\n     */\n    public function down()\n    {\n        Schema::dropIfExists('{{table}}');\n    }\n}";
-/* harmony default export */ __webpack_exports__["default"] = (migrationFile);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/model-file.js":
-/*!************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/model-file.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var modelFile = "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n{{relationshipsNamespaces}}\n\nclass {{model}} extends Model\n{\n    use HasFactory;\n\n    protected $table = \"{{table}}\";\n\n    protected $fillable = [\n        {{fillableFields}}\n    ];\n\n    protected $hidden = [\n        {{hiddenFields}}\n    ];\n\n    {{relationships}}\n}";
-/* harmony default export */ __webpack_exports__["default"] = (modelFile);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/request-file.js":
-/*!**************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/request-file.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var requestFile = "<?php\n\nnamespace App\\Http\\Requests;\n\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{method}}{{model}} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n            {{rules}}\n        ];\n    }\n}\n";
-/* harmony default export */ __webpack_exports__["default"] = (requestFile);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/view-create-file.js":
-/*!******************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/view-create-file.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var viewCreateFile = "@extends('layouts.admin')\n\n@section('title')\n    Create {{model}}\n@endsection\n\n@section('page-title')\n    Create {{model}}\n@endsection\n\n@section('breadcrumbs')\n    <ol class=\"breadcrumb float-sm-right\">\n        <li class=\"breadcrumb-item\"><a href=\"{{ route('admin.{{table}}.index') }}\">Posts</a></li>\n        <li class=\"breadcrumb-item active\">Create</li>\n    </ol>\n@endsection\n\n@section('content')\n    <div class=\"col-md-12\">\n    <!-- general form elements -->\n        <div class=\"card card-primary\">\n            <div class=\"card-header\">\n                <h3 class=\"card-title\">Create {{model}}</h3>\n            </div>\n            <!-- /.card-header -->\n            <!-- form start -->\n            <form role=\"form\" action=\"{{ route('admin.{{table}}.store') }}\" method=\"POST\" enctype=\"multipart/form-data\">\n                @csrf\n                <div class=\"card-body\">\n                    {{formInputs}}\n                </div>\n                <!-- /.card-body -->\n\n                <div class=\"card-footer\">\n                    <button type=\"submit\" class=\"btn btn-primary\">Create</button>\n                </div>\n            </form>\n        </div>\n    </div>\n@endsection\n";
-/* harmony default export */ __webpack_exports__["default"] = (viewCreateFile);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/templates/view-index-file.js":
-/*!*****************************************************************!*\
-  !*** ./dist/js/projects/downloads/templates/view-index-file.js ***!
-  \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var viewIndexFile = "@extends('layouts.admin')\n\n@section('title')\n    {{modelPlural}}\n@endsection\n\n@section('page-title')\n    {{modelPlural}}\n    <a href=\"{{ route('admin.{{table}}.create') }}\" class=\"btn btn-sm btn-primary\">Add +</a>\n@endsection\n\n@section('breadcrumbs')\n    <ol class=\"breadcrumb float-sm-right\">\n        <li class=\"breadcrumb-item\"><a href=\"{{ route('admin.dashboard') }}\">Admin</a></li>\n        <li class=\"breadcrumb-item active\">{{modelPlural}}</li>\n    </ol>\n@endsection\n\n@section('content')\n    <div class=\"card\">\n        <!-- /.card-header -->\n        <div class=\"card-body\">\n            <table class=\"table table-bordered\">\n                <thead>\n                    <tr>\n                        {{tableHeaders}}\n                    </tr>\n                </thead>\n                <tbody>\n                    @foreach(${{table}} as $val)\n                        <tr>\n                            {{tableRows}}\n                            <td class=\"actions-cell\">\n                                <a href=\"{{ route('admin.{{table}}.edit', ['id' => $val->id]) }}\" class=\"btn btn-primary btn-sm\">\n                                    <i class=\"fas fa-wrench\"></i>\n                                    Edit\n                                </a>\n\n                                <form action=\"{{ route('admin.{{table}}.delete', ['id' => $val->id]) }}\" method=\"POST\">\n                                    @csrf\n                                    @method('DELETE')\n                                    <button class=\"btn btn-danger btn-sm\" type=\"submit\">\n                                        <i class=\"fas fa-trash\"></i>\n                                        Delete\n                                    </button>\n                                </form>\n                            </td>\n                        </tr>\n                    @endforeach\n                </tbody>\n            </table>\n        </div>\n        <!-- /.card-body -->\n\n        <div class=\"card-footer clearfix\">\n            {{ ${{table}}->links() }}\n        </div>\n    </div>\n    <!-- /.card -->\n@endsection\n";
-/* harmony default export */ __webpack_exports__["default"] = (viewIndexFile);
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/validation.js":
-/*!**************************************************!*\
-  !*** ./dist/js/projects/downloads/validation.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Validation; });
-/* harmony import */ var _templates_request_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/request-file.js */ "./dist/js/projects/downloads/templates/request-file.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var Validation = /*#__PURE__*/function () {
-  function Validation(options) {
-    _classCallCheck(this, Validation);
-
-    this.table = options.table;
-    this.model = options.model;
-  }
-
-  _createClass(Validation, [{
-    key: "getStoreContent",
-    value: function getStoreContent() {
-      var table = this.table;
-      var model = this.getModel(table);
-      var method = "Store";
-      var rules = this.getRules();
-      return _templates_request_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{model}}/g, model).replace(/{{method}}/g, method).replace(/{{rules}}/g, rules);
-    }
-  }, {
-    key: "getUpdateContent",
-    value: function getUpdateContent() {
-      var table = this.table;
-      var model = this.getModel(table);
-      var method = "Update";
-      var rules = this.getRules();
-      return _templates_request_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{model}}/g, model).replace(/{{method}}/g, method).replace(/{{rules}}/g, rules);
-    }
-  }, {
-    key: "getModel",
-    value: function getModel(table) {
-      return this.model;
-    }
-  }, {
-    key: "getRules",
-    value: function getRules(table) {
-      return "";
-    }
-  }]);
-
-  return Validation;
-}();
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/view-create.js":
-/*!***************************************************!*\
-  !*** ./dist/js/projects/downloads/view-create.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ViewCreate; });
-/* harmony import */ var _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/view-create-file.js */ "./dist/js/projects/downloads/templates/view-create-file.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var ViewCreate = /*#__PURE__*/function () {
-  function ViewCreate(options) {
-    _classCallCheck(this, ViewCreate);
-
-    this.table = options.table;
-    this.model = options.model;
-  }
-
-  _createClass(ViewCreate, [{
-    key: "getContent",
-    value: function getContent() {
-      var table = this.table;
-      var model = this.getModel(table);
-      var formInputs = this.getFormInputs(table);
-      return _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{table}}/g, table).replace(/{{model}}/g, model).replace(/{{formInputs}}/g, formInputs);
-    }
-  }, {
-    key: "getModel",
-    value: function getModel(table) {
-      return this.model;
-    }
-  }, {
-    key: "getFormInputs",
-    value: function getFormInputs(table) {
-      return "";
-    }
-  }]);
-
-  return ViewCreate;
-}();
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/view-edit.js":
-/*!*************************************************!*\
-  !*** ./dist/js/projects/downloads/view-edit.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ViewEdit; });
-/* harmony import */ var _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/view-create-file.js */ "./dist/js/projects/downloads/templates/view-create-file.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var ViewEdit = /*#__PURE__*/function () {
-  function ViewEdit(options) {
-    _classCallCheck(this, ViewEdit);
-
-    this.table = options.table;
-    this.model = options.model;
-  }
-
-  _createClass(ViewEdit, [{
-    key: "getContent",
-    value: function getContent() {
-      var table = this.table;
-      var model = this.getModel(table);
-      var lowercaseModel = this.getLowercaseModel(table);
-      var formInputs = this.getFormInputs(table);
-      return _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{table}}/g, table).replace(/{{model}}/g, model).replace(/{{lowercaseModel}}/g, lowercaseModel).replace(/{{formInputs}}/g, formInputs);
-    }
-  }, {
-    key: "getModel",
-    value: function getModel(table) {
-      return this.model;
-    }
-  }, {
-    key: "getLowercaseModel",
-    value: function getLowercaseModel(table) {
-      return "";
-    }
-  }, {
-    key: "getFormInputs",
-    value: function getFormInputs(table) {
-      return "";
-    }
-  }]);
-
-  return ViewEdit;
-}();
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/downloads/view-index.js":
-/*!**************************************************!*\
-  !*** ./dist/js/projects/downloads/view-index.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ViewIndex; });
-/* harmony import */ var _templates_view_index_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/view-index-file.js */ "./dist/js/projects/downloads/templates/view-index-file.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var ViewIndex = /*#__PURE__*/function () {
-  function ViewIndex(options) {
-    _classCallCheck(this, ViewIndex);
-
-    this.table = options.table;
-    this.model = options.model;
-  }
-
-  _createClass(ViewIndex, [{
-    key: "getContent",
-    value: function getContent() {
-      var table = this.table;
-      var modelPlural = this.getModelPlural();
-      var tableHeaders = this.getTableHeaders();
-      var tableRows = this.getTableRows();
-      return _templates_view_index_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{table}}/g, table).replace(/{{modelPlural}}/g, modelPlural).replace(/{{tableHeaders}}/g, tableHeaders).replace(/{{tableRows}}/g, tableRows);
-    }
-  }, {
-    key: "getModelPlural",
-    value: function getModelPlural() {
-      return "".concat(this.model, "s");
-    }
-  }, {
-    key: "getTableHeaders",
-    value: function getTableHeaders() {
-      return "";
-    }
-  }, {
-    key: "getTableRows",
-    value: function getTableRows() {
-      return "";
-    }
-  }]);
-
-  return ViewIndex;
-}();
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/section.js":
-/*!*************************************!*\
-  !*** ./dist/js/projects/section.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Section; });
-/* harmony import */ var mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mustache/mustache.min */ "./node_modules/mustache/mustache.min.js");
-/* harmony import */ var mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var Section = /*#__PURE__*/function () {
-  function Section() {
-    _classCallCheck(this, Section);
-
-    this.bindEvents();
-  }
-
-  _createClass(Section, [{
-    key: "bindEvents",
-    value: function bindEvents() {}
-  }, {
-    key: "getRender",
-    value: function getRender(templateId, data) {
-      var templateHTML = document.getElementById(templateId).innerHTML;
-      return mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0___default.a.render(templateHTML, data);
-    }
-  }, {
-    key: "getProjectId",
-    value: function getProjectId() {
-      var url = window.location.href;
-      var splits = url.split('/');
-      return 1;
-      return parseInt(splits[splits.length - 1], 10);
-    }
-  }, {
-    key: "arrayMove",
-    value: function arrayMove(array, fromIndex, toIndex) {
-      var element = array[fromIndex];
-      array.splice(fromIndex, 1);
-      array.splice(toIndex, 0, element);
-    }
-  }, {
-    key: "getTableId",
-    value: function getTableId() {
-      return $("#tables-list .list-group-item.active .table-title").html();
-    }
-  }]);
-
-  return Section;
-}();
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/controller.js":
-/*!*************************************************!*\
-  !*** ./dist/js/projects/sections/controller.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Controller; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var Controller = /*#__PURE__*/function (_Section) {
-  _inherits(Controller, _Section);
-
-  var _super = _createSuper(Controller);
-
-  function Controller() {
-    var _this2;
-
-    _classCallCheck(this, Controller);
-
-    _this2 = _super.call(this);
-
-    _this2.setProperties();
-
-    _this2.loadLocalStorageData();
-
-    return _this2;
-  }
-
-  _createClass(Controller, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
-      $(".controller-section-tbody").on('change', 'input[type=checkbox]', this, this.tbodyCheckboxChange);
-    }
-  }, {
-    key: "setProperties",
-    value: function setProperties() {
-      this.methods = [{
-        method: 'index',
-        include: true
-      },
-      /*{
-          method: 'show',
-          include: true,
-      },*/
-      {
-        method: 'create',
-        include: true
-      }, {
-        method: 'edit',
-        include: true
-      }, {
-        method: 'store',
-        include: true
-      }, {
-        method: 'update',
-        include: true
-      }, {
-        method: 'destroy',
-        include: true
-      }];
-    }
-  }, {
-    key: "loadLocalStorageData",
-    value: function loadLocalStorageData() {
-      var tableId = this.getTableId();
-      this.loadData(tableId);
-    }
-  }, {
-    key: "loadData",
-    value: function loadData(tableId) {
-      var projectId = this.getProjectId();
-      var $tBody = $('.controller-section-tbody');
-      var identifier = "controller_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-      var data = {
-        methods: null
-      };
-
-      if (existingLocalStorage == null) {
-        data.methods = this.methods;
-        localStorage.setItem(identifier, JSON.stringify(this.methods));
-      } else {
-        data.methods = JSON.parse(existingLocalStorage);
-      }
-
-      var render = this.getRender('controller-row-multiple-template', data);
-      $tBody.html(render);
-    }
-  }, {
-    key: "addDataToLocalStorage",
-    value: function addDataToLocalStorage(data) {
-      var projectId = this.getProjectId();
-      var tableId = this.getTableId();
-      var identifier = "controller_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        localStorage.setItem(identifier, JSON.stringify([data]));
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        existingLocalStorage.push(data);
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-    }
-  }, {
-    key: "bodyOnTableActive",
-    value: function bodyOnTableActive(event, data) {
-      var _this = event.data;
-
-      _this.loadData(data.tableTitle);
-    }
-    /**
-    * Set the localStorage whenever the fillable or hidden checkboxes are clicked
-    */
-
-  }, {
-    key: "tbodyCheckboxChange",
-    value: function tbodyCheckboxChange(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var $tBody = $this.parents(".controller-section-tbody");
-      var $tableRows = $tBody.find('tr');
-      var data = [];
-      $tableRows.each(function () {
-        data.push({
-          method: $(this).find('.method').html(),
-          include: $(this).find('.include').is(':checked')
-        });
-      });
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "controller_".concat(projectId, "_").concat(tableId);
-      localStorage.setItem(identifier, JSON.stringify(data));
-    }
-  }]);
-
-  return Controller;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/forms.js":
-/*!********************************************!*\
-  !*** ./dist/js/projects/sections/forms.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Forms; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var Forms = /*#__PURE__*/function (_Section) {
-  _inherits(Forms, _Section);
-
-  var _super = _createSuper(Forms);
-
-  function Forms() {
-    var _this2;
-
-    _classCallCheck(this, Forms);
-
-    _this2 = _super.call(this);
-
-    _this2.loadLocalStorageData();
-
-    return _this2;
-  }
-
-  _createClass(Forms, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
-      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
-      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
-      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
-    }
-  }, {
-    key: "loadLocalStorageData",
-    value: function loadLocalStorageData() {
-      var tableId = this.getTableId();
-      this.loadData(tableId);
-    }
-  }, {
-    key: "loadData",
-    value: function loadData(tableId) {
-      var projectId = this.getProjectId();
-      var $tBody = $(".forms-section-tbody");
-      var identifier = "forms_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        $tBody.html("");
-        return false;
-      }
-
-      var data = {
-        inputs: JSON.parse(existingLocalStorage)
-      };
-      var render = this.getRender('form-input-row-multiple-template', data);
-      $tBody.html(render);
-    }
-  }, {
-    key: "bodyOnTableFieldsNew",
-    value: function bodyOnTableFieldsNew(event, data) {
-      var _this = event.data; // prepend required variables to data
-
-      data.show = true; // get renderHTML
-
-      var renderHTML = _this.getRender('form-input-row-template', data);
-
-      _this.addDataToLocalStorage(data);
-
-      $(".forms-section-tbody").append(renderHTML);
-    }
-  }, {
-    key: "addDataToLocalStorage",
-    value: function addDataToLocalStorage(data) {
-      var projectId = this.getProjectId();
-      var tableId = this.getTableId();
-      var identifier = "forms_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        localStorage.setItem(identifier, JSON.stringify([data]));
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        existingLocalStorage.push(data);
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-    }
-  }, {
-    key: "bodyOnTableActive",
-    value: function bodyOnTableActive(event, data) {
-      var _this = event.data;
-
-      _this.loadData(data.tableTitle);
-    }
-  }, {
-    key: "bodyOnTableFieldsDragStop",
-    value: function bodyOnTableFieldsDragStop(event, data) {
-      var _this = event.data;
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "forms_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
-        // and move the field to the new position if you find it
-
-        for (var i = 0; i < existingLocalStorage.length; i++) {
-          var element = existingLocalStorage[i];
-
-          if (element.fieldTitle === data.fieldTitle) {
-            _this.arrayMove(existingLocalStorage, i, data.newPosition);
-
-            break;
-          }
-        }
-
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-
-      _this.loadData(tableId);
-    }
-  }, {
-    key: "bodyOnTableFieldsRemove",
-    value: function bodyOnTableFieldsRemove(event, data) {
-      var _this = event.data;
-      var fieldTitle = data.fieldTitle; // remove the item from localStorage
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "forms_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        var newData = existingLocalStorage.filter(function (item) {
-          return item.fieldTitle !== fieldTitle;
-        });
-        localStorage.setItem("forms_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
-      }
-
-      _this.loadData(tableId);
-    }
-  }]);
-
-  return Forms;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/index-fields.js":
-/*!***************************************************!*\
-  !*** ./dist/js/projects/sections/index-fields.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return IndexFields; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-/**
-* OBSOLETE
-* TODO: Extract all useful code from here
-*/
-
-var IndexFields = /*#__PURE__*/function (_Section) {
-  _inherits(IndexFields, _Section);
-
-  var _super = _createSuper(IndexFields);
-
-  function IndexFields() {
-    var _this2;
-
-    _classCallCheck(this, IndexFields);
-
-    _this2 = _super.call(this);
-
-    _this2.loadLocalStorageData();
-
-    return _this2;
-  }
-
-  _createClass(IndexFields, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
-      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
-      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
-      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
-      $(".index-fields-section-tbody").on('change', 'input[type=checkbox]', this, this.tbodyCheckboxChange);
-    }
-  }, {
-    key: "loadLocalStorageData",
-    value: function loadLocalStorageData() {
-      var tableId = this.getTableId();
-      this.loadData(tableId);
-    }
-  }, {
-    key: "loadData",
-    value: function loadData(tableId) {
-      var projectId = this.getProjectId();
-      var $tBody = $(".index-fields-section-tbody");
-      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        $tBody.html("");
-        return false;
-      }
-
-      var data = {
-        fields: JSON.parse(existingLocalStorage)
-      };
-      var render = this.getRender('index-field-row-multiple-template', data);
-      $tBody.html(render);
-    }
-  }, {
-    key: "bodyOnTableFieldsNew",
-    value: function bodyOnTableFieldsNew(event, data) {
-      var _this = event.data; // prepend required variables to data
-
-      data.show = true; // get renderHTML
-
-      var renderHTML = _this.getRender('index-field-row-template', data);
-
-      _this.addDataToLocalStorage(data);
-
-      $(".index-fields-section-tbody").append(renderHTML);
-    }
-  }, {
-    key: "addDataToLocalStorage",
-    value: function addDataToLocalStorage(data) {
-      var projectId = this.getProjectId();
-      var tableId = this.getTableId();
-      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        localStorage.setItem(identifier, JSON.stringify([data]));
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        existingLocalStorage.push(data);
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-    }
-  }, {
-    key: "bodyOnTableActive",
-    value: function bodyOnTableActive(event, data) {
-      var _this = event.data;
-
-      _this.loadData(data.tableTitle);
-    }
-  }, {
-    key: "bodyOnTableFieldsDragStop",
-    value: function bodyOnTableFieldsDragStop(event, data) {
-      var _this = event.data;
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
-        // and move the field to the new position if you find it
-
-        for (var i = 0; i < existingLocalStorage.length; i++) {
-          var element = existingLocalStorage[i];
-
-          if (element.fieldTitle === data.fieldTitle) {
-            _this.arrayMove(existingLocalStorage, i, data.newPosition);
-
-            break;
-          }
-        }
-
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-
-      _this.loadData(tableId);
-    }
-  }, {
-    key: "bodyOnTableFieldsRemove",
-    value: function bodyOnTableFieldsRemove(event, data) {
-      var _this = event.data;
-      var fieldTitle = data.fieldTitle; // remove the item from localStorage
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        var newData = existingLocalStorage.filter(function (item) {
-          return item.fieldTitle !== fieldTitle;
-        });
-        localStorage.setItem("index_fields_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
-      }
-
-      _this.loadData(tableId);
-    }
-  }, {
-    key: "tbodyCheckboxChange",
-    value: function tbodyCheckboxChange(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var $tBody = $this.parents(".index-fields-section-tbody");
-      var $tableRows = $tBody.find('tr');
-      var data = [];
-      $tableRows.each(function () {
-        data.push({
-          fieldTitle: $(this).find('.field-title').html(),
-          show: $(this).find('.show').is(':checked')
-        });
-      });
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
-      localStorage.setItem(identifier, JSON.stringify(data));
-    }
-  }]);
-
-  return IndexFields;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/model.js":
-/*!********************************************!*\
-  !*** ./dist/js/projects/sections/model.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Model; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var Model = /*#__PURE__*/function (_Section) {
-  _inherits(Model, _Section);
-
-  var _super = _createSuper(Model);
-
-  function Model() {
-    var _this2;
-
-    _classCallCheck(this, Model);
-
-    _this2 = _super.call(this);
-
-    _this2.loadLocalStorageData();
-
-    return _this2;
-  }
-
-  _createClass(Model, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
-      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
-      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
-      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
-      $(".model-section-tbody").on('change', 'input[type=checkbox]', this, this.tbodyCheckboxChange);
-    }
-  }, {
-    key: "loadLocalStorageData",
-    value: function loadLocalStorageData() {
-      var tableId = this.getTableId();
-      this.loadData(tableId);
-    }
-  }, {
-    key: "loadData",
-    value: function loadData(tableId) {
-      var projectId = this.getProjectId();
-      var $tBody = $(".model-section-tbody");
-      var identifier = "model_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        $tBody.html("");
-        return false;
-      }
-
-      var data = {
-        fields: JSON.parse(existingLocalStorage)
-      };
-      var render = this.getRender('model-row-multiple-template', data);
-      $tBody.html(render);
-    }
-  }, {
-    key: "bodyOnTableFieldsNew",
-    value: function bodyOnTableFieldsNew(event, data) {
-      var _this = event.data; // prepend required variables to data
-
-      data.fillable = true;
-      data.hidden = false; // get renderHTML
-
-      var renderHTML = _this.getRender('model-row-template', data);
-
-      _this.addDataToLocalStorage(data);
-
-      $(".model-section-tbody").append(renderHTML);
-    }
-  }, {
-    key: "addDataToLocalStorage",
-    value: function addDataToLocalStorage(data) {
-      var projectId = this.getProjectId();
-      var tableId = this.getTableId();
-      var identifier = "model_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        localStorage.setItem(identifier, JSON.stringify([data]));
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        existingLocalStorage.push(data);
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-    }
-  }, {
-    key: "bodyOnTableActive",
-    value: function bodyOnTableActive(event, data) {
-      var _this = event.data;
-
-      _this.loadData(data.tableTitle);
-    }
-  }, {
-    key: "bodyOnTableFieldsDragStop",
-    value: function bodyOnTableFieldsDragStop(event, data) {
-      var _this = event.data;
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "model_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
-        // and move the field to the new position if you find it
-
-        for (var i = 0; i < existingLocalStorage.length; i++) {
-          var element = existingLocalStorage[i];
-
-          if (element.fieldTitle === data.fieldTitle) {
-            _this.arrayMove(existingLocalStorage, i, data.newPosition);
-
-            break;
-          }
-        }
-
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-
-      _this.loadData(tableId);
-    }
-  }, {
-    key: "bodyOnTableFieldsRemove",
-    value: function bodyOnTableFieldsRemove(event, data) {
-      var _this = event.data;
-      var fieldTitle = data.fieldTitle; // remove the item from localStorage
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "model_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        var newData = existingLocalStorage.filter(function (item) {
-          return item.fieldTitle !== fieldTitle;
-        });
-        localStorage.setItem("model_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
-      }
-
-      _this.loadData(tableId);
-    }
-    /**
-    * Set the localStorage whenever the fillable or hidden checkboxes are clicked
-    */
-
-  }, {
-    key: "tbodyCheckboxChange",
-    value: function tbodyCheckboxChange(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var $tBody = $this.parents(".model-section-tbody");
-      var $tableRows = $tBody.find('tr');
-      var data = [];
-      $tableRows.each(function () {
-        data.push({
-          fieldTitle: $(this).find('.field-title').html(),
-          fillable: $(this).find('.fillable').is(':checked'),
-          hidden: $(this).find('.hidden').is(':checked')
-        });
-      });
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "model_".concat(projectId, "_").concat(tableId);
-      localStorage.setItem(identifier, JSON.stringify(data));
-    }
-  }]);
-
-  return Model;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/relationships.js":
-/*!****************************************************!*\
-  !*** ./dist/js/projects/sections/relationships.js ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Relationships; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var Relationships = /*#__PURE__*/function (_Section) {
-  _inherits(Relationships, _Section);
-
-  var _super = _createSuper(Relationships);
-
-  function Relationships() {
-    _classCallCheck(this, Relationships);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Relationships, [{
-    key: "bindEvents",
-    value: function bindEvents() {//$("#add-table-btn").on('click', this, this.onAddTableBtnClick);
-    }
-  }, {
-    key: "onAddTableBtnClick",
-    value: function onAddTableBtnClick(event) {
-      var _this = event.data;
-      console.dir(_this);
-    }
-  }]);
-
-  return Relationships;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/seeder.js":
-/*!*********************************************!*\
-  !*** ./dist/js/projects/sections/seeder.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Seeder; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var Seeder = /*#__PURE__*/function (_Section) {
-  _inherits(Seeder, _Section);
-
-  var _super = _createSuper(Seeder);
-
-  function Seeder() {
-    _classCallCheck(this, Seeder);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Seeder, [{
-    key: "bindEvents",
-    value: function bindEvents() {//$("#add-table-btn").on('click', this, this.onAddTableBtnClick);
-    }
-  }, {
-    key: "onAddTableBtnClick",
-    value: function onAddTableBtnClick(event) {
-      var _this = event.data;
-      console.dir(_this);
-    }
-  }]);
-
-  return Seeder;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/sidebar.js":
-/*!**********************************************!*\
-  !*** ./dist/js/projects/sections/sidebar.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Sidebar; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-var Sidebar = /*#__PURE__*/function (_Section) {
-  _inherits(Sidebar, _Section);
-
-  var _super = _createSuper(Sidebar);
-
-  function Sidebar() {
-    var _this2;
-
-    _classCallCheck(this, Sidebar);
-
-    _this2 = _super.call(this);
-
-    _this2.loadLocalStorageData();
-
-    _this2.enableSortable();
-
-    return _this2;
-  }
-
-  _createClass(Sidebar, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("#add-table-input").on('keypress', this, this.onKeyPressAddTableInput);
-      $("#add-table-btn").on('click', this, this.onAddTableBtnClick);
-      $("#tables-list").on('click', '.btn-danger', this, this.onBtnDangerClick);
-      $("#tables-list").on('click', '.list-group-item', this, this.onListGroupItemClick);
-      $("#new-project-btn").on('click', this, this.onNewProjectBtnClick);
-    }
-  }, {
-    key: "loadLocalStorageData",
-    value: function loadLocalStorageData() {
-      var projectId = this.getProjectId();
-      var projectIdentifier = "project_".concat(projectId);
-      var existingLocalStorage = localStorage.getItem(projectIdentifier);
-
-      if (existingLocalStorage == null) {
-        return false;
-      }
-
-      var data = {
-        tables: JSON.parse(existingLocalStorage)
-      };
-      var render = this.getRender('list-group-item-multiple-template', data); // destroy the sortable to prevent bugs
-      // $("#tables-list").sortable('destroy');
-
-      $("#tables-list").append(render);
-      $("#tables-list .list-group-item:first-child").addClass('active'); // TODO: trigger event so that every single section can react to the change
-    }
-  }, {
-    key: "enableSortable",
-    value: function enableSortable() {
-      $("#tables-list").sortable({
-        revert: true
-      });
-    }
-  }, {
-    key: "onKeyPressAddTableInput",
-    value: function onKeyPressAddTableInput(event) {
-      var _this = event.data;
-      var $this = $('#add-table-btn');
-
-      if (event.which == 13) {
-        $("#add-table-btn").trigger('click');
-      }
-    }
-  }, {
-    key: "onAddTableBtnClick",
-    value: function onAddTableBtnClick(event) {
-      event.preventDefault();
-      var _this = event.data;
-      var $this = $(this); // add content to sidebar
-
-      var $input = $this.parents('.add-table-wrapper').find('#add-table-input');
-      var inputValue = $input.val();
-
-      if (inputValue.length === 0) {
-        return false;
-      } // make sure the table title is alpha numeric
-
-
-      var regex = new RegExp("^[a-z]{1}[a-z_0-9]*$");
-
-      if (!regex.test(inputValue)) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'The table name needs to be lowercase alpha numeric and should start with a letter!'
-        });
-        return false;
-      } // make sure the table names are unique
-
-
-      var projectId = _this.getProjectId();
-
-      var projectIdentifier = "project_".concat(projectId);
-      var existingLocalStorage = localStorage.getItem(projectIdentifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-
-        for (var i = 0; i < existingLocalStorage.length; i++) {
-          var value = existingLocalStorage[i];
-
-          if (value.tableTitle == inputValue) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'The table already exists!'
-            });
-            return false;
-          }
-        }
-      } // add data to localStorage
-
-
-      var data = {
-        tableTitle: inputValue
-      };
-
-      _this.addDataToLocalStorage(data); // generate the HTML we need using Mustache template engine
-
-
-      var render = _this.getRender('list-group-item-template', data); // destroy the sortable to prevent bugs
-
-
-      $("#tables-list").sortable('destroy');
-      $("#tables-list").append(render); // make the last item active
-
-      $("#tables-list .list-group-item.active").removeClass('active');
-      $("#tables-list .list-group-item:last-child").addClass('active'); // trigger a custom event to change the data
-
-      $("body").trigger('laragenerator.table.active', {
-        tableTitle: inputValue
-      }); // clear input
-
-      $input.val(''); // enable the sortable again
-
-      _this.enableSortable();
-
-      return false;
-    }
-  }, {
-    key: "addDataToLocalStorage",
-    value: function addDataToLocalStorage(data) {
-      var projectId = this.getProjectId();
-      var projectIdentifier = "project_".concat(projectId);
-      var existingLocalStorage = localStorage.getItem(projectIdentifier);
-
-      if (existingLocalStorage == null) {
-        localStorage.setItem(projectIdentifier, JSON.stringify([data]));
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        existingLocalStorage.push(data);
-        localStorage.setItem(projectIdentifier, JSON.stringify(existingLocalStorage));
-      }
-    }
-  }, {
-    key: "onBtnDangerClick",
-    value: function onBtnDangerClick(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var tableTitle = $this.parents('.list-group-item').find('.table-title').html();
-      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          // remove the item from localStorage
-          var projectId = _this.getProjectId();
-
-          var existingLocalStorage = localStorage.getItem("project_".concat(projectId));
-
-          if (existingLocalStorage != null) {
-            existingLocalStorage = JSON.parse(existingLocalStorage);
-            var newData = existingLocalStorage.filter(function (item) {
-              return item.tableTitle !== tableTitle;
-            });
-            localStorage.setItem("project_".concat(projectId), JSON.stringify(newData));
-          }
-
-          localStorage.removeItem("table_fields_".concat(projectId, "_").concat(tableTitle));
-          localStorage.removeItem("model_".concat(projectId, "_").concat(tableTitle));
-          localStorage.removeItem("relationships_".concat(projectId, "_").concat(tableTitle));
-          localStorage.removeItem("validation_".concat(projectId, "_").concat(tableTitle));
-          localStorage.removeItem("controller_".concat(projectId, "_").concat(tableTitle));
-          localStorage.removeItem("forms_".concat(projectId, "_").concat(tableTitle));
-          localStorage.removeItem("index_fields_".concat(projectId, "_").concat(tableTitle)); // activate the previous item in the DOM
-
-          $this.parents('.list-group-item').prev().trigger('click'); // remove the item from DOM
-
-          $this.parents('.list-group-item').remove();
-        }
-      });
-    }
-  }, {
-    key: "onListGroupItemClick",
-    value: function onListGroupItemClick(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var tableTitle = $this.find('.table-title').html();
-      $this.parents("#tables-list").find('.list-group-item.active').removeClass('active'); // trigger a custom event to know how to change the data
-
-      $("body").trigger('laragenerator.table.active', {
-        tableTitle: tableTitle
-      });
-      $this.addClass('active');
-    }
-  }, {
-    key: "onNewProjectBtnClick",
-    value: function onNewProjectBtnClick(event) {
-      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-        title: 'Are you sure?',
-        text: "The data you entered up until now will be deleted",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, I\'m sure'
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          localStorage.clear();
-          location.reload(false);
-        }
-      });
-    }
-  }]);
-
-  return Sidebar;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/table-fields.js":
-/*!***************************************************!*\
-  !*** ./dist/js/projects/sections/table-fields.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TableFields; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-var TableFields = /*#__PURE__*/function (_Section) {
-  _inherits(TableFields, _Section);
-
-  var _super = _createSuper(TableFields);
-
-  function TableFields() {
-    var _this2;
-
-    _classCallCheck(this, TableFields);
-
-    _this2 = _super.call(this);
-
-    _this2.loadLocalStorageData();
-
-    _this2.enableSortable();
-
-    return _this2;
-  }
-
-  _createClass(TableFields, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("#table-fields-wrapper tbody").on('click', '.btn-danger', this, this.onBtnDangerClick);
-      $("#table-fields-add-btn").on('click', this, this.onAddBtnClick);
-      $("#table-fields-wrapper tbody").on('sortupdate', this.tableOnSortUpdate.bind(this));
-      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
-    }
-  }, {
-    key: "loadLocalStorageData",
-    value: function loadLocalStorageData() {
-      var tableId = this.getTableId();
-      this.loadData(tableId);
-    }
-  }, {
-    key: "loadData",
-    value: function loadData(tableId) {
-      var projectId = this.getProjectId();
-      var $tBody = $("#table-fields-wrapper tbody");
-      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        $tBody.html("");
-        return false;
-      }
-
-      var data = {
-        fields: JSON.parse(existingLocalStorage)
-      };
-      var render = this.getRender('table-fields-row-multiple-template', data); // destroy the sortable to prevent bugs
-      // $("#tables-list").sortable('destroy');
-
-      $tBody.html(render);
-    }
-  }, {
-    key: "enableSortable",
-    value: function enableSortable() {
-      $("#table-fields-wrapper tbody").sortable({
-        revert: true,
-        // make the width work correctly in the table
-        helper: function helper(e, ui) {
-          ui.children().each(function () {
-            $(this).width($(this).width());
-          });
-          return ui;
-        }
-      });
-    }
-  }, {
-    key: "onBtnDangerClick",
-    value: function onBtnDangerClick(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var $parent = $this.parents('tr');
-      var fieldTitle = $parent.find('.field-title').html(); // remove the item from localStorage
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        var newData = existingLocalStorage.filter(function (item) {
-          return item.title !== fieldTitle;
-        });
-        localStorage.setItem("table_fields_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
-      } // trigger a custom event
-
-
-      $("body").trigger('laragenerator.table-fields.remove', {
-        fieldTitle: fieldTitle
-      }); // remove the item from DOM
-
-      $parent.remove();
-    }
-  }, {
-    key: "onAddBtnClick",
-    value: function onAddBtnClick(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var $parent = $this.parents('tr');
-
-      var tableId = _this.getTableId();
-
-      var $title = $parent.find('#table-fields-title-input');
-      var $type = $parent.find('#table-fields-type-input');
-      var $length = $parent.find('#table-fields-length-input');
-      var $default = $parent.find('#table-fields-default-input');
-      var $nullable = $parent.find('#table-fields-nullable-input');
-
-      if ($title.val().length === 0) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'The title needs to be at least one character long!'
-        });
-        return false;
-      }
-
-      if ($type.val() == null) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'You need to select a type!'
-        });
-        return false;
-      }
-
-      var regex = new RegExp("^[a-z]{1}[a-z_0-9]*$");
-
-      if (!regex.test($title.val())) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'The title needs to be lowercase alpha numeric and should start with a letter!'
-        });
-        return false;
-      }
-
-      regex = new RegExp("^[0-9]*$");
-
-      if (!regex.test($length.val())) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'The length needs to be numeric!'
-        });
-        return false;
-      }
-
-      regex = new RegExp("^[0-9A-Za-z ]*$");
-
-      if (!regex.test($default.val())) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'The default field can only take alphanumeric characters plus spaces!'
-        });
-        return false;
-      }
-
-      if (tableId == null) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'You have to add at least one table before adding table fields!'
-        });
-        return false;
-      }
-
-      var data = {
-        title: $title.val(),
-        type: $type.val(),
-        length: $length.val(),
-        "default": $default.val(),
-        nullable: $nullable.is(':checked')
-      }; // add data to localStorage
-
-      _this.addDataToLocalStorage(data); // get renderHTML
-
-
-      var renderHTML = _this.getRender('table-fields-row-template', data);
-
-      $("#table-fields-wrapper tbody").sortable('destroy');
-      $("#table-fields-wrapper tbody").append(renderHTML); // trigger a custom event to add table fields in every section
-
-      $("body").trigger('laragenerator.table-fields.new', {
-        fieldTitle: data.title
-      }); // reset the inputs
-
-      $title.val('');
-      $length.val('');
-      $default.val(''); // reset the nullable input
-
-      if ($nullable.is(':checked')) {
-        $nullable.trigger('click');
-      }
-
-      _this.enableSortable();
-    }
-  }, {
-    key: "addDataToLocalStorage",
-    value: function addDataToLocalStorage(data) {
-      var projectId = this.getProjectId();
-      var tableId = this.getTableId();
-      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        localStorage.setItem(identifier, JSON.stringify([data]));
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        existingLocalStorage.push(data);
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-    }
-  }, {
-    key: "tableOnSortUpdate",
-    value: function tableOnSortUpdate(event, ui) {
-      // update the data position in localStorage
-      var projectId = this.getProjectId();
-      var tableId = this.getTableId();
-      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
-      var $rows = $("#table-fields-wrapper tbody tr");
-      var data = [];
-      $rows.each(function (index) {
-        var $row = $(this);
-        data.push({
-          title: $row.find('.field-title').html(),
-          type: $row.find('.field-type').html(),
-          length: $row.find('.field-length').html(),
-          "default": $row.find('.field-default').html()
-        });
-      });
-      localStorage.setItem(identifier, JSON.stringify(data)); // trigger a custom event to update the order of the field inputs
-
-      var $item = ui.item;
-      var itemPosition = $item.index();
-      var itemTitle = $item.find('.field-title').html();
-      $("body").trigger('laragenerator.table-fields.drag-stop', {
-        fieldTitle: itemTitle,
-        newPosition: itemPosition
-      });
-    }
-  }, {
-    key: "bodyOnTableActive",
-    value: function bodyOnTableActive(event, data) {
-      var _this = event.data;
-
-      _this.loadData(data.tableTitle);
-    }
-  }]);
-
-  return TableFields;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/sections/validation.js":
-/*!*************************************************!*\
-  !*** ./dist/js/projects/sections/validation.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Validation; });
-/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./dist/js/projects/section.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var Validation = /*#__PURE__*/function (_Section) {
-  _inherits(Validation, _Section);
-
-  var _super = _createSuper(Validation);
-
-  function Validation() {
-    var _this2;
-
-    _classCallCheck(this, Validation);
-
-    _this2 = _super.call(this);
-
-    _this2.loadLocalStorageData();
-
-    return _this2;
-  }
-
-  _createClass(Validation, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
-      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
-      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
-      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
-    }
-  }, {
-    key: "loadLocalStorageData",
-    value: function loadLocalStorageData() {
-      var tableId = this.getTableId();
-      this.loadData(tableId);
-    }
-  }, {
-    key: "loadData",
-    value: function loadData(tableId) {
-      var projectId = this.getProjectId();
-      var $tBody = $(".validation-section-tbody");
-      var identifier = "validation_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        $tBody.html("");
-        return false;
-      }
-
-      var data = {
-        validations: JSON.parse(existingLocalStorage)
-      };
-      var render = this.getRender('validation-row-multiple-template', data);
-      $tBody.html(render);
-    }
-  }, {
-    key: "bodyOnTableFieldsNew",
-    value: function bodyOnTableFieldsNew(event, data) {
-      var _this = event.data; // prepend required variables to data
-
-      data.show = true; // get renderHTML
-
-      var renderHTML = _this.getRender('validation-row-template', data);
-
-      _this.addDataToLocalStorage(data);
-
-      $(".validation-section-tbody").append(renderHTML);
-    }
-  }, {
-    key: "addDataToLocalStorage",
-    value: function addDataToLocalStorage(data) {
-      var projectId = this.getProjectId();
-      var tableId = this.getTableId();
-      var identifier = "validation_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        localStorage.setItem(identifier, JSON.stringify([data]));
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        existingLocalStorage.push(data);
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-    }
-  }, {
-    key: "bodyOnTableActive",
-    value: function bodyOnTableActive(event, data) {
-      var _this = event.data;
-
-      _this.loadData(data.tableTitle);
-    }
-  }, {
-    key: "bodyOnTableFieldsDragStop",
-    value: function bodyOnTableFieldsDragStop(event, data) {
-      var _this = event.data;
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "validation_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
-        // and move the field to the new position if you find it
-
-        for (var i = 0; i < existingLocalStorage.length; i++) {
-          var element = existingLocalStorage[i];
-
-          if (element.fieldTitle === data.fieldTitle) {
-            _this.arrayMove(existingLocalStorage, i, data.newPosition);
-
-            break;
-          }
-        }
-
-        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
-      }
-
-      _this.loadData(tableId);
-    }
-  }, {
-    key: "bodyOnTableFieldsRemove",
-    value: function bodyOnTableFieldsRemove(event, data) {
-      var _this = event.data;
-      var fieldTitle = data.fieldTitle; // remove the item from localStorage
-
-      var projectId = _this.getProjectId();
-
-      var tableId = _this.getTableId();
-
-      var identifier = "validation_".concat(projectId, "_").concat(tableId);
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage != null) {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-        var newData = existingLocalStorage.filter(function (item) {
-          return item.fieldTitle !== fieldTitle;
-        });
-        localStorage.setItem("validation_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
-      }
-
-      _this.loadData(tableId);
-    }
-  }]);
-
-  return Validation;
-}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-
-/***/ }),
-
-/***/ "./dist/js/projects/zip-file.js":
-/*!**************************************!*\
-  !*** ./dist/js/projects/zip-file.js ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ZipFile; });
-/* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jszip */ "./node_modules/jszip/dist/jszip.min.js");
-/* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! file-saver */ "./node_modules/file-saver/dist/FileSaver.min.js");
-/* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(file_saver__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _downloads_migration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./downloads/migration */ "./dist/js/projects/downloads/migration.js");
-/* harmony import */ var _downloads_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./downloads/model */ "./dist/js/projects/downloads/model.js");
-/* harmony import */ var _downloads_validation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./downloads/validation */ "./dist/js/projects/downloads/validation.js");
-/* harmony import */ var _downloads_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./downloads/controller */ "./dist/js/projects/downloads/controller.js");
-/* harmony import */ var _downloads_view_create__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./downloads/view-create */ "./dist/js/projects/downloads/view-create.js");
-/* harmony import */ var _downloads_view_edit__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./downloads/view-edit */ "./dist/js/projects/downloads/view-edit.js");
-/* harmony import */ var _downloads_view_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./downloads/view-index */ "./dist/js/projects/downloads/view-index.js");
-/* harmony import */ var _downloads_routes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./downloads/routes */ "./dist/js/projects/downloads/routes.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-var ZipFile = /*#__PURE__*/function () {
-  function ZipFile() {
-    _classCallCheck(this, ZipFile);
-
-    this.bindEvents();
-  }
-
-  _createClass(ZipFile, [{
-    key: "bindEvents",
-    value: function bindEvents() {
-      $("#download-project-btn").on('click', this, this.onDownloadProjectBtnClick);
-    }
-  }, {
-    key: "getProjectId",
-    value: function getProjectId() {
-      var url = window.location.href;
-      var splits = url.split('/');
-      return 1;
-      return parseInt(splits[splits.length - 1], 10);
-    }
-  }, {
-    key: "onDownloadProjectBtnClick",
-    value: function onDownloadProjectBtnClick(event) {
-      var _this = event.data;
-      var $this = $(this);
-      var zipFile = new jszip__WEBPACK_IMPORTED_MODULE_0___default.a();
-
-      var projectId = _this.getProjectId();
-
-      var identifier = "project_".concat(projectId); //const identifier = `table_fields_${projectId}_${tableId}`;
-
-      var existingLocalStorage = localStorage.getItem(identifier);
-
-      if (existingLocalStorage == null) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Please add some tables'
-        });
-        return false;
-      } else {
-        existingLocalStorage = JSON.parse(existingLocalStorage);
-
-        for (var i = 0; i < existingLocalStorage.length; i++) {
-          var options = {
-            table: existingLocalStorage[i].tableTitle,
-            model: _this.getModel(existingLocalStorage[i].tableTitle)
-          };
-
-          _this.generateMigration(zipFile, options, i);
-
-          _this.generateModel(zipFile, options);
-
-          _this.generateValidations(zipFile, options);
-
-          _this.generateController(zipFile, options);
-
-          _this.generateViews(zipFile, options);
-        }
-
-        _this.generateWebRoute(zipFile, existingLocalStorage);
-      } //return false;
-
-
-      zipFile.generateAsync({
-        type: "blob"
-      }).then(function (content) {
-        // see FileSaver.js
-        Object(file_saver__WEBPACK_IMPORTED_MODULE_2__["saveAs"])(content, 'laravel.zip');
-      });
-    }
-  }, {
-    key: "getModel",
-    value: function getModel(tableName) {
-      tableName = tableName.charAt(0).toUpperCase() + tableName.slice(1);
-
-      if (tableName.charAt(tableName.length - 1) == "s") {
-        tableName = tableName.slice(0, -1);
-      }
-
-      return tableName;
-    }
-  }, {
-    key: "generateMigration",
-    value: function generateMigration(zipFile, options, index) {
-      var _this = this;
-
-      var table = options.table;
-
-      var datePrefix = _this.getMigrationDatePrefix(index);
-
-      var migrationContent = new _downloads_migration__WEBPACK_IMPORTED_MODULE_3__["default"](options).getContent();
-      zipFile.file("database/migrations/".concat(datePrefix, "_create_").concat(table, "_table"), migrationContent);
-    }
-  }, {
-    key: "getMigrationDatePrefix",
-    value: function getMigrationDatePrefix(index) {
-      var now = new Date();
-      var dd = String(now.getDate()).padStart(2, '0');
-      var mm = String(now.getMonth() + 1).padStart(2, '0'); //January is 0!
-
-      var yyyy = now.getFullYear(); // const miliseconds = String(now.getMilliseconds()).padStart(6, '0');
-
-      var miliseconds = String(performance.now()).replace(/\./g, '');
-      miliseconds = miliseconds.substring(0, 8);
-      miliseconds = index + miliseconds;
-      return yyyy + '_' + dd + '_' + mm + '_' + miliseconds;
-    }
-  }, {
-    key: "generateModel",
-    value: function generateModel(zipFile, options) {
-      var model = options.model;
-      var modelContent = new _downloads_model__WEBPACK_IMPORTED_MODULE_4__["default"](options).getContent();
-      zipFile.file("app/Models/".concat(model, ".php"), modelContent);
-    }
-  }, {
-    key: "generateValidations",
-    value: function generateValidations(zipFile, options) {
-      var model = options.model;
-      var validationlStoreContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_5__["default"](options).getStoreContent();
-      var validationlUpdateContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_5__["default"](options).getUpdateContent();
-      zipFile.file("app/Http/Requests/Store".concat(model, ".php"), validationlStoreContent);
-      zipFile.file("app/Http/Requests/Update".concat(model, ".php"), validationlUpdateContent);
-    }
-  }, {
-    key: "generateController",
-    value: function generateController(zipFile, options) {
-      var model = options.model;
-      var controllerContent = new _downloads_controller__WEBPACK_IMPORTED_MODULE_6__["default"](options).getContent();
-      zipFile.file("app/Http/Controllers/Admin/".concat(model, "Controller.php"), controllerContent);
-    }
-  }, {
-    key: "generateViews",
-    value: function generateViews(zipFile, options) {
-      var table = options.table;
-      var ViewCreateContent = new _downloads_view_create__WEBPACK_IMPORTED_MODULE_7__["default"](options).getContent();
-      var ViewEditContent = new _downloads_view_edit__WEBPACK_IMPORTED_MODULE_8__["default"](options).getContent();
-      var ViewIndexContent = new _downloads_view_index__WEBPACK_IMPORTED_MODULE_9__["default"](options).getContent();
-      zipFile.file("resources/views/admin/".concat(table, "/create.blade.php"), ViewCreateContent);
-      zipFile.file("resources/views/admin/".concat(table, "/edit.blade.php"), ViewEditContent);
-      zipFile.file("resources/views/admin/".concat(table, "/index.blade.php"), ViewIndexContent);
-    }
-  }, {
-    key: "generateWebRoute",
-    value: function generateWebRoute(zipFile, localStorage) {
-      var routesContent = new _downloads_routes__WEBPACK_IMPORTED_MODULE_10__["default"](localStorage).getContent();
-      zipFile.file("routes/web.php", routesContent);
-    }
-  }]);
-
-  return ZipFile;
-}();
-
-
-
-/***/ }),
-
 /***/ "./node_modules/base64-js/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/base64-js/index.js ***!
@@ -8851,14 +5904,2961 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./src/js/projects.js":
+/*!****************************!*\
+  !*** ./src/js/projects.js ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _projects_sections_sidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects/sections/sidebar */ "./src/js/projects/sections/sidebar.js");
+/* harmony import */ var _projects_sections_table_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects/sections/table-fields */ "./src/js/projects/sections/table-fields.js");
+/* harmony import */ var _projects_sections_seeder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projects/sections/seeder */ "./src/js/projects/sections/seeder.js");
+/* harmony import */ var _projects_sections_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projects/sections/model */ "./src/js/projects/sections/model.js");
+/* harmony import */ var _projects_sections_relationships__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./projects/sections/relationships */ "./src/js/projects/sections/relationships.js");
+/* harmony import */ var _projects_sections_validation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./projects/sections/validation */ "./src/js/projects/sections/validation.js");
+/* harmony import */ var _projects_sections_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./projects/sections/controller */ "./src/js/projects/sections/controller.js");
+/* harmony import */ var _projects_sections_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./projects/sections/forms */ "./src/js/projects/sections/forms.js");
+/* harmony import */ var _projects_sections_index_fields__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./projects/sections/index-fields */ "./src/js/projects/sections/index-fields.js");
+/* harmony import */ var _projects_zip_file__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./projects/zip-file */ "./src/js/projects/zip-file.js");
+
+
+
+
+
+
+
+
+
+
+
+if ($('.admin-project').length) {
+  new _projects_sections_sidebar__WEBPACK_IMPORTED_MODULE_0__["default"]();
+  new _projects_sections_table_fields__WEBPACK_IMPORTED_MODULE_1__["default"]();
+  new _projects_sections_seeder__WEBPACK_IMPORTED_MODULE_2__["default"]();
+  new _projects_sections_model__WEBPACK_IMPORTED_MODULE_3__["default"]();
+  new _projects_sections_relationships__WEBPACK_IMPORTED_MODULE_4__["default"]();
+  new _projects_sections_validation__WEBPACK_IMPORTED_MODULE_5__["default"]();
+  new _projects_sections_controller__WEBPACK_IMPORTED_MODULE_6__["default"]();
+  new _projects_sections_forms__WEBPACK_IMPORTED_MODULE_7__["default"]();
+  new _projects_sections_index_fields__WEBPACK_IMPORTED_MODULE_8__["default"]();
+  new _projects_zip_file__WEBPACK_IMPORTED_MODULE_9__["default"]();
+}
+
+/***/ }),
+
+/***/ "./src/js/projects/download.js":
+/*!*************************************!*\
+  !*** ./src/js/projects/download.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Download; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Download = /*#__PURE__*/function () {
+  function Download() {
+    _classCallCheck(this, Download);
+  }
+
+  _createClass(Download, [{
+    key: "getProjectId",
+    value: function getProjectId() {
+      var url = window.location.href;
+      var splits = url.split('/');
+      return 1;
+      return parseInt(splits[splits.length - 1], 10);
+    }
+  }, {
+    key: "getStorageData",
+    value: function getStorageData(sectionId, tableId) {
+      var projectId = this.getProjectId();
+      var identifier = "".concat(sectionId, "_").concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        return JSON.parse(existingLocalStorage);
+      }
+
+      return [];
+    }
+  }]);
+
+  return Download;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/controller.js":
+/*!*************************************************!*\
+  !*** ./src/js/projects/downloads/controller.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Controller; });
+/* harmony import */ var _templates_controller_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/controller-file.js */ "./src/js/projects/downloads/templates/controller-file.js");
+/* harmony import */ var _templates_controller_index_method_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./templates/controller/index-method.js */ "./src/js/projects/downloads/templates/controller/index-method.js");
+/* harmony import */ var _templates_controller_create_method_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./templates/controller/create-method.js */ "./src/js/projects/downloads/templates/controller/create-method.js");
+/* harmony import */ var _templates_controller_store_method_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./templates/controller/store-method.js */ "./src/js/projects/downloads/templates/controller/store-method.js");
+/* harmony import */ var _templates_controller_edit_method_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./templates/controller/edit-method.js */ "./src/js/projects/downloads/templates/controller/edit-method.js");
+/* harmony import */ var _templates_controller_update_method_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./templates/controller/update-method.js */ "./src/js/projects/downloads/templates/controller/update-method.js");
+/* harmony import */ var _templates_controller_destroy_method_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./templates/controller/destroy-method.js */ "./src/js/projects/downloads/templates/controller/destroy-method.js");
+/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../download */ "./src/js/projects/download.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+
+
+var Controller = /*#__PURE__*/function (_Download) {
+  _inherits(Controller, _Download);
+
+  var _super = _createSuper(Controller);
+
+  function Controller(options) {
+    var _this;
+
+    _classCallCheck(this, Controller);
+
+    _this = _super.call(this);
+    _this.table = options.table;
+    _this.model = options.model;
+    _this.includes = {}; // retrieve the localStorage item requiered for this tab
+
+    _this.localStorage = _this.getStorageData('controller', _this.table);
+
+    _this.processLocalStorage();
+
+    return _this;
+  }
+
+  _createClass(Controller, [{
+    key: "processLocalStorage",
+    value: function processLocalStorage() {
+      for (var i = 0; i < this.localStorage.length; i++) {
+        var method = this.localStorage[i].method;
+        var include = this.localStorage[i].include;
+        this.includes[method] = include;
+      }
+    }
+  }, {
+    key: "getContent",
+    value: function getContent() {
+      var table = this.table;
+      var model = this.model;
+      var modelNamespaceImport = this.getModelNamespaceImport(table);
+      var requestNamespaceImports = this.getRequestNamespaceImports(table);
+      var tableSingular = this.getTableSingular();
+      var indexMethod = this.getIndexMethod(table);
+      var createMethod = this.getCreateMethod(table);
+      var storeMethod = this.getStoreMethod(table);
+      var editMethod = this.getEditMethod(table);
+      var updateMethod = this.getUpdateMethod(table);
+      var destroyMethod = this.getDestroyMethod(table);
+      return _templates_controller_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{modelNamespaceImport}}/g, modelNamespaceImport).replace(/{{requestNamespaceImports}}/g, requestNamespaceImports).replace(/{{indexMethod}}/g, indexMethod).replace(/{{createMethod}}/g, createMethod).replace(/{{storeMethod}}/g, storeMethod).replace(/{{editMethod}}/g, editMethod).replace(/{{updateMethod}}/g, updateMethod).replace(/{{destroyMethod}}/g, destroyMethod).replace(/{{model}}/g, model).replace(/{{table}}/g, table).replace(/{{tableSingular}}/g, tableSingular);
+    }
+  }, {
+    key: "getTableSingular",
+    value: function getTableSingular() {
+      if (this.table.charAt(this.table.length - 1) == "s") {
+        return this.table.slice(0, -1);
+      }
+
+      return this.table;
+    }
+  }, {
+    key: "getModelNamespaceImport",
+    value: function getModelNamespaceImport() {
+      return "use App\\Models\\{{model}};\n";
+    }
+  }, {
+    key: "getRequestNamespaceImports",
+    value: function getRequestNamespaceImports(table) {
+      return "use App\\Models\\{{model}};\n";
+    }
+  }, {
+    key: "getIndexMethod",
+    value: function getIndexMethod(table) {
+      if (!this.includes.index) {
+        return "";
+      }
+
+      return _templates_controller_index_method_js__WEBPACK_IMPORTED_MODULE_1__["default"];
+    }
+  }, {
+    key: "getCreateMethod",
+    value: function getCreateMethod(table) {
+      if (!this.includes.create) {
+        return "";
+      }
+
+      return _templates_controller_create_method_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+    }
+  }, {
+    key: "getStoreMethod",
+    value: function getStoreMethod(table) {
+      if (!this.includes.store) {
+        return "";
+      }
+
+      return _templates_controller_store_method_js__WEBPACK_IMPORTED_MODULE_3__["default"];
+    }
+  }, {
+    key: "getEditMethod",
+    value: function getEditMethod(table) {
+      if (!this.includes.edit) {
+        return "";
+      }
+
+      return _templates_controller_edit_method_js__WEBPACK_IMPORTED_MODULE_4__["default"];
+    }
+  }, {
+    key: "getUpdateMethod",
+    value: function getUpdateMethod(table) {
+      if (!this.includes.update) {
+        return "";
+      }
+
+      return _templates_controller_update_method_js__WEBPACK_IMPORTED_MODULE_5__["default"];
+    }
+  }, {
+    key: "getDestroyMethod",
+    value: function getDestroyMethod(table) {
+      if (!this.includes.destroy) {
+        return "";
+      }
+
+      return _templates_controller_destroy_method_js__WEBPACK_IMPORTED_MODULE_6__["default"];
+    }
+  }]);
+
+  return Controller;
+}(_download__WEBPACK_IMPORTED_MODULE_7__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/migration.js":
+/*!************************************************!*\
+  !*** ./src/js/projects/downloads/migration.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Migration; });
+/* harmony import */ var _templates_migration_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/migration-file.js */ "./src/js/projects/downloads/templates/migration-file.js");
+/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../download */ "./src/js/projects/download.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var Migration = /*#__PURE__*/function (_Download) {
+  _inherits(Migration, _Download);
+
+  var _super = _createSuper(Migration);
+
+  function Migration(options) {
+    var _this;
+
+    _classCallCheck(this, Migration);
+
+    _this = _super.call(this);
+    _this.table = options.table;
+    _this.model = options.model; // retrieve the localStorage item requiered for this tab
+
+    _this.localStorage = _this.getStorageData('table_fields', _this.table);
+    return _this;
+  }
+
+  _createClass(Migration, [{
+    key: "getContent",
+    value: function getContent() {
+      var table = this.table;
+      var uppercaseTable = this.getUpperCaseTable(table);
+      var tableFields = this.getFields();
+      return _templates_migration_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{uppercaseTable}}/g, uppercaseTable).replace(/{{table}}/g, table).replace(/{{tableFields}}/g, tableFields);
+    }
+  }, {
+    key: "getFields",
+    value: function getFields() {
+      var fields = "";
+
+      for (var i = 0; i < this.localStorage.length; i++) {
+        var record = this.localStorage[i];
+        fields += "$table->".concat(record.type, "('").concat(record.title, "')");
+
+        if (record["default"] !== '') {
+          fields += "->default('".concat(record["default"], "')");
+        }
+
+        if (record.nullable == true) {
+          fields += "->nullable()";
+        }
+
+        fields += ";";
+
+        if (i !== this.localStorage.length - 1) {
+          fields += "\n\t\t\t";
+        }
+      }
+
+      fields += "\n\t\t\t$table->timestamps();";
+      return fields;
+    }
+  }, {
+    key: "getUpperCaseTable",
+    value: function getUpperCaseTable(table) {
+      return table.charAt(0).toUpperCase() + table.slice(1);
+    }
+  }]);
+
+  return Migration;
+}(_download__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/model.js":
+/*!********************************************!*\
+  !*** ./src/js/projects/downloads/model.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Model; });
+/* harmony import */ var _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/model-file.js */ "./src/js/projects/downloads/templates/model-file.js");
+/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../download */ "./src/js/projects/download.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var Model = /*#__PURE__*/function (_Download) {
+  _inherits(Model, _Download);
+
+  var _super = _createSuper(Model);
+
+  function Model(options) {
+    var _this;
+
+    _classCallCheck(this, Model);
+
+    _this = _super.call(this);
+    _this.table = options.table;
+    _this.model = options.model; // retrieve the localStorage item requiered for this tab
+
+    _this.localStorage = _this.getStorageData('model', _this.table);
+    return _this;
+  }
+
+  _createClass(Model, [{
+    key: "getContent",
+    value: function getContent() {
+      var table = this.table;
+      var relationshipsNamespaces = this.getRelationshipsNamespaces();
+      var model = this.getModel(table);
+      var fillableFields = this.getFillableFields();
+      var hiddenFields = this.getHiddenFields();
+      var relationships = this.getRelationships();
+      return _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{relationshipsNamespaces}}/g, relationshipsNamespaces).replace(/{{model}}/g, model).replace(/{{table}}/g, table).replace(/{{fillableFields}}/g, fillableFields).replace(/{{hiddenFields}}/g, hiddenFields).replace(/{{relationships}}/g, relationships);
+    }
+  }, {
+    key: "getRelationshipsNamespaces",
+    value: function getRelationshipsNamespaces() {
+      return "";
+    }
+  }, {
+    key: "getModel",
+    value: function getModel() {
+      return this.model;
+    }
+  }, {
+    key: "getFillableFields",
+    value: function getFillableFields() {
+      var fillableFields = "";
+
+      for (var i = 0; i < this.localStorage.length; i++) {
+        var record = this.localStorage[i];
+
+        if (record.fillable == true) {
+          if (i == this.localStorage.length - 1) {
+            fillableFields += "'".concat(record.fieldTitle, "'");
+          } else {
+            fillableFields += "'".concat(record.fieldTitle, "',\n\t\t");
+          }
+        }
+      }
+
+      return fillableFields;
+    }
+  }, {
+    key: "getHiddenFields",
+    value: function getHiddenFields() {
+      var hiddenFields = "";
+
+      for (var i = 0; i < this.localStorage.length; i++) {
+        var record = this.localStorage[i];
+
+        if (record.hidden == true) {
+          if (i == this.localStorage.length - 1) {
+            hiddenFields += "'".concat(record.fieldTitle, "'");
+          } else {
+            hiddenFields += "'".concat(record.fieldTitle, "',\n\t\t");
+          }
+        }
+      }
+
+      return hiddenFields;
+    }
+  }, {
+    key: "getRelationships",
+    value: function getRelationships() {
+      return "";
+    }
+  }]);
+
+  return Model;
+}(_download__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/routes.js":
+/*!*********************************************!*\
+  !*** ./src/js/projects/downloads/routes.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Routes; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Routes = /*#__PURE__*/function () {
+  function Routes(localStorage) {
+    _classCallCheck(this, Routes);
+
+    this.localStorage = localStorage;
+  }
+
+  _createClass(Routes, [{
+    key: "getContent",
+    value: function getContent() {
+      var prefix = this.getPrefix();
+      var resourceRoutes = this.getResourceRoutes();
+      var suffix = this.getSuffix();
+      return "".concat(prefix).concat(resourceRoutes).concat(suffix);
+    }
+  }, {
+    key: "getPrefix",
+    value: function getPrefix() {
+      var namespaceImports = this.getNamespaceImports(this.localStorage);
+      var string = "<?php\n\nuse Illuminate\\Support\\Facades\\Auth;\nuse Illuminate\\Support\\Facades\\Route;\nuse App\\Http\\Controllers\\Admin\\DashboardController;\n{{namespaceImports}}\nAuth::routes();\n\nRoute::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {\n    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');\n\n    ";
+      string = string.replace(/{{namespaceImports}}/g, namespaceImports);
+      return string;
+    }
+  }, {
+    key: "getResourceRoutes",
+    value: function getResourceRoutes() {
+      var localStorage = this.localStorage;
+      var string = "";
+
+      for (var i = 0; i < localStorage.length; i++) {
+        var table = localStorage[i].tableTitle;
+        var model = this.getModel(table);
+
+        if (i === localStorage.length - 1) {
+          string += "Route::resource('{{table}}', {{model}}Controller::class);\n";
+        } else {
+          string += "Route::resource('{{table}}', {{model}}Controller::class);\n\n\t";
+        }
+
+        string = string.replace(/{{table}}/g, table).replace(/{{model}}/g, model);
+      }
+
+      return string;
+    }
+  }, {
+    key: "getNamespaceImports",
+    value: function getNamespaceImports(localStorage) {
+      var string = "";
+
+      for (var i = 0; i < localStorage.length; i++) {
+        var model = this.getModel(localStorage[i].tableTitle);
+        string += "use App\\Http\\Controllers\\Admin\\{{model}}Controller;\n";
+        string = string.replace(/{{model}}/g, model);
+      }
+
+      return string;
+    }
+  }, {
+    key: "getSuffix",
+    value: function getSuffix() {
+      return "});";
+    }
+  }, {
+    key: "getModel",
+    value: function getModel(tableName) {
+      tableName = tableName.charAt(0).toUpperCase() + tableName.slice(1);
+
+      if (tableName.charAt(tableName.length - 1) == "s") {
+        tableName = tableName.slice(0, -1);
+      }
+
+      return tableName;
+    }
+  }]);
+
+  return Routes;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/controller-file.js":
+/*!****************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/controller-file.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var controllerFile = "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse Illuminate\\Http\\Request;\nuse App\\Http\\Controllers\\Controller;\nuse App\\Http\\Requests\\Store{{model}};\nuse App\\Http\\Requests\\Update{{model}};\nuse App\\Models\\{{model}};\n\nclass {{model}}Controller extends Controller\n{\n{{indexMethod}}{{createMethod}}{{storeMethod}}{{editMethod}}{{updateMethod}}{{destroyMethod}}\n}\n";
+/* harmony default export */ __webpack_exports__["default"] = (controllerFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/controller/create-method.js":
+/*!*************************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/controller/create-method.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var createMethod = "\n    public function create()\n    {\n        return view('admin.{{table}}.create');\n    }\n    ";
+/* harmony default export */ __webpack_exports__["default"] = (createMethod);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/controller/destroy-method.js":
+/*!**************************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/controller/destroy-method.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var destroyMethod = "\n    public function destroy(Request $request, int $id)\n    {\n        ${{tableSingular}} = {{model}}::findOrFail($id);\n        ${{tableSingular}}->delete();\n\n        return redirect()\n            ->route('admin.{{table}}.index')\n            ->with('message', 'The record has been successfully deleted');\n    }";
+/* harmony default export */ __webpack_exports__["default"] = (destroyMethod);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/controller/edit-method.js":
+/*!***********************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/controller/edit-method.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var editMethod = "\n    public function edit(int $id)\n    {\n        ${{tableSingular}} = {{model}}::findOrFail($id);\n\n        return view('admin.{{table}}.edit', compact('{{tableSingular}}'));\n    }\n    ";
+/* harmony default export */ __webpack_exports__["default"] = (editMethod);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/controller/index-method.js":
+/*!************************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/controller/index-method.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var indexMethod = "\n    public function index()\n    {\n        ${{table}} = {{model}}::orderBy('id', 'DESC')->paginate();\n\n        return view('admin.{{table}}.index', compact('{{table}}'));\n    }\n    ";
+/* harmony default export */ __webpack_exports__["default"] = (indexMethod);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/controller/store-method.js":
+/*!************************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/controller/store-method.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var storeMethod = "\n    public function store(Store{{model}} $request)\n    {\n        ${{tableSingular}} = new {{model}}($request->validated());\n        ${{tableSingular}}->save();\n\n        return redirect()\n            ->route('admin.{{table}}.index')\n            ->with('message', 'The record has been successfully stored');\n    }\n    ";
+/* harmony default export */ __webpack_exports__["default"] = (storeMethod);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/controller/update-method.js":
+/*!*************************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/controller/update-method.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var updateMethod = "\n    public function update(Update{{model}} $request, int $id)\n    {\n        ${{tableSingular}} = {{model}}::findOrFail($id);\n        ${{tableSingular}} = $post->fill($request->validated());\n        ${{tableSingular}}->save();\n\n        return redirect()\n            ->route('admin.{{table}}.index')\n            ->with('message', 'The {{tableSingular}} record has been successfully updated');\n    }\n    ";
+/* harmony default export */ __webpack_exports__["default"] = (updateMethod);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/migration-file.js":
+/*!***************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/migration-file.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var migrationFile = "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass Create{{uppercaseTable}}Table extends Migration\n{\n    /**\n     * Run the migrations.\n     *\n     * @return void\n     */\n    public function up()\n    {\n        Schema::create('{{table}}', function (Blueprint $table) {\n            {{tableFields}}\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     *\n     * @return void\n     */\n    public function down()\n    {\n        Schema::dropIfExists('{{table}}');\n    }\n}";
+/* harmony default export */ __webpack_exports__["default"] = (migrationFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/model-file.js":
+/*!***********************************************************!*\
+  !*** ./src/js/projects/downloads/templates/model-file.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var modelFile = "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n{{relationshipsNamespaces}}\n\nclass {{model}} extends Model\n{\n    use HasFactory;\n\n    protected $table = \"{{table}}\";\n\n    protected $fillable = [\n        {{fillableFields}}\n    ];\n\n    protected $hidden = [\n        {{hiddenFields}}\n    ];\n\n    {{relationships}}\n}";
+/* harmony default export */ __webpack_exports__["default"] = (modelFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/request-file.js":
+/*!*************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/request-file.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var requestFile = "<?php\n\nnamespace App\\Http\\Requests;\n\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{method}}{{model}} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n            {{rules}}\n        ];\n    }\n}\n";
+/* harmony default export */ __webpack_exports__["default"] = (requestFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/view-create-file.js":
+/*!*****************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/view-create-file.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var viewCreateFile = "@extends('layouts.admin')\n\n@section('title')\n    Create {{model}}\n@endsection\n\n@section('page-title')\n    Create {{model}}\n@endsection\n\n@section('breadcrumbs')\n    <ol class=\"breadcrumb float-sm-right\">\n        <li class=\"breadcrumb-item\"><a href=\"{{ route('admin.{{table}}.index') }}\">Posts</a></li>\n        <li class=\"breadcrumb-item active\">Create</li>\n    </ol>\n@endsection\n\n@section('content')\n    <div class=\"col-md-12\">\n    <!-- general form elements -->\n        <div class=\"card card-primary\">\n            <div class=\"card-header\">\n                <h3 class=\"card-title\">Create {{model}}</h3>\n            </div>\n            <!-- /.card-header -->\n            <!-- form start -->\n            <form role=\"form\" action=\"{{ route('admin.{{table}}.store') }}\" method=\"POST\" enctype=\"multipart/form-data\">\n                @csrf\n                <div class=\"card-body\">\n                    {{formInputs}}\n                </div>\n                <!-- /.card-body -->\n\n                <div class=\"card-footer\">\n                    <button type=\"submit\" class=\"btn btn-primary\">Create</button>\n                </div>\n            </form>\n        </div>\n    </div>\n@endsection\n";
+/* harmony default export */ __webpack_exports__["default"] = (viewCreateFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/view-index-file.js":
+/*!****************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/view-index-file.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var viewIndexFile = "@extends('layouts.admin')\n\n@section('title')\n    {{modelPlural}}\n@endsection\n\n@section('page-title')\n    {{modelPlural}}\n    <a href=\"{{ route('admin.{{table}}.create') }}\" class=\"btn btn-sm btn-primary\">Add +</a>\n@endsection\n\n@section('breadcrumbs')\n    <ol class=\"breadcrumb float-sm-right\">\n        <li class=\"breadcrumb-item\"><a href=\"{{ route('admin.dashboard') }}\">Admin</a></li>\n        <li class=\"breadcrumb-item active\">{{modelPlural}}</li>\n    </ol>\n@endsection\n\n@section('content')\n    <div class=\"card\">\n        <!-- /.card-header -->\n        <div class=\"card-body\">\n            <table class=\"table table-bordered\">\n                <thead>\n                    <tr>\n                        {{tableHeaders}}\n                    </tr>\n                </thead>\n                <tbody>\n                    @foreach(${{table}} as $val)\n                        <tr>\n                            {{tableRows}}\n                            <td class=\"actions-cell\">\n                                <a href=\"{{ route('admin.{{table}}.edit', ['id' => $val->id]) }}\" class=\"btn btn-primary btn-sm\">\n                                    <i class=\"fas fa-wrench\"></i>\n                                    Edit\n                                </a>\n\n                                <form action=\"{{ route('admin.{{table}}.delete', ['id' => $val->id]) }}\" method=\"POST\">\n                                    @csrf\n                                    @method('DELETE')\n                                    <button class=\"btn btn-danger btn-sm\" type=\"submit\">\n                                        <i class=\"fas fa-trash\"></i>\n                                        Delete\n                                    </button>\n                                </form>\n                            </td>\n                        </tr>\n                    @endforeach\n                </tbody>\n            </table>\n        </div>\n        <!-- /.card-body -->\n\n        <div class=\"card-footer clearfix\">\n            {{ ${{table}}->links() }}\n        </div>\n    </div>\n    <!-- /.card -->\n@endsection\n";
+/* harmony default export */ __webpack_exports__["default"] = (viewIndexFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/validation.js":
+/*!*************************************************!*\
+  !*** ./src/js/projects/downloads/validation.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Validation; });
+/* harmony import */ var _templates_request_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/request-file.js */ "./src/js/projects/downloads/templates/request-file.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Validation = /*#__PURE__*/function () {
+  function Validation(options) {
+    _classCallCheck(this, Validation);
+
+    this.table = options.table;
+    this.model = options.model;
+  }
+
+  _createClass(Validation, [{
+    key: "getStoreContent",
+    value: function getStoreContent() {
+      var table = this.table;
+      var model = this.getModel(table);
+      var method = "Store";
+      var rules = this.getRules();
+      return _templates_request_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{model}}/g, model).replace(/{{method}}/g, method).replace(/{{rules}}/g, rules);
+    }
+  }, {
+    key: "getUpdateContent",
+    value: function getUpdateContent() {
+      var table = this.table;
+      var model = this.getModel(table);
+      var method = "Update";
+      var rules = this.getRules();
+      return _templates_request_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{model}}/g, model).replace(/{{method}}/g, method).replace(/{{rules}}/g, rules);
+    }
+  }, {
+    key: "getModel",
+    value: function getModel(table) {
+      return this.model;
+    }
+  }, {
+    key: "getRules",
+    value: function getRules(table) {
+      return "";
+    }
+  }]);
+
+  return Validation;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/view-create.js":
+/*!**************************************************!*\
+  !*** ./src/js/projects/downloads/view-create.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ViewCreate; });
+/* harmony import */ var _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/view-create-file.js */ "./src/js/projects/downloads/templates/view-create-file.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var ViewCreate = /*#__PURE__*/function () {
+  function ViewCreate(options) {
+    _classCallCheck(this, ViewCreate);
+
+    this.table = options.table;
+    this.model = options.model;
+  }
+
+  _createClass(ViewCreate, [{
+    key: "getContent",
+    value: function getContent() {
+      var table = this.table;
+      var model = this.getModel(table);
+      var formInputs = this.getFormInputs(table);
+      return _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{table}}/g, table).replace(/{{model}}/g, model).replace(/{{formInputs}}/g, formInputs);
+    }
+  }, {
+    key: "getModel",
+    value: function getModel(table) {
+      return this.model;
+    }
+  }, {
+    key: "getFormInputs",
+    value: function getFormInputs(table) {
+      return "";
+    }
+  }]);
+
+  return ViewCreate;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/view-edit.js":
+/*!************************************************!*\
+  !*** ./src/js/projects/downloads/view-edit.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ViewEdit; });
+/* harmony import */ var _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/view-create-file.js */ "./src/js/projects/downloads/templates/view-create-file.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var ViewEdit = /*#__PURE__*/function () {
+  function ViewEdit(options) {
+    _classCallCheck(this, ViewEdit);
+
+    this.table = options.table;
+    this.model = options.model;
+  }
+
+  _createClass(ViewEdit, [{
+    key: "getContent",
+    value: function getContent() {
+      var table = this.table;
+      var model = this.getModel(table);
+      var lowercaseModel = this.getLowercaseModel(table);
+      var formInputs = this.getFormInputs(table);
+      return _templates_view_create_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{table}}/g, table).replace(/{{model}}/g, model).replace(/{{lowercaseModel}}/g, lowercaseModel).replace(/{{formInputs}}/g, formInputs);
+    }
+  }, {
+    key: "getModel",
+    value: function getModel(table) {
+      return this.model;
+    }
+  }, {
+    key: "getLowercaseModel",
+    value: function getLowercaseModel(table) {
+      return "";
+    }
+  }, {
+    key: "getFormInputs",
+    value: function getFormInputs(table) {
+      return "";
+    }
+  }]);
+
+  return ViewEdit;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/view-index.js":
+/*!*************************************************!*\
+  !*** ./src/js/projects/downloads/view-index.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ViewIndex; });
+/* harmony import */ var _templates_view_index_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/view-index-file.js */ "./src/js/projects/downloads/templates/view-index-file.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var ViewIndex = /*#__PURE__*/function () {
+  function ViewIndex(options) {
+    _classCallCheck(this, ViewIndex);
+
+    this.table = options.table;
+    this.model = options.model;
+  }
+
+  _createClass(ViewIndex, [{
+    key: "getContent",
+    value: function getContent() {
+      var table = this.table;
+      var modelPlural = this.getModelPlural();
+      var tableHeaders = this.getTableHeaders();
+      var tableRows = this.getTableRows();
+      return _templates_view_index_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{table}}/g, table).replace(/{{modelPlural}}/g, modelPlural).replace(/{{tableHeaders}}/g, tableHeaders).replace(/{{tableRows}}/g, tableRows);
+    }
+  }, {
+    key: "getModelPlural",
+    value: function getModelPlural() {
+      return "".concat(this.model, "s");
+    }
+  }, {
+    key: "getTableHeaders",
+    value: function getTableHeaders() {
+      return "";
+    }
+  }, {
+    key: "getTableRows",
+    value: function getTableRows() {
+      return "";
+    }
+  }]);
+
+  return ViewIndex;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/section.js":
+/*!************************************!*\
+  !*** ./src/js/projects/section.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Section; });
+/* harmony import */ var mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mustache/mustache.min */ "./node_modules/mustache/mustache.min.js");
+/* harmony import */ var mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Section = /*#__PURE__*/function () {
+  function Section() {
+    _classCallCheck(this, Section);
+
+    this.bindEvents();
+  }
+
+  _createClass(Section, [{
+    key: "bindEvents",
+    value: function bindEvents() {}
+  }, {
+    key: "getRender",
+    value: function getRender(templateId, data) {
+      var templateHTML = document.getElementById(templateId).innerHTML;
+      return mustache_mustache_min__WEBPACK_IMPORTED_MODULE_0___default.a.render(templateHTML, data);
+    }
+  }, {
+    key: "getProjectId",
+    value: function getProjectId() {
+      var url = window.location.href;
+      var splits = url.split('/');
+      return 1;
+      return parseInt(splits[splits.length - 1], 10);
+    }
+  }, {
+    key: "arrayMove",
+    value: function arrayMove(array, fromIndex, toIndex) {
+      var element = array[fromIndex];
+      array.splice(fromIndex, 1);
+      array.splice(toIndex, 0, element);
+    }
+  }, {
+    key: "getTableId",
+    value: function getTableId() {
+      return $("#tables-list .list-group-item.active .table-title").html();
+    }
+  }]);
+
+  return Section;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/controller.js":
+/*!************************************************!*\
+  !*** ./src/js/projects/sections/controller.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Controller; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Controller = /*#__PURE__*/function (_Section) {
+  _inherits(Controller, _Section);
+
+  var _super = _createSuper(Controller);
+
+  function Controller() {
+    var _this2;
+
+    _classCallCheck(this, Controller);
+
+    _this2 = _super.call(this);
+
+    _this2.setProperties();
+
+    _this2.loadLocalStorageData();
+
+    return _this2;
+  }
+
+  _createClass(Controller, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+      $(".controller-section-tbody").on('change', 'input[type=checkbox]', this, this.tbodyCheckboxChange);
+    }
+  }, {
+    key: "setProperties",
+    value: function setProperties() {
+      this.methods = [{
+        method: 'index',
+        include: true
+      },
+      /*{
+          method: 'show',
+          include: true,
+      },*/
+      {
+        method: 'create',
+        include: true
+      }, {
+        method: 'edit',
+        include: true
+      }, {
+        method: 'store',
+        include: true
+      }, {
+        method: 'update',
+        include: true
+      }, {
+        method: 'destroy',
+        include: true
+      }];
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var tableId = this.getTableId();
+      this.loadData(tableId);
+    }
+  }, {
+    key: "loadData",
+    value: function loadData(tableId) {
+      var projectId = this.getProjectId();
+      var $tBody = $('.controller-section-tbody');
+      var identifier = "controller_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+      var data = {
+        methods: null
+      };
+
+      if (existingLocalStorage == null) {
+        data.methods = this.methods;
+        localStorage.setItem(identifier, JSON.stringify(this.methods));
+      } else {
+        data.methods = JSON.parse(existingLocalStorage);
+      }
+
+      var render = this.getRender('controller-row-multiple-template', data);
+      $tBody.html(render);
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "controller_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(identifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "bodyOnTableActive",
+    value: function bodyOnTableActive(event, data) {
+      var _this = event.data;
+
+      _this.loadData(data.tableTitle);
+    }
+    /**
+    * Set the localStorage whenever the fillable or hidden checkboxes are clicked
+    */
+
+  }, {
+    key: "tbodyCheckboxChange",
+    value: function tbodyCheckboxChange(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var $tBody = $this.parents(".controller-section-tbody");
+      var $tableRows = $tBody.find('tr');
+      var data = [];
+      $tableRows.each(function () {
+        data.push({
+          method: $(this).find('.method').html(),
+          include: $(this).find('.include').is(':checked')
+        });
+      });
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "controller_".concat(projectId, "_").concat(tableId);
+      localStorage.setItem(identifier, JSON.stringify(data));
+    }
+  }]);
+
+  return Controller;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/forms.js":
+/*!*******************************************!*\
+  !*** ./src/js/projects/sections/forms.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Forms; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Forms = /*#__PURE__*/function (_Section) {
+  _inherits(Forms, _Section);
+
+  var _super = _createSuper(Forms);
+
+  function Forms() {
+    var _this2;
+
+    _classCallCheck(this, Forms);
+
+    _this2 = _super.call(this);
+
+    _this2.loadLocalStorageData();
+
+    return _this2;
+  }
+
+  _createClass(Forms, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
+      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
+      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
+      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var tableId = this.getTableId();
+      this.loadData(tableId);
+    }
+  }, {
+    key: "loadData",
+    value: function loadData(tableId) {
+      var projectId = this.getProjectId();
+      var $tBody = $(".forms-section-tbody");
+      var identifier = "forms_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        $tBody.html("");
+        return false;
+      }
+
+      var data = {
+        inputs: JSON.parse(existingLocalStorage)
+      };
+      var render = this.getRender('form-input-row-multiple-template', data);
+      $tBody.html(render);
+    }
+  }, {
+    key: "bodyOnTableFieldsNew",
+    value: function bodyOnTableFieldsNew(event, data) {
+      var _this = event.data; // prepend required variables to data
+
+      data.show = true; // get renderHTML
+
+      var renderHTML = _this.getRender('form-input-row-template', data);
+
+      _this.addDataToLocalStorage(data);
+
+      $(".forms-section-tbody").append(renderHTML);
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "forms_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(identifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "bodyOnTableActive",
+    value: function bodyOnTableActive(event, data) {
+      var _this = event.data;
+
+      _this.loadData(data.tableTitle);
+    }
+  }, {
+    key: "bodyOnTableFieldsDragStop",
+    value: function bodyOnTableFieldsDragStop(event, data) {
+      var _this = event.data;
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "forms_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
+        // and move the field to the new position if you find it
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var element = existingLocalStorage[i];
+
+          if (element.fieldTitle === data.fieldTitle) {
+            _this.arrayMove(existingLocalStorage, i, data.newPosition);
+
+            break;
+          }
+        }
+
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+
+      _this.loadData(tableId);
+    }
+  }, {
+    key: "bodyOnTableFieldsRemove",
+    value: function bodyOnTableFieldsRemove(event, data) {
+      var _this = event.data;
+      var fieldTitle = data.fieldTitle; // remove the item from localStorage
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "forms_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        var newData = existingLocalStorage.filter(function (item) {
+          return item.fieldTitle !== fieldTitle;
+        });
+        localStorage.setItem("forms_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
+      }
+
+      _this.loadData(tableId);
+    }
+  }]);
+
+  return Forms;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/index-fields.js":
+/*!**************************************************!*\
+  !*** ./src/js/projects/sections/index-fields.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return IndexFields; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+/**
+* OBSOLETE
+* TODO: Extract all useful code from here
+*/
+
+var IndexFields = /*#__PURE__*/function (_Section) {
+  _inherits(IndexFields, _Section);
+
+  var _super = _createSuper(IndexFields);
+
+  function IndexFields() {
+    var _this2;
+
+    _classCallCheck(this, IndexFields);
+
+    _this2 = _super.call(this);
+
+    _this2.loadLocalStorageData();
+
+    return _this2;
+  }
+
+  _createClass(IndexFields, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
+      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
+      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
+      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+      $(".index-fields-section-tbody").on('change', 'input[type=checkbox]', this, this.tbodyCheckboxChange);
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var tableId = this.getTableId();
+      this.loadData(tableId);
+    }
+  }, {
+    key: "loadData",
+    value: function loadData(tableId) {
+      var projectId = this.getProjectId();
+      var $tBody = $(".index-fields-section-tbody");
+      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        $tBody.html("");
+        return false;
+      }
+
+      var data = {
+        fields: JSON.parse(existingLocalStorage)
+      };
+      var render = this.getRender('index-field-row-multiple-template', data);
+      $tBody.html(render);
+    }
+  }, {
+    key: "bodyOnTableFieldsNew",
+    value: function bodyOnTableFieldsNew(event, data) {
+      var _this = event.data; // prepend required variables to data
+
+      data.show = true; // get renderHTML
+
+      var renderHTML = _this.getRender('index-field-row-template', data);
+
+      _this.addDataToLocalStorage(data);
+
+      $(".index-fields-section-tbody").append(renderHTML);
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(identifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "bodyOnTableActive",
+    value: function bodyOnTableActive(event, data) {
+      var _this = event.data;
+
+      _this.loadData(data.tableTitle);
+    }
+  }, {
+    key: "bodyOnTableFieldsDragStop",
+    value: function bodyOnTableFieldsDragStop(event, data) {
+      var _this = event.data;
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
+        // and move the field to the new position if you find it
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var element = existingLocalStorage[i];
+
+          if (element.fieldTitle === data.fieldTitle) {
+            _this.arrayMove(existingLocalStorage, i, data.newPosition);
+
+            break;
+          }
+        }
+
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+
+      _this.loadData(tableId);
+    }
+  }, {
+    key: "bodyOnTableFieldsRemove",
+    value: function bodyOnTableFieldsRemove(event, data) {
+      var _this = event.data;
+      var fieldTitle = data.fieldTitle; // remove the item from localStorage
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        var newData = existingLocalStorage.filter(function (item) {
+          return item.fieldTitle !== fieldTitle;
+        });
+        localStorage.setItem("index_fields_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
+      }
+
+      _this.loadData(tableId);
+    }
+  }, {
+    key: "tbodyCheckboxChange",
+    value: function tbodyCheckboxChange(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var $tBody = $this.parents(".index-fields-section-tbody");
+      var $tableRows = $tBody.find('tr');
+      var data = [];
+      $tableRows.each(function () {
+        data.push({
+          fieldTitle: $(this).find('.field-title').html(),
+          show: $(this).find('.show').is(':checked')
+        });
+      });
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "index_fields_".concat(projectId, "_").concat(tableId);
+      localStorage.setItem(identifier, JSON.stringify(data));
+    }
+  }]);
+
+  return IndexFields;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/model.js":
+/*!*******************************************!*\
+  !*** ./src/js/projects/sections/model.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Model; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Model = /*#__PURE__*/function (_Section) {
+  _inherits(Model, _Section);
+
+  var _super = _createSuper(Model);
+
+  function Model() {
+    var _this2;
+
+    _classCallCheck(this, Model);
+
+    _this2 = _super.call(this);
+
+    _this2.loadLocalStorageData();
+
+    return _this2;
+  }
+
+  _createClass(Model, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
+      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
+      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
+      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+      $(".model-section-tbody").on('change', 'input[type=checkbox]', this, this.tbodyCheckboxChange);
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var tableId = this.getTableId();
+      this.loadData(tableId);
+    }
+  }, {
+    key: "loadData",
+    value: function loadData(tableId) {
+      var projectId = this.getProjectId();
+      var $tBody = $(".model-section-tbody");
+      var identifier = "model_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        $tBody.html("");
+        return false;
+      }
+
+      var data = {
+        fields: JSON.parse(existingLocalStorage)
+      };
+      var render = this.getRender('model-row-multiple-template', data);
+      $tBody.html(render);
+    }
+  }, {
+    key: "bodyOnTableFieldsNew",
+    value: function bodyOnTableFieldsNew(event, data) {
+      var _this = event.data; // prepend required variables to data
+
+      data.fillable = true;
+      data.hidden = false; // get renderHTML
+
+      var renderHTML = _this.getRender('model-row-template', data);
+
+      _this.addDataToLocalStorage(data);
+
+      $(".model-section-tbody").append(renderHTML);
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "model_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(identifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "bodyOnTableActive",
+    value: function bodyOnTableActive(event, data) {
+      var _this = event.data;
+
+      _this.loadData(data.tableTitle);
+    }
+  }, {
+    key: "bodyOnTableFieldsDragStop",
+    value: function bodyOnTableFieldsDragStop(event, data) {
+      var _this = event.data;
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "model_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
+        // and move the field to the new position if you find it
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var element = existingLocalStorage[i];
+
+          if (element.fieldTitle === data.fieldTitle) {
+            _this.arrayMove(existingLocalStorage, i, data.newPosition);
+
+            break;
+          }
+        }
+
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+
+      _this.loadData(tableId);
+    }
+  }, {
+    key: "bodyOnTableFieldsRemove",
+    value: function bodyOnTableFieldsRemove(event, data) {
+      var _this = event.data;
+      var fieldTitle = data.fieldTitle; // remove the item from localStorage
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "model_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        var newData = existingLocalStorage.filter(function (item) {
+          return item.fieldTitle !== fieldTitle;
+        });
+        localStorage.setItem("model_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
+      }
+
+      _this.loadData(tableId);
+    }
+    /**
+    * Set the localStorage whenever the fillable or hidden checkboxes are clicked
+    */
+
+  }, {
+    key: "tbodyCheckboxChange",
+    value: function tbodyCheckboxChange(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var $tBody = $this.parents(".model-section-tbody");
+      var $tableRows = $tBody.find('tr');
+      var data = [];
+      $tableRows.each(function () {
+        data.push({
+          fieldTitle: $(this).find('.field-title').html(),
+          fillable: $(this).find('.fillable').is(':checked'),
+          hidden: $(this).find('.hidden').is(':checked')
+        });
+      });
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "model_".concat(projectId, "_").concat(tableId);
+      localStorage.setItem(identifier, JSON.stringify(data));
+    }
+  }]);
+
+  return Model;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/relationships.js":
+/*!***************************************************!*\
+  !*** ./src/js/projects/sections/relationships.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Relationships; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Relationships = /*#__PURE__*/function (_Section) {
+  _inherits(Relationships, _Section);
+
+  var _super = _createSuper(Relationships);
+
+  function Relationships() {
+    _classCallCheck(this, Relationships);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Relationships, [{
+    key: "bindEvents",
+    value: function bindEvents() {//$("#add-table-btn").on('click', this, this.onAddTableBtnClick);
+    }
+  }, {
+    key: "onAddTableBtnClick",
+    value: function onAddTableBtnClick(event) {
+      var _this = event.data;
+      console.dir(_this);
+    }
+  }]);
+
+  return Relationships;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/seeder.js":
+/*!********************************************!*\
+  !*** ./src/js/projects/sections/seeder.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Seeder; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Seeder = /*#__PURE__*/function (_Section) {
+  _inherits(Seeder, _Section);
+
+  var _super = _createSuper(Seeder);
+
+  function Seeder() {
+    _classCallCheck(this, Seeder);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Seeder, [{
+    key: "bindEvents",
+    value: function bindEvents() {//$("#add-table-btn").on('click', this, this.onAddTableBtnClick);
+    }
+  }, {
+    key: "onAddTableBtnClick",
+    value: function onAddTableBtnClick(event) {
+      var _this = event.data;
+      console.dir(_this);
+    }
+  }]);
+
+  return Seeder;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/sidebar.js":
+/*!*********************************************!*\
+  !*** ./src/js/projects/sections/sidebar.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Sidebar; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var Sidebar = /*#__PURE__*/function (_Section) {
+  _inherits(Sidebar, _Section);
+
+  var _super = _createSuper(Sidebar);
+
+  function Sidebar() {
+    var _this2;
+
+    _classCallCheck(this, Sidebar);
+
+    _this2 = _super.call(this);
+
+    _this2.loadLocalStorageData();
+
+    _this2.enableSortable();
+
+    return _this2;
+  }
+
+  _createClass(Sidebar, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("#add-table-input").on('keypress', this, this.onKeyPressAddTableInput);
+      $("#add-table-btn").on('click', this, this.onAddTableBtnClick);
+      $("#tables-list").on('click', '.btn-danger', this, this.onBtnDangerClick);
+      $("#tables-list").on('click', '.list-group-item', this, this.onListGroupItemClick);
+      $("#new-project-btn").on('click', this, this.onNewProjectBtnClick);
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var projectId = this.getProjectId();
+      var projectIdentifier = "project_".concat(projectId);
+      var existingLocalStorage = localStorage.getItem(projectIdentifier);
+
+      if (existingLocalStorage == null) {
+        return false;
+      }
+
+      var data = {
+        tables: JSON.parse(existingLocalStorage)
+      };
+      var render = this.getRender('list-group-item-multiple-template', data); // destroy the sortable to prevent bugs
+      // $("#tables-list").sortable('destroy');
+
+      $("#tables-list").append(render);
+      $("#tables-list .list-group-item:first-child").addClass('active'); // TODO: trigger event so that every single section can react to the change
+    }
+  }, {
+    key: "enableSortable",
+    value: function enableSortable() {
+      $("#tables-list").sortable({
+        revert: true
+      });
+    }
+  }, {
+    key: "onKeyPressAddTableInput",
+    value: function onKeyPressAddTableInput(event) {
+      var _this = event.data;
+      var $this = $('#add-table-btn');
+
+      if (event.which == 13) {
+        $("#add-table-btn").trigger('click');
+      }
+    }
+  }, {
+    key: "onAddTableBtnClick",
+    value: function onAddTableBtnClick(event) {
+      event.preventDefault();
+      var _this = event.data;
+      var $this = $(this); // add content to sidebar
+
+      var $input = $this.parents('.add-table-wrapper').find('#add-table-input');
+      var inputValue = $input.val();
+
+      if (inputValue.length === 0) {
+        return false;
+      } // make sure the table title is alpha numeric
+
+
+      var regex = new RegExp("^[a-z]{1}[a-z_0-9]*$");
+
+      if (!regex.test(inputValue)) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The table name needs to be lowercase alpha numeric and should start with a letter!'
+        });
+        return false;
+      } // make sure the table names are unique
+
+
+      var projectId = _this.getProjectId();
+
+      var projectIdentifier = "project_".concat(projectId);
+      var existingLocalStorage = localStorage.getItem(projectIdentifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var value = existingLocalStorage[i];
+
+          if (value.tableTitle == inputValue) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'The table already exists!'
+            });
+            return false;
+          }
+        }
+      } // add data to localStorage
+
+
+      var data = {
+        tableTitle: inputValue
+      };
+
+      _this.addDataToLocalStorage(data); // generate the HTML we need using Mustache template engine
+
+
+      var render = _this.getRender('list-group-item-template', data); // destroy the sortable to prevent bugs
+
+
+      $("#tables-list").sortable('destroy');
+      $("#tables-list").append(render); // make the last item active
+
+      $("#tables-list .list-group-item.active").removeClass('active');
+      $("#tables-list .list-group-item:last-child").addClass('active'); // trigger a custom event to change the data
+
+      $("body").trigger('laragenerator.table.active', {
+        tableTitle: inputValue
+      }); // clear input
+
+      $input.val(''); // enable the sortable again
+
+      _this.enableSortable();
+
+      return false;
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var projectIdentifier = "project_".concat(projectId);
+      var existingLocalStorage = localStorage.getItem(projectIdentifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(projectIdentifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(projectIdentifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "onBtnDangerClick",
+    value: function onBtnDangerClick(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var tableTitle = $this.parents('.list-group-item').find('.table-title').html();
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          // remove the item from localStorage
+          var projectId = _this.getProjectId();
+
+          var existingLocalStorage = localStorage.getItem("project_".concat(projectId));
+
+          if (existingLocalStorage != null) {
+            existingLocalStorage = JSON.parse(existingLocalStorage);
+            var newData = existingLocalStorage.filter(function (item) {
+              return item.tableTitle !== tableTitle;
+            });
+            localStorage.setItem("project_".concat(projectId), JSON.stringify(newData));
+          }
+
+          localStorage.removeItem("table_fields_".concat(projectId, "_").concat(tableTitle));
+          localStorage.removeItem("model_".concat(projectId, "_").concat(tableTitle));
+          localStorage.removeItem("relationships_".concat(projectId, "_").concat(tableTitle));
+          localStorage.removeItem("validation_".concat(projectId, "_").concat(tableTitle));
+          localStorage.removeItem("controller_".concat(projectId, "_").concat(tableTitle));
+          localStorage.removeItem("forms_".concat(projectId, "_").concat(tableTitle));
+          localStorage.removeItem("index_fields_".concat(projectId, "_").concat(tableTitle)); // activate the previous item in the DOM
+
+          $this.parents('.list-group-item').prev().trigger('click'); // remove the item from DOM
+
+          $this.parents('.list-group-item').remove();
+        }
+      });
+    }
+  }, {
+    key: "onListGroupItemClick",
+    value: function onListGroupItemClick(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var tableTitle = $this.find('.table-title').html();
+      $this.parents("#tables-list").find('.list-group-item.active').removeClass('active'); // trigger a custom event to know how to change the data
+
+      $("body").trigger('laragenerator.table.active', {
+        tableTitle: tableTitle
+      });
+      $this.addClass('active');
+    }
+  }, {
+    key: "onNewProjectBtnClick",
+    value: function onNewProjectBtnClick(event) {
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+        title: 'Are you sure?',
+        text: "The data you entered up until now will be deleted",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, I\'m sure'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          localStorage.clear();
+          location.reload(false);
+        }
+      });
+    }
+  }]);
+
+  return Sidebar;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/table-fields.js":
+/*!**************************************************!*\
+  !*** ./src/js/projects/sections/table-fields.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TableFields; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var TableFields = /*#__PURE__*/function (_Section) {
+  _inherits(TableFields, _Section);
+
+  var _super = _createSuper(TableFields);
+
+  function TableFields() {
+    var _this2;
+
+    _classCallCheck(this, TableFields);
+
+    _this2 = _super.call(this);
+
+    _this2.loadLocalStorageData();
+
+    _this2.enableSortable();
+
+    return _this2;
+  }
+
+  _createClass(TableFields, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("#table-fields-wrapper tbody").on('click', '.btn-danger', this, this.onBtnDangerClick);
+      $("#table-fields-add-btn").on('click', this, this.onAddBtnClick);
+      $("#table-fields-wrapper tbody").on('sortupdate', this.tableOnSortUpdate.bind(this));
+      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var tableId = this.getTableId();
+      this.loadData(tableId);
+    }
+  }, {
+    key: "loadData",
+    value: function loadData(tableId) {
+      var projectId = this.getProjectId();
+      var $tBody = $("#table-fields-wrapper tbody");
+      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        $tBody.html("");
+        return false;
+      }
+
+      var data = {
+        fields: JSON.parse(existingLocalStorage)
+      };
+      var render = this.getRender('table-fields-row-multiple-template', data); // destroy the sortable to prevent bugs
+      // $("#tables-list").sortable('destroy');
+
+      $tBody.html(render);
+    }
+  }, {
+    key: "enableSortable",
+    value: function enableSortable() {
+      $("#table-fields-wrapper tbody").sortable({
+        revert: true,
+        // make the width work correctly in the table
+        helper: function helper(e, ui) {
+          ui.children().each(function () {
+            $(this).width($(this).width());
+          });
+          return ui;
+        }
+      });
+    }
+  }, {
+    key: "onBtnDangerClick",
+    value: function onBtnDangerClick(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var $parent = $this.parents('tr');
+      var fieldTitle = $parent.find('.field-title').html(); // remove the item from localStorage
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        var newData = existingLocalStorage.filter(function (item) {
+          return item.title !== fieldTitle;
+        });
+        localStorage.setItem("table_fields_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
+      } // trigger a custom event
+
+
+      $("body").trigger('laragenerator.table-fields.remove', {
+        fieldTitle: fieldTitle
+      }); // remove the item from DOM
+
+      $parent.remove();
+    }
+  }, {
+    key: "onAddBtnClick",
+    value: function onAddBtnClick(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var $parent = $this.parents('tr');
+
+      var tableId = _this.getTableId();
+
+      var $title = $parent.find('#table-fields-title-input');
+      var $type = $parent.find('#table-fields-type-input');
+      var $length = $parent.find('#table-fields-length-input');
+      var $default = $parent.find('#table-fields-default-input');
+      var $nullable = $parent.find('#table-fields-nullable-input');
+
+      if ($title.val().length === 0) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The title needs to be at least one character long!'
+        });
+        return false;
+      }
+
+      if ($type.val() == null) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You need to select a type!'
+        });
+        return false;
+      }
+
+      var regex = new RegExp("^[a-z]{1}[a-z_0-9]*$");
+
+      if (!regex.test($title.val())) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The title needs to be lowercase alpha numeric and should start with a letter!'
+        });
+        return false;
+      }
+
+      regex = new RegExp("^[0-9]*$");
+
+      if (!regex.test($length.val())) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The length needs to be numeric!'
+        });
+        return false;
+      }
+
+      regex = new RegExp("^[0-9A-Za-z ]*$");
+
+      if (!regex.test($default.val())) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The default field can only take alphanumeric characters plus spaces!'
+        });
+        return false;
+      }
+
+      if (tableId == null) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You have to add at least one table before adding table fields!'
+        });
+        return false;
+      }
+
+      var data = {
+        title: $title.val(),
+        type: $type.val(),
+        length: $length.val(),
+        "default": $default.val(),
+        nullable: $nullable.is(':checked')
+      }; // add data to localStorage
+
+      _this.addDataToLocalStorage(data); // get renderHTML
+
+
+      var renderHTML = _this.getRender('table-fields-row-template', data);
+
+      $("#table-fields-wrapper tbody").sortable('destroy');
+      $("#table-fields-wrapper tbody").append(renderHTML); // trigger a custom event to add table fields in every section
+
+      $("body").trigger('laragenerator.table-fields.new', {
+        fieldTitle: data.title
+      }); // reset the inputs
+
+      $title.val('');
+      $length.val('');
+      $default.val(''); // reset the nullable input
+
+      if ($nullable.is(':checked')) {
+        $nullable.trigger('click');
+      }
+
+      _this.enableSortable();
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(identifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "tableOnSortUpdate",
+    value: function tableOnSortUpdate(event, ui) {
+      // update the data position in localStorage
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "table_fields_".concat(projectId, "_").concat(tableId);
+      var $rows = $("#table-fields-wrapper tbody tr");
+      var data = [];
+      $rows.each(function (index) {
+        var $row = $(this);
+        data.push({
+          title: $row.find('.field-title').html(),
+          type: $row.find('.field-type').html(),
+          length: $row.find('.field-length').html(),
+          "default": $row.find('.field-default').html()
+        });
+      });
+      localStorage.setItem(identifier, JSON.stringify(data)); // trigger a custom event to update the order of the field inputs
+
+      var $item = ui.item;
+      var itemPosition = $item.index();
+      var itemTitle = $item.find('.field-title').html();
+      $("body").trigger('laragenerator.table-fields.drag-stop', {
+        fieldTitle: itemTitle,
+        newPosition: itemPosition
+      });
+    }
+  }, {
+    key: "bodyOnTableActive",
+    value: function bodyOnTableActive(event, data) {
+      var _this = event.data;
+
+      _this.loadData(data.tableTitle);
+    }
+  }]);
+
+  return TableFields;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/sections/validation.js":
+/*!************************************************!*\
+  !*** ./src/js/projects/sections/validation.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Validation; });
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Validation = /*#__PURE__*/function (_Section) {
+  _inherits(Validation, _Section);
+
+  var _super = _createSuper(Validation);
+
+  function Validation() {
+    var _this2;
+
+    _classCallCheck(this, Validation);
+
+    _this2 = _super.call(this);
+
+    _this2.loadLocalStorageData();
+
+    return _this2;
+  }
+
+  _createClass(Validation, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("body").on('laragenerator.table-fields.new', this, this.bodyOnTableFieldsNew);
+      $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
+      $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
+      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var tableId = this.getTableId();
+      this.loadData(tableId);
+    }
+  }, {
+    key: "loadData",
+    value: function loadData(tableId) {
+      var projectId = this.getProjectId();
+      var $tBody = $(".validation-section-tbody");
+      var identifier = "validation_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        $tBody.html("");
+        return false;
+      }
+
+      var data = {
+        validations: JSON.parse(existingLocalStorage)
+      };
+      var render = this.getRender('validation-row-multiple-template', data);
+      $tBody.html(render);
+    }
+  }, {
+    key: "bodyOnTableFieldsNew",
+    value: function bodyOnTableFieldsNew(event, data) {
+      var _this = event.data; // prepend required variables to data
+
+      data.show = true; // get renderHTML
+
+      var renderHTML = _this.getRender('validation-row-template', data);
+
+      _this.addDataToLocalStorage(data);
+
+      $(".validation-section-tbody").append(renderHTML);
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "validation_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(identifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "bodyOnTableActive",
+    value: function bodyOnTableActive(event, data) {
+      var _this = event.data;
+
+      _this.loadData(data.tableTitle);
+    }
+  }, {
+    key: "bodyOnTableFieldsDragStop",
+    value: function bodyOnTableFieldsDragStop(event, data) {
+      var _this = event.data;
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "validation_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage); // search the localStorage for the current index of the field
+        // and move the field to the new position if you find it
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var element = existingLocalStorage[i];
+
+          if (element.fieldTitle === data.fieldTitle) {
+            _this.arrayMove(existingLocalStorage, i, data.newPosition);
+
+            break;
+          }
+        }
+
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+
+      _this.loadData(tableId);
+    }
+  }, {
+    key: "bodyOnTableFieldsRemove",
+    value: function bodyOnTableFieldsRemove(event, data) {
+      var _this = event.data;
+      var fieldTitle = data.fieldTitle; // remove the item from localStorage
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "validation_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        var newData = existingLocalStorage.filter(function (item) {
+          return item.fieldTitle !== fieldTitle;
+        });
+        localStorage.setItem("validation_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
+      }
+
+      _this.loadData(tableId);
+    }
+  }]);
+
+  return Validation;
+}(_section__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/projects/zip-file.js":
+/*!*************************************!*\
+  !*** ./src/js/projects/zip-file.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ZipFile; });
+/* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jszip */ "./node_modules/jszip/dist/jszip.min.js");
+/* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! file-saver */ "./node_modules/file-saver/dist/FileSaver.min.js");
+/* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(file_saver__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _downloads_migration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./downloads/migration */ "./src/js/projects/downloads/migration.js");
+/* harmony import */ var _downloads_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./downloads/model */ "./src/js/projects/downloads/model.js");
+/* harmony import */ var _downloads_validation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./downloads/validation */ "./src/js/projects/downloads/validation.js");
+/* harmony import */ var _downloads_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./downloads/controller */ "./src/js/projects/downloads/controller.js");
+/* harmony import */ var _downloads_view_create__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./downloads/view-create */ "./src/js/projects/downloads/view-create.js");
+/* harmony import */ var _downloads_view_edit__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./downloads/view-edit */ "./src/js/projects/downloads/view-edit.js");
+/* harmony import */ var _downloads_view_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./downloads/view-index */ "./src/js/projects/downloads/view-index.js");
+/* harmony import */ var _downloads_routes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./downloads/routes */ "./src/js/projects/downloads/routes.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ZipFile = /*#__PURE__*/function () {
+  function ZipFile() {
+    _classCallCheck(this, ZipFile);
+
+    this.bindEvents();
+  }
+
+  _createClass(ZipFile, [{
+    key: "bindEvents",
+    value: function bindEvents() {
+      $("#download-project-btn").on('click', this, this.onDownloadProjectBtnClick);
+    }
+  }, {
+    key: "getProjectId",
+    value: function getProjectId() {
+      var url = window.location.href;
+      var splits = url.split('/');
+      return 1;
+      return parseInt(splits[splits.length - 1], 10);
+    }
+  }, {
+    key: "onDownloadProjectBtnClick",
+    value: function onDownloadProjectBtnClick(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var zipFile = new jszip__WEBPACK_IMPORTED_MODULE_0___default.a();
+
+      var projectId = _this.getProjectId();
+
+      var identifier = "project_".concat(projectId); //const identifier = `table_fields_${projectId}_${tableId}`;
+
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please add some tables'
+        });
+        return false;
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var options = {
+            table: existingLocalStorage[i].tableTitle,
+            model: _this.getModel(existingLocalStorage[i].tableTitle)
+          };
+
+          _this.generateMigration(zipFile, options, i);
+
+          _this.generateModel(zipFile, options);
+
+          _this.generateValidations(zipFile, options);
+
+          _this.generateController(zipFile, options);
+
+          _this.generateViews(zipFile, options);
+        }
+
+        _this.generateWebRoute(zipFile, existingLocalStorage);
+      } //return false;
+
+
+      zipFile.generateAsync({
+        type: "blob"
+      }).then(function (content) {
+        // see FileSaver.js
+        Object(file_saver__WEBPACK_IMPORTED_MODULE_2__["saveAs"])(content, 'laravel.zip');
+      });
+    }
+  }, {
+    key: "getModel",
+    value: function getModel(tableName) {
+      tableName = tableName.charAt(0).toUpperCase() + tableName.slice(1);
+
+      if (tableName.charAt(tableName.length - 1) == "s") {
+        tableName = tableName.slice(0, -1);
+      }
+
+      return tableName;
+    }
+  }, {
+    key: "generateMigration",
+    value: function generateMigration(zipFile, options, index) {
+      var _this = this;
+
+      var table = options.table;
+
+      var datePrefix = _this.getMigrationDatePrefix(index);
+
+      var migrationContent = new _downloads_migration__WEBPACK_IMPORTED_MODULE_3__["default"](options).getContent();
+      zipFile.file("database/migrations/".concat(datePrefix, "_create_").concat(table, "_table"), migrationContent);
+    }
+  }, {
+    key: "getMigrationDatePrefix",
+    value: function getMigrationDatePrefix(index) {
+      var now = new Date();
+      var dd = String(now.getDate()).padStart(2, '0');
+      var mm = String(now.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+      var yyyy = now.getFullYear(); // const miliseconds = String(now.getMilliseconds()).padStart(6, '0');
+
+      var miliseconds = String(performance.now()).replace(/\./g, '');
+      miliseconds = miliseconds.substring(0, 8);
+      miliseconds = index + miliseconds;
+      return yyyy + '_' + dd + '_' + mm + '_' + miliseconds;
+    }
+  }, {
+    key: "generateModel",
+    value: function generateModel(zipFile, options) {
+      var model = options.model;
+      var modelContent = new _downloads_model__WEBPACK_IMPORTED_MODULE_4__["default"](options).getContent();
+      zipFile.file("app/Models/".concat(model, ".php"), modelContent);
+    }
+  }, {
+    key: "generateValidations",
+    value: function generateValidations(zipFile, options) {
+      var model = options.model;
+      var validationlStoreContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_5__["default"](options).getStoreContent();
+      var validationlUpdateContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_5__["default"](options).getUpdateContent();
+      zipFile.file("app/Http/Requests/Store".concat(model, ".php"), validationlStoreContent);
+      zipFile.file("app/Http/Requests/Update".concat(model, ".php"), validationlUpdateContent);
+    }
+  }, {
+    key: "generateController",
+    value: function generateController(zipFile, options) {
+      var model = options.model;
+      var controllerContent = new _downloads_controller__WEBPACK_IMPORTED_MODULE_6__["default"](options).getContent();
+      zipFile.file("app/Http/Controllers/Admin/".concat(model, "Controller.php"), controllerContent);
+    }
+  }, {
+    key: "generateViews",
+    value: function generateViews(zipFile, options) {
+      var table = options.table;
+      var ViewCreateContent = new _downloads_view_create__WEBPACK_IMPORTED_MODULE_7__["default"](options).getContent();
+      var ViewEditContent = new _downloads_view_edit__WEBPACK_IMPORTED_MODULE_8__["default"](options).getContent();
+      var ViewIndexContent = new _downloads_view_index__WEBPACK_IMPORTED_MODULE_9__["default"](options).getContent();
+      zipFile.file("resources/views/admin/".concat(table, "/create.blade.php"), ViewCreateContent);
+      zipFile.file("resources/views/admin/".concat(table, "/edit.blade.php"), ViewEditContent);
+      zipFile.file("resources/views/admin/".concat(table, "/index.blade.php"), ViewIndexContent);
+    }
+  }, {
+    key: "generateWebRoute",
+    value: function generateWebRoute(zipFile, localStorage) {
+      var routesContent = new _downloads_routes__WEBPACK_IMPORTED_MODULE_10__["default"](localStorage).getContent();
+      zipFile.file("routes/web.php", routesContent);
+    }
+  }]);
+
+  return ZipFile;
+}();
+
+
+
+/***/ }),
+
 /***/ 1:
-/*!***********************************!*\
-  !*** multi ./dist/js/projects.js ***!
-  \***********************************/
+/*!**********************************!*\
+  !*** multi ./src/js/projects.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/dist/js/projects.js */"./dist/js/projects.js");
+module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/js/projects.js */"./src/js/projects.js");
 
 
 /***/ })

@@ -22,8 +22,8 @@ use App\\Http\\Controllers\\Admin\\DashboardController;
 {{namespaceImports}}
 Auth::routes();
 
-Route::prefix('admin')->middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     `;
 
@@ -40,9 +40,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
             let model = this.getModel(table);
 
             if (i === localStorage.length - 1) {
-                string += `Route::resource('admin-{{table}}', {{model}}Controller::class);\n`;
+                string += `Route::resource('{{table}}', {{model}}Controller::class);\n`;
             } else {
-                string += `Route::resource('admin-{{table}}', {{model}}Controller::class);\n\n\t`;
+                string += `Route::resource('{{table}}', {{model}}Controller::class);\n\n\t`;
             }
 
             string = string

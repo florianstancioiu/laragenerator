@@ -86,60 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./dist/js/libraries.js":
-/*!******************************!*\
-  !*** ./dist/js/libraries.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-
-try {
-  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
-  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-} catch (e) {}
-
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-__webpack_require__(/*! jquery-ui-dist/jquery-ui.min */ "./node_modules/jquery-ui-dist/jquery-ui.min.js"); // Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
-
-
-$.widget.bridge('uibutton', $.ui.button);
-
-__webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle.min */ "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
-
-__webpack_require__(/*! jquery-knob-chif/dist/jquery.knob.min */ "./node_modules/jquery-knob-chif/dist/jquery.knob.min.js");
-
-__webpack_require__(/*! overlayscrollbars/js/OverlayScrollbars.min */ "./node_modules/overlayscrollbars/js/OverlayScrollbars.min.js");
-
-/***/ }),
-
-/***/ "./dist/scss/libraries.scss":
-/*!**********************************!*\
-  !*** ./dist/scss/libraries.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./dist/scss/projects.scss":
-/*!*********************************!*\
-  !*** ./dist/scss/projects.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -37448,16 +37394,70 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 0:
-/*!*****************************************************************************************!*\
-  !*** multi ./dist/js/libraries.js ./dist/scss/libraries.scss ./dist/scss/projects.scss ***!
-  \*****************************************************************************************/
+/***/ "./src/js/libraries.js":
+/*!*****************************!*\
+  !*** ./src/js/libraries.js ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/dist/js/libraries.js */"./dist/js/libraries.js");
-__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/dist/scss/libraries.scss */"./dist/scss/libraries.scss");
-module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/dist/scss/projects.scss */"./dist/scss/projects.scss");
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
+try {
+  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
+  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+} catch (e) {}
+
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+__webpack_require__(/*! jquery-ui-dist/jquery-ui.min */ "./node_modules/jquery-ui-dist/jquery-ui.min.js"); // Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
+
+
+$.widget.bridge('uibutton', $.ui.button);
+
+__webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle.min */ "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
+
+__webpack_require__(/*! jquery-knob-chif/dist/jquery.knob.min */ "./node_modules/jquery-knob-chif/dist/jquery.knob.min.js");
+
+__webpack_require__(/*! overlayscrollbars/js/OverlayScrollbars.min */ "./node_modules/overlayscrollbars/js/OverlayScrollbars.min.js");
+
+/***/ }),
+
+/***/ "./src/scss/libraries.scss":
+/*!*********************************!*\
+  !*** ./src/scss/libraries.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./src/scss/projects.scss":
+/*!********************************!*\
+  !*** ./src/scss/projects.scss ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
+/*!**************************************************************************************!*\
+  !*** multi ./src/js/libraries.js ./src/scss/libraries.scss ./src/scss/projects.scss ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/js/libraries.js */"./src/js/libraries.js");
+__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/scss/libraries.scss */"./src/scss/libraries.scss");
+module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/scss/projects.scss */"./src/scss/projects.scss");
 
 
 /***/ })
