@@ -8358,7 +8358,29 @@ var TableFields = /*#__PURE__*/function (_Section) {
       var $type = $parent.find('#table-fields-type-input');
       var $length = $parent.find('#table-fields-length-input');
       var $default = $parent.find('#table-fields-default-input');
-      var $nullable = $parent.find('#table-fields-nullable-input');
+      var $nullable = $parent.find('#table-fields-nullable-input'); // make sure the field names are unique
+
+      var projectId = _this.getProjectId();
+
+      var projectIdentifier = "table_fields_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(projectIdentifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var value = existingLocalStorage[i];
+
+          if (value.title == $title.val()) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'The field already exists!'
+            });
+            return false;
+          }
+        }
+      }
 
       if ($title.val().length === 0) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({

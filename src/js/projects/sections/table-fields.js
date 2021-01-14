@@ -96,6 +96,25 @@ export default class TableFields extends Section {
         const $default = $parent.find('#table-fields-default-input');
         const $nullable = $parent.find('#table-fields-nullable-input');
 
+        // make sure the field names are unique
+        const projectId = _this.getProjectId();
+        const projectIdentifier = `table_fields_${projectId}_${tableId}`;
+        let existingLocalStorage = localStorage.getItem(projectIdentifier);
+        if (existingLocalStorage != null) {
+            existingLocalStorage = JSON.parse(existingLocalStorage);
+            for (let i=0; i<existingLocalStorage.length; i++) {
+                let value = existingLocalStorage[i];
+                if (value.title == $title.val()) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'The field already exists!',
+                    });
+                    return false;
+                }
+            }
+        }
+
         if ($title.val().length === 0) {
             Swal.fire({
                 icon: 'error',
