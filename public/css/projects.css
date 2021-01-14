@@ -80,6 +80,15 @@
   padding-top: 10px;
 }
 
+.github-link {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-weight: bold;
+}
+
 .admin-project #table-fields-wrapper tbody tr {
   cursor: move;
 }
