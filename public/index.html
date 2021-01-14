@@ -43,11 +43,6 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="table-fields-tab" data-toggle="tab" href="#table-fields" role="tab" aria-controls="table-fields" aria-selected="true">Table Fields</a>
                 </li>
-                <!--
-                <li class="nav-item">
-                    <a class="nav-link" id="seeder-tab" data-toggle="tab" href="#seeder" role="tab" aria-controls="seeder" aria-selected="false">Seeder</a>
-                </li>
-                -->
                 <li class="nav-item">
                     <a class="nav-link" id="model-tab" data-toggle="tab" href="#model" role="tab" aria-controls="home" aria-selected="false">Model</a>
                 </li>
@@ -131,11 +126,6 @@
                     </table>
                 </div>
 
-                <div class="tab-pane fade show" id="seeder" role="tabpanel" aria-labelledby="seeder-tab">
-                    <h3>Seeder</h3>
-                    <span>generate the seeder for the selected table</span>
-                </div>
-
                 <div class="tab-pane fade show" id="model" role="tabpanel" aria-labelledby="model-tab">
                     <h3>Model</h3>
                     <span>generate the model for the selected table</span>
@@ -173,10 +163,10 @@
                         <tfoot>
                             <tr>
                                 <th scope="row">
-                                    <input type="text" class="form-control" placeholder="Title/Method" />
+                                    <input type="text" id="relationship-title-input" class="form-control" placeholder="Title/Method" />
                                 </th>
                                 <td>
-                                    <select name="" id="" class="form-control">
+                                    <select name="" id="relationship-type-input" class="form-control">
                                         <option value="" selected disabled>Type</option>
                                         <option value="hasOne">hasOne</option>
                                         <option value="hasMany">hasMany</option>
@@ -184,15 +174,12 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="" id="" class="form-control">
+                                    <select name="" id="foreign-model-input" class="form-control">
                                         <option value="" selected disabled>Foreign Model</option>
-                                        <option value="">User</option>
-                                        <option value="">Post</option>
-                                        <option value="">Products</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary">
+                                    <button class="btn btn-primary" id="add-relationship-btn">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </td>
@@ -283,6 +270,38 @@
                 </button>
             </li>
         {{/tables}}
+    </script>
+
+    <script id="relationships-row-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <i class="fas fa-crosshairs"></i>
+                <span class="title">{{ title }}</span>
+            </th>
+            <td class="type">{{ type }}</td>
+            <td class="foreign-model">{{ foreignModel }}</td>
+            <td>
+                <button class="btn btn-danger">
+                    <i class="fas fa-times"></i>
+                </button>
+            </td>
+        </tr>
+    </script>
+
+    <script id="relationships-row-multiple-template" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <i class="fas fa-crosshairs"></i>
+                <span class="title">{{ title }}</span>
+            </th>
+            <td class="type">{{ type }}</td>
+            <td class="foreign-model">{{ foreignModel }}</td>
+            <td>
+                <button class="btn btn-danger">
+                    <i class="fas fa-times"></i>
+                </button>
+            </td>
+        </tr>
     </script>
 
     <script id="table-fields-row-template" type="x-tmpl-mustache">
