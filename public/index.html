@@ -373,9 +373,9 @@
 
     <script id="validation-row-template" type="x-tmpl-mustache">
         <tr>
-            <th scope="row field">{{ fieldTitle }}</th>
+            <th scope="row" class="field-title">{{ fieldTitle }}</th>
             <td>
-                <input type="text" class="validation form-control" name="validation[]" value="" />
+                <input type="text" class="validation form-control" name="validation[]" value="{{ rules }}" />
             </td>
         </tr>
     </script>
@@ -383,9 +383,9 @@
     <script id="validation-row-multiple-template" type="x-tmpl-mustache">
         {{#validations}}
             <tr>
-                <th scope="row field">{{ fieldTitle }}</th>
+                <th scope="row" class="field-title">{{ fieldTitle }}</th>
                 <td>
-                    <input type="text" class="validation form-control" name="validation[]" value="" />
+                    <input type="text" class="validation form-control" name="validation[]" value="{{ rules }}" />
                 </td>
             </tr>
         {{/validations}}

@@ -8527,6 +8527,7 @@ var Validation = /*#__PURE__*/function (_Section) {
       $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
       $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
       $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+      $(".validation-section-tbody").on('blur', '.validation', this, this.onValidationBlur);
     }
   }, {
     key: "loadLocalStorageData",
@@ -8558,7 +8559,7 @@ var Validation = /*#__PURE__*/function (_Section) {
     value: function bodyOnTableFieldsNew(event, data) {
       var _this = event.data; // prepend required variables to data
 
-      data.show = true; // get renderHTML
+      data.rules = ''; // get renderHTML
 
       var renderHTML = _this.getRender('validation-row-template', data);
 
@@ -8642,6 +8643,29 @@ var Validation = /*#__PURE__*/function (_Section) {
       }
 
       _this.loadData(tableId);
+    }
+  }, {
+    key: "onValidationBlur",
+    value: function onValidationBlur(event) {
+      console.dir('triggered');
+      var _this = event.data;
+      var $this = $(this);
+      var $parent = $this.parents('.validation-section-tbody');
+      var $rows = $parent.find('tr');
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "validation_".concat(projectId, "_").concat(tableId);
+      var data = [];
+      $rows.each(function () {
+        data.push({
+          fieldTitle: $(this).find('.field-title').html(),
+          rules: $(this).find('.validation').val()
+        });
+      });
+      localStorage.setItem("validation_".concat(projectId, "_").concat(tableId), JSON.stringify(data));
     }
   }]);
 

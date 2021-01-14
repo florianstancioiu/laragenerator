@@ -12,6 +12,7 @@ export default class Validation extends Section {
         $("body").on('laragenerator.table-fields.remove', this, this.bodyOnTableFieldsRemove);
         $("body").on('laragenerator.table-fields.drag-stop', this, this.bodyOnTableFieldsDragStop);
         $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+        $(".validation-section-tbody").on('blur', '.validation', this, this.onValidationBlur);
     }
 
     loadLocalStorageData() {
@@ -44,7 +45,7 @@ export default class Validation extends Section {
         const _this = event.data;
 
         // prepend required variables to data
-        data.show = true;
+        data.rules = '';
 
         // get renderHTML
         const renderHTML = _this.getRender('validation-row-template', data);
@@ -120,5 +121,27 @@ export default class Validation extends Section {
         }
 
         _this.loadData(tableId);
+    }
+
+    onValidationBlur(event) {
+        console.dir('triggered');
+
+        const _this = event.data;
+        const $this = $(this);
+        const $parent = $this.parents('.validation-section-tbody');
+        const $rows = $parent.find('tr');
+        const projectId = _this.getProjectId();
+        const tableId = _this.getTableId();
+        const identifier = `validation_${projectId}_${tableId}`;
+        const data = [];
+
+        $rows.each(function () {
+            data.push({
+                fieldTitle: $(this).find('.field-title').html(),
+                rules: $(this).find('.validation').val()
+            });
+        });
+
+        localStorage.setItem(`validation_${projectId}_${tableId}`, JSON.stringify(data));
     }
 }
