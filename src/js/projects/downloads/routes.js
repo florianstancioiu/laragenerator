@@ -23,8 +23,6 @@ use App\\Http\\Controllers\\Admin\\DashboardController;
 Auth::routes();
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
     `;
 
         string = string.replace(/{{namespaceImports}}/g, namespaceImports)
@@ -42,7 +40,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
             if (i === localStorage.length - 1) {
                 string += `Route::resource('{{table}}', {{model}}Controller::class);\n`;
             } else {
-                string += `Route::resource('{{table}}', {{model}}Controller::class);\n\n\t`;
+                string += `Route::resource('{{table}}', {{model}}Controller::class);\n\t`;
             }
 
             string = string

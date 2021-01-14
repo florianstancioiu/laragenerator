@@ -6445,7 +6445,7 @@ var Routes = /*#__PURE__*/function () {
     key: "getPrefix",
     value: function getPrefix() {
       var namespaceImports = this.getNamespaceImports(this.localStorage);
-      var string = "<?php\n\nuse Illuminate\\Support\\Facades\\Auth;\nuse Illuminate\\Support\\Facades\\Route;\nuse App\\Http\\Controllers\\Admin\\DashboardController;\n{{namespaceImports}}\nAuth::routes();\n\nRoute::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {\n    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');\n\n    ";
+      var string = "<?php\n\nuse Illuminate\\Support\\Facades\\Auth;\nuse Illuminate\\Support\\Facades\\Route;\nuse App\\Http\\Controllers\\Admin\\DashboardController;\n{{namespaceImports}}\nAuth::routes();\n\nRoute::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {\n    ";
       string = string.replace(/{{namespaceImports}}/g, namespaceImports);
       return string;
     }
@@ -6462,7 +6462,7 @@ var Routes = /*#__PURE__*/function () {
         if (i === localStorage.length - 1) {
           string += "Route::resource('{{table}}', {{model}}Controller::class);\n";
         } else {
-          string += "Route::resource('{{table}}', {{model}}Controller::class);\n\n\t";
+          string += "Route::resource('{{table}}', {{model}}Controller::class);\n\t";
         }
 
         string = string.replace(/{{table}}/g, table).replace(/{{model}}/g, model);
@@ -7850,13 +7850,11 @@ var Relationships = /*#__PURE__*/function (_Section) {
 
   _createClass(Relationships, [{
     key: "bindEvents",
-    value: function bindEvents() {//$("#add-table-btn").on('click', this, this.onAddTableBtnClick);
-    }
+    value: function bindEvents() {}
   }, {
     key: "onAddTableBtnClick",
     value: function onAddTableBtnClick(event) {
       var _this = event.data;
-      console.dir(_this);
     }
   }]);
 
