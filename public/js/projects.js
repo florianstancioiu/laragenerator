@@ -7850,12 +7850,44 @@ var Relationships = /*#__PURE__*/function (_Section) {
 
   _createClass(Relationships, [{
     key: "bindEvents",
-    value: function bindEvents() {}
-  }, {
-    key: "onAddTableBtnClick",
-    value: function onAddTableBtnClick(event) {
-      var _this = event.data;
+    value: function bindEvents() {
+      $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
     }
+  }, {
+    key: "bodyOnTableActive",
+    value: function bodyOnTableActive(event, data) {
+      var _this = event.data;
+      console.dir(data);
+    }
+  }, {
+    key: "bodyOnTableLoaded",
+    value: function bodyOnTableLoaded(event, data) {
+      console.dir('bodyOnTableLoaded');
+      console.dir(data);
+    }
+  }, {
+    key: "retrieveModelNames",
+    value: function retrieveModelNames() {
+      var tableNames = $('#tables-list .table-title').html();
+    }
+    /*
+    loadData(tableId) {
+        const projectId = this.getProjectId();
+        const $tBody = $(".relationships-section-tbody");
+        const identifier = `relationships_${projectId}_${tableId}`;
+        let existingLocalStorage = localStorage.getItem(identifier);
+         if (existingLocalStorage == null) {
+            $tBody.html("");
+            return false;
+        }
+         const data = {
+            fields: JSON.parse(existingLocalStorage)
+        };
+         const render = this.getRender('index-field-row-multiple-template', data);
+         $tBody.html(render);
+    }
+    */
+
   }]);
 
   return Relationships;
@@ -8007,14 +8039,15 @@ var Sidebar = /*#__PURE__*/function (_Section) {
         return false;
       }
 
+      var tables = JSON.parse(existingLocalStorage);
       var data = {
-        tables: JSON.parse(existingLocalStorage)
+        tables: tables
       };
       var render = this.getRender('list-group-item-multiple-template', data); // destroy the sortable to prevent bugs
       // $("#tables-list").sortable('destroy');
 
       $("#tables-list").append(render);
-      $("#tables-list .list-group-item:first-child").addClass('active'); // TODO: trigger event so that every single section can react to the change
+      $("#tables-list .list-group-item:first-child").addClass('active');
     }
   }, {
     key: "enableSortable",

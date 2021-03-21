@@ -26,9 +26,8 @@ export default class Sidebar extends Section {
             return false;
         }
 
-        const data = {
-            tables: JSON.parse(existingLocalStorage)
-        };
+        const tables = JSON.parse(existingLocalStorage);
+        const data = {tables: tables};
 
         const render = this.getRender('list-group-item-multiple-template', data);
 
@@ -37,8 +36,6 @@ export default class Sidebar extends Section {
         $("#tables-list").append(render);
 
         $("#tables-list .list-group-item:first-child").addClass('active');
-
-        // TODO: trigger event so that every single section can react to the change
     }
 
     enableSortable() {
