@@ -6293,7 +6293,8 @@ var Migration = /*#__PURE__*/function (_Download) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Model; });
 /* harmony import */ var _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/model-file.js */ "./src/js/projects/downloads/templates/model-file.js");
-/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../download */ "./src/js/projects/download.js");
+/* harmony import */ var _templates_model_relationship_method_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./templates/model-relationship-method.js */ "./src/js/projects/downloads/templates/model-relationship-method.js");
+/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../download */ "./src/js/projects/download.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6319,6 +6320,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Model = /*#__PURE__*/function (_Download) {
   _inherits(Model, _Download);
 
@@ -6331,9 +6333,10 @@ var Model = /*#__PURE__*/function (_Download) {
 
     _this = _super.call(this);
     _this.table = options.table;
-    _this.model = options.model; // retrieve the localStorage item requiered for this tab
+    _this.model = options.model; // retrieve the localStorage items requiered for this file
 
     _this.localStorage = _this.getStorageData('model', _this.table);
+    _this.localStorageRelationships = _this.getStorageData('relationships', _this.table);
     return _this;
   }
 
@@ -6349,11 +6352,6 @@ var Model = /*#__PURE__*/function (_Download) {
       return _templates_model_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{relationshipsNamespaces}}/g, relationshipsNamespaces).replace(/{{model}}/g, model).replace(/{{table}}/g, table).replace(/{{fillableFields}}/g, fillableFields).replace(/{{hiddenFields}}/g, hiddenFields).replace(/{{relationships}}/g, relationships);
     }
   }, {
-    key: "getRelationshipsNamespaces",
-    value: function getRelationshipsNamespaces() {
-      return "";
-    }
-  }, {
     key: "getModel",
     value: function getModel() {
       return this.model;
@@ -6364,7 +6362,11 @@ var Model = /*#__PURE__*/function (_Download) {
       var fillableFields = "";
 
       for (var i = 0; i < this.localStorage.length; i++) {
-        var record = this.localStorage[i];
+        var record = this.localStorage[i]; // make sure the `id` is not in fillable
+
+        if (record.fieldTitle === 'id') {
+          continue;
+        }
 
         if (record.fillable == true) {
           if (i == this.localStorage.length - 1) {
@@ -6397,14 +6399,46 @@ var Model = /*#__PURE__*/function (_Download) {
       return hiddenFields;
     }
   }, {
+    key: "getRelationshipsNamespaces",
+    value: function getRelationshipsNamespaces() {
+      // make sure there aren't any duplicate imports
+      var models = [];
+      this.localStorageRelationships.map(function (item) {
+        console.dir(item);
+
+        if (models.indexOf(item.foreignModel) === -1) {
+          models.push(item.foreignModel);
+        }
+      }); // generate the imports string
+
+      var namespaces = "";
+
+      for (var i = 0; i < models.length; i++) {
+        var foreignModel = models[i];
+        namespaces += "use App\\Models\\".concat(foreignModel, ";\n");
+      }
+
+      return namespaces;
+    }
+  }, {
     key: "getRelationships",
     value: function getRelationships() {
-      return "";
+      var namespaces = "";
+
+      for (var i = 0; i < this.localStorageRelationships.length; i++) {
+        var record = this.localStorageRelationships[i];
+        var method = record.method;
+        var type = record.type;
+        var foreignModel = record.foreignModel;
+        namespaces += _templates_model_relationship_method_js__WEBPACK_IMPORTED_MODULE_1__["default"].replace(/{{method}}/g, method).replace(/{{type}}/g, type).replace(/{{foreignModel}}/g, foreignModel);
+      }
+
+      return namespaces;
     }
   }]);
 
   return Model;
-}(_download__WEBPACK_IMPORTED_MODULE_1__["default"]);
+}(_download__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 
 
@@ -6629,8 +6663,22 @@ var migrationFile = "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var modelFile = "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n{{relationshipsNamespaces}}\n\nclass {{model}} extends Model\n{\n    use HasFactory;\n\n    protected $table = \"{{table}}\";\n\n    protected $fillable = [\n        {{fillableFields}}\n    ];\n\n    protected $hidden = [\n        {{hiddenFields}}\n    ];\n\n    {{relationships}}\n}";
+var modelFile = "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n{{relationshipsNamespaces}}\nclass {{model}} extends Model\n{\n    use HasFactory;\n\n    protected $table = \"{{table}}\";\n\n    protected $fillable = [\n        {{fillableFields}}\n    ];\n\n    protected $hidden = [\n        {{hiddenFields}}\n    ];\n    {{relationships}}\n}";
 /* harmony default export */ __webpack_exports__["default"] = (modelFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/model-relationship-method.js":
+/*!**************************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/model-relationship-method.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var modelRelationship = "\n    public function {{method}}()\n    {\n        return $this->{{type}}({{foreignModel}}::class);\n    }\n    ";
+/* harmony default export */ __webpack_exports__["default"] = (modelRelationship);
 
 /***/ }),
 
@@ -9094,9 +9142,8 @@ var ZipFile = /*#__PURE__*/function () {
 
           _this.generateValidations(zipFile, options);
 
-          _this.generateController(zipFile, options);
+          _this.generateController(zipFile, options); //_this.generateViews(zipFile, options);
 
-          _this.generateViews(zipFile, options);
         }
 
         _this.generateWebRoute(zipFile, existingLocalStorage);
