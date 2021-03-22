@@ -7813,6 +7813,8 @@ var Model = /*#__PURE__*/function (_Section) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Relationships; });
 /* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../section */ "./src/js/projects/section.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7837,57 +7839,281 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Relationships = /*#__PURE__*/function (_Section) {
   _inherits(Relationships, _Section);
 
   var _super = _createSuper(Relationships);
 
   function Relationships() {
+    var _this2;
+
     _classCallCheck(this, Relationships);
 
-    return _super.apply(this, arguments);
+    _this2 = _super.call(this);
+
+    _this2.loadLocalStorageData();
+
+    _this2.buildModelSelect();
+
+    _this2.enableSortable();
+
+    return _this2;
   }
 
   _createClass(Relationships, [{
     key: "bindEvents",
     value: function bindEvents() {
       $("body").on('laragenerator.table.active', this, this.bodyOnTableActive);
+      $("#add-relationship-btn").on('click', this, this.addRelationshipBtnClick);
+      $('.relationships-section-tbody').on('click', '.btn-danger', this, this.onBtnDangerClick);
+      $(".relationships-section-tbody").on('sortupdate', this.tableOnSortUpdate.bind(this));
+    }
+  }, {
+    key: "enableSortable",
+    value: function enableSortable() {
+      $(".relationships-section-tbody").sortable({
+        revert: true,
+        // make the width work correctly in the table
+        helper: function helper(e, ui) {
+          ui.children().each(function () {
+            $(this).width($(this).width());
+          });
+          return ui;
+        }
+      });
+    }
+  }, {
+    key: "loadLocalStorageData",
+    value: function loadLocalStorageData() {
+      var tableId = this.getTableId();
+      this.loadData(tableId);
+    }
+  }, {
+    key: "loadData",
+    value: function loadData(tableId) {
+      var projectId = this.getProjectId();
+      var $tBody = $(".relationships-section-tbody");
+      var identifier = "relationships_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        $tBody.html("");
+        return false;
+      }
+
+      var data = {
+        relationships: JSON.parse(existingLocalStorage)
+      };
+      var render = this.getRender('relationships-row-multiple-template', data); // destroy the sortable to prevent bugs
+      // $("#tables-list").sortable('destroy');
+
+      $tBody.html(render);
+    }
+  }, {
+    key: "buildModelSelect",
+    value: function buildModelSelect() {
+      var data = {
+        models: this.retrieveModelNames()
+      };
+      var render = this.getRender('foreign-model-select-template', data);
+      $("#foreign-model-input").html(render);
+    }
+  }, {
+    key: "retrieveModelNames",
+    value: function retrieveModelNames() {
+      var _this = this;
+
+      var modelNames = [];
+      $('#tables-list .table-title').each(function (index, element) {
+        var tableName = $(element).html();
+        modelNames.push(_this.getModel(tableName));
+      });
+      return modelNames;
+    }
+  }, {
+    key: "getModel",
+    value: function getModel(tableName) {
+      tableName = tableName.charAt(0).toUpperCase() + tableName.slice(1);
+
+      if (tableName.charAt(tableName.length - 1) == "s") {
+        tableName = tableName.slice(0, -1);
+      }
+
+      return tableName;
+    }
+  }, {
+    key: "addRelationshipBtnClick",
+    value: function addRelationshipBtnClick(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var $parent = $this.parents('tr');
+
+      var tableId = _this.getTableId();
+
+      var $method = $parent.find('#relationship-title-input');
+      var $type = $parent.find('#relationship-type-input');
+      var $foreignModel = $parent.find('#foreign-model-input'); // make sure the relationship methods are unique
+
+      var projectId = _this.getProjectId();
+
+      var projectIdentifier = "relationships_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(projectIdentifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+
+        for (var i = 0; i < existingLocalStorage.length; i++) {
+          var value = existingLocalStorage[i];
+
+          if (value.method == $method.val()) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'The method already exists!'
+            });
+            return false;
+          }
+        }
+      }
+
+      if ($method.val().length === 0) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The method needs to be at least one character long!'
+        });
+        return false;
+      }
+
+      if ($type.val() == null) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You need to select a type!'
+        });
+        return false;
+      }
+
+      if ($foreignModel.val() == null) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You need to select a foreign model!'
+        });
+        return false;
+      }
+
+      var regex = new RegExp("^[a-z]{1}[a-z_0-9]*$");
+
+      if (!regex.test($method.val())) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The method needs to be lowercase alpha numeric and should start with a letter!'
+        });
+        return false;
+      }
+
+      if (tableId == null) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You have to add at least one table before adding table fields!'
+        });
+        return false;
+      }
+
+      var data = {
+        method: $method.val(),
+        type: $type.val(),
+        foreignModel: $foreignModel.val()
+      }; // add data to localStorage
+
+      _this.addDataToLocalStorage(data); // get renderHTML
+
+
+      var renderHTML = _this.getRender('relationships-row-template', data);
+
+      $(".relationships-section-tbody").sortable('destroy');
+      $(".relationships-section-tbody").append(renderHTML); // reset the inputs
+
+      $method.val('');
+      $type.val('');
+      $foreignModel.val('');
+
+      _this.enableSortable();
+    }
+  }, {
+    key: "addDataToLocalStorage",
+    value: function addDataToLocalStorage(data) {
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "relationships_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage == null) {
+        localStorage.setItem(identifier, JSON.stringify([data]));
+      } else {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        existingLocalStorage.push(data);
+        localStorage.setItem(identifier, JSON.stringify(existingLocalStorage));
+      }
+    }
+  }, {
+    key: "onBtnDangerClick",
+    value: function onBtnDangerClick(event) {
+      var _this = event.data;
+      var $this = $(this);
+      var $parent = $this.parents('tr');
+      var method = $parent.find('.method').html(); // remove the item from localStorage
+
+      var projectId = _this.getProjectId();
+
+      var tableId = _this.getTableId();
+
+      var identifier = "relationships_".concat(projectId, "_").concat(tableId);
+      var existingLocalStorage = localStorage.getItem(identifier);
+
+      if (existingLocalStorage != null) {
+        existingLocalStorage = JSON.parse(existingLocalStorage);
+        var newData = existingLocalStorage.filter(function (item) {
+          return item.method !== method;
+        });
+        localStorage.setItem("relationships_".concat(projectId, "_").concat(tableId), JSON.stringify(newData));
+      } // remove the item from DOM
+
+
+      $parent.remove();
+    }
+  }, {
+    key: "tableOnSortUpdate",
+    value: function tableOnSortUpdate(event, ui) {
+      // update the data position in localStorage
+      var projectId = this.getProjectId();
+      var tableId = this.getTableId();
+      var identifier = "relationships_".concat(projectId, "_").concat(tableId);
+      var $rows = $(".relationships-section-tbody tr");
+      var data = [];
+      $rows.each(function (index) {
+        var $row = $(this);
+        data.push({
+          method: $row.find('.method').html(),
+          type: $row.find('.type').html(),
+          foreignModel: $row.find('.foreign-model').html()
+        });
+      });
+      localStorage.setItem(identifier, JSON.stringify(data));
     }
   }, {
     key: "bodyOnTableActive",
     value: function bodyOnTableActive(event, data) {
       var _this = event.data;
-      console.dir(data);
-    }
-  }, {
-    key: "bodyOnTableLoaded",
-    value: function bodyOnTableLoaded(event, data) {
-      console.dir('bodyOnTableLoaded');
-      console.dir(data);
-    }
-  }, {
-    key: "retrieveModelNames",
-    value: function retrieveModelNames() {
-      var tableNames = $('#tables-list .table-title').html();
-    }
-    /*
-    loadData(tableId) {
-        const projectId = this.getProjectId();
-        const $tBody = $(".relationships-section-tbody");
-        const identifier = `relationships_${projectId}_${tableId}`;
-        let existingLocalStorage = localStorage.getItem(identifier);
-         if (existingLocalStorage == null) {
-            $tBody.html("");
-            return false;
-        }
-         const data = {
-            fields: JSON.parse(existingLocalStorage)
-        };
-         const render = this.getRender('index-field-row-multiple-template', data);
-         $tBody.html(render);
-    }
-    */
 
+      _this.buildModelSelect();
+
+      _this.loadData(data.tableTitle);
+    }
   }]);
 
   return Relationships;
@@ -8133,6 +8359,9 @@ var Sidebar = /*#__PURE__*/function (_Section) {
       $("#tables-list .list-group-item:last-child").addClass('active'); // trigger a custom event to change the data
 
       $("body").trigger('laragenerator.table.active', {
+        tableTitle: inputValue
+      });
+      $("body").trigger('laragenerator.table.new', {
         tableTitle: inputValue
       }); // clear input
 

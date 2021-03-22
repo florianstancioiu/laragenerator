@@ -276,7 +276,7 @@
         <tr>
             <th scope="row">
                 <i class="fas fa-crosshairs"></i>
-                <span class="title">{{ title }}</span>
+                <span class="method">{{ method }}</span>
             </th>
             <td class="type">{{ type }}</td>
             <td class="foreign-model">{{ foreignModel }}</td>
@@ -289,19 +289,21 @@
     </script>
 
     <script id="relationships-row-multiple-template" type="x-tmpl-mustache">
-        <tr>
-            <th scope="row">
-                <i class="fas fa-crosshairs"></i>
-                <span class="title">{{ title }}</span>
-            </th>
-            <td class="type">{{ type }}</td>
-            <td class="foreign-model">{{ foreignModel }}</td>
-            <td>
-                <button class="btn btn-danger">
-                    <i class="fas fa-times"></i>
-                </button>
-            </td>
-        </tr>
+        {{#relationships}}
+            <tr>
+                <th scope="row">
+                    <i class="fas fa-crosshairs"></i>
+                    <span class="method">{{ method }}</span>
+                </th>
+                <td class="type">{{ type }}</td>
+                <td class="foreign-model">{{ foreignModel }}</td>
+                <td>
+                    <button class="btn btn-danger">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </td>
+            </tr>
+        {{/relationships}}
     </script>
 
     <script id="table-fields-row-template" type="x-tmpl-mustache">
@@ -562,6 +564,13 @@
                 </td>
             </tr>
         {{/methods}}
+    </script>
+
+    <script id="foreign-model-select-template" type="x-tmpl-mustache">
+        <option value="" selected="selected" disabled="">Foreign Model</option>
+        {{#models}}
+            <option value="{{ . }}">{{ . }}</option>
+        {{/models}}
     </script>
 
     <script src="js/libraries.js"></script>
