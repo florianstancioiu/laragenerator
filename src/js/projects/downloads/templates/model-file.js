@@ -5,7 +5,6 @@ namespace App\\Models;
 use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;
 use Illuminate\\Database\\Eloquent\\Model;
 {{relationshipsNamespaces}}
-
 class {{model}} extends Model
 {
     use HasFactory;
@@ -19,7 +18,6 @@ class {{model}} extends Model
     protected $hidden = [
         {{hiddenFields}}
     ];
-
     {{relationships}}
 }`;
 

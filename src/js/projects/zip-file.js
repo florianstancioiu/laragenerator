@@ -58,7 +58,7 @@ export default class ZipFile {
                 _this.generateModel(zipFile, options);
                 _this.generateValidations(zipFile, options);
                 _this.generateController(zipFile, options);
-                _this.generateViews(zipFile, options);
+                //_this.generateViews(zipFile, options);
             }
 
             _this.generateWebRoute(zipFile, existingLocalStorage);

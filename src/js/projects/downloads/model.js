@@ -1,4 +1,5 @@
 import modelFile from './templates/model-file.js';
+import modelRelationship from './templates/model-relationship-method.js';
 import Download from '../download';
 
 export default class Model extends Download {
@@ -8,8 +9,9 @@ export default class Model extends Download {
         this.table = options.table;
         this.model = options.model;
 
-        // retrieve the localStorage item requiered for this tab
+        // retrieve the localStorage items requiered for this file
         this.localStorage = this.getStorageData('model', this.table);
+        this.localStorageRelationships = this.getStorageData('relationships', this.table);
     }
 
     getContent() {
@@ -29,10 +31,6 @@ export default class Model extends Download {
             .replace(/{{relationships}}/g, relationships);
     }
 
-    getRelationshipsNamespaces() {
-        return ``;
-    }
-
     getModel() {
         return this.model;
     }
@@ -41,6 +39,11 @@ export default class Model extends Download {
         let fillableFields = ``;
         for (let i = 0; i<this.localStorage.length; i++) {
             let record = this.localStorage[i];
+
+            // make sure the `id` is not in fillable
+            if (record.fieldTitle === 'id') {
+                continue;
+            }
 
             if (record.fillable == true) {
                 if (i == this.localStorage.length - 1) {
@@ -71,7 +74,41 @@ export default class Model extends Download {
         return hiddenFields;
     }
 
+    getRelationshipsNamespaces() {
+        // make sure there aren't any duplicate imports
+        const models = [];
+        this.localStorageRelationships.map(function (item) {
+            console.dir(item);
+            if (models.indexOf(item.foreignModel) === -1) {
+                models.push(item.foreignModel);
+            }
+        });
+
+        // generate the imports string
+        let namespaces = ``;
+        for (let i = 0; i<models.length; i++) {
+            let foreignModel = models[i];
+
+            namespaces += `use App\\Models\\${foreignModel};\n`;
+        }
+
+        return namespaces;
+    }
+
     getRelationships() {
-        return ``;
+        let namespaces = ``;
+        for (let i = 0; i<this.localStorageRelationships.length; i++) {
+            let record = this.localStorageRelationships[i];
+            let method = record.method;
+            let type = record.type;
+            let foreignModel = record.foreignModel;
+
+            namespaces += modelRelationship
+                .replace(/{{method}}/g, method)
+                .replace(/{{type}}/g, type)
+                .replace(/{{foreignModel}}/g, foreignModel);
+        }
+
+        return namespaces;
     }
 }
