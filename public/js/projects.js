@@ -8360,9 +8360,6 @@ var Sidebar = /*#__PURE__*/function (_Section) {
 
       $("body").trigger('laragenerator.table.active', {
         tableTitle: inputValue
-      });
-      $("body").trigger('laragenerator.table.new', {
-        tableTitle: inputValue
       }); // clear input
 
       $input.val(''); // enable the sortable again
