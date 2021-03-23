@@ -9,8 +9,7 @@ use App\\Http\\Requests\\Update{{model}};
 use App\\Models\\{{model}};
 
 class {{model}}Controller extends Controller
-{
-{{indexMethod}}{{createMethod}}{{storeMethod}}{{editMethod}}{{updateMethod}}{{destroyMethod}}
+{{{indexMethod}}{{createMethod}}{{storeMethod}}{{editMethod}}{{updateMethod}}{{destroyMethod}}
 }
 `;
 

@@ -92,7 +92,6 @@ export default class TableFields extends Section {
         const tableId = _this.getTableId();
         const $title = $parent.find('#table-fields-title-input');
         const $type = $parent.find('#table-fields-type-input');
-        const $length = $parent.find('#table-fields-length-input');
         const $default = $parent.find('#table-fields-default-input');
         const $nullable = $parent.find('#table-fields-nullable-input');
 
@@ -145,16 +144,6 @@ export default class TableFields extends Section {
             return false;
         }
 
-        regex = new RegExp("^[0-9]*$");
-        if (! regex.test($length.val())) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'The length needs to be numeric!',
-            });
-            return false;
-        }
-
         regex = new RegExp("^[0-9A-Za-z ]*$");
         if (! regex.test($default.val())) {
             Swal.fire({
@@ -177,7 +166,6 @@ export default class TableFields extends Section {
         const data = {
             title: $title.val(),
             type: $type.val(),
-            length: $length.val(),
             default: $default.val(),
             nullable: $nullable.is(':checked')
         }
@@ -196,7 +184,6 @@ export default class TableFields extends Section {
 
         // reset the inputs
         $title.val('');
-        $length.val('');
         $default.val('');
 
         // reset the nullable input
@@ -234,7 +221,6 @@ export default class TableFields extends Section {
             data.push({
                 title: $row.find('.field-title').html(),
                 type: $row.find('.field-type').html(),
-                length: $row.find('.field-length').html(),
                 default: $row.find('.field-default').html(),
             })
         });

@@ -94,7 +94,7 @@ export default class ZipFile {
         const datePrefix = _this.getMigrationDatePrefix(index);
         const migrationContent = (new Migration(options)).getContent();
 
-        zipFile.file(`database/migrations/${datePrefix}_create_${table}_table`, migrationContent);
+        zipFile.file(`database/migrations/${datePrefix}_create_${table}_table.php`, migrationContent);
     }
 
     getMigrationDatePrefix(index) {
