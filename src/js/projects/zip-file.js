@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import { saveAs } from 'file-saver';
 import Migration from './downloads/migration';
 import Model from './downloads/model';
+import Seeder from './downloads/seeder';
+import DatabaseSeeder from './downloads/database-seeder';
 import Validation from './downloads/validation';
 import Controller from './downloads/controller';
 import ViewCreate from './downloads/view-create';
@@ -55,6 +57,7 @@ export default class ZipFile {
                 };
 
                 _this.generateMigration(zipFile, options, i);
+                _this.generateSeeder(zipFile, options);
                 _this.generateModel(zipFile, options);
                 _this.generateValidations(zipFile, options);
                 _this.generateController(zipFile, options);
@@ -62,6 +65,7 @@ export default class ZipFile {
             }
 
             _this.generateWebRoute(zipFile, existingLocalStorage);
+            _this.generateDatabaseSeeder(zipFile, existingLocalStorage);
         }
 
         //return false;
@@ -113,6 +117,13 @@ export default class ZipFile {
         zipFile.file(`app/Models/${model}.php`, modelContent);
     }
 
+    generateSeeder(zipFile, options) {
+        const model = options.model;
+        const seederContent = (new Seeder(options)).getContent();
+
+        zipFile.file(`database/seeders/${model}Seeder.php`, seederContent);
+    }
+
     generateValidations(zipFile, options) {
         const model = options.model;
         const validationlStoreContent = (new Validation(options)).getStoreContent();
@@ -144,5 +155,11 @@ export default class ZipFile {
         const routesContent = (new Routes(localStorage)).getContent();
 
         zipFile.file(`routes/web.php`, routesContent);
+    }
+
+    generateDatabaseSeeder(zipFile, localStorage) {
+        const content = (new DatabaseSeeder(localStorage)).getContent();
+
+        zipFile.file(`database/seeders/DatabaseSeeder.php`, content);
     }
 }
