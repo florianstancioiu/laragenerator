@@ -4,6 +4,7 @@ import { saveAs } from 'file-saver';
 import Migration from './downloads/migration';
 import Model from './downloads/model';
 import Seeder from './downloads/seeder';
+import Factory from './downloads/factory';
 import DatabaseSeeder from './downloads/database-seeder';
 import Validation from './downloads/validation';
 import Controller from './downloads/controller';
@@ -58,6 +59,7 @@ export default class ZipFile {
 
                 _this.generateMigration(zipFile, options, i);
                 _this.generateSeeder(zipFile, options);
+                _this.generateFactory(zipFile, options);
                 _this.generateModel(zipFile, options);
                 _this.generateValidations(zipFile, options);
                 _this.generateController(zipFile, options);
@@ -122,6 +124,13 @@ export default class ZipFile {
         const seederContent = (new Seeder(options)).getContent();
 
         zipFile.file(`database/seeders/${model}Seeder.php`, seederContent);
+    }
+
+    generateFactory(zipFile, options) {
+        const model = options.model;
+        const factoryContent = (new Factory(options)).getContent();
+
+        zipFile.file(`database/factories/${model}Factory.php`, factoryContent);
     }
 
     generateValidations(zipFile, options) {
