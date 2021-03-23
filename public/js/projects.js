@@ -6247,6 +6247,186 @@ var DatabaseSeeder = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./src/js/projects/downloads/factory.js":
+/*!**********************************************!*\
+  !*** ./src/js/projects/downloads/factory.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Factory; });
+/* harmony import */ var _templates_factory_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/factory-file.js */ "./src/js/projects/downloads/templates/factory-file.js");
+/* harmony import */ var _download__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../download */ "./src/js/projects/download.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var Factory = /*#__PURE__*/function (_Download) {
+  _inherits(Factory, _Download);
+
+  var _super = _createSuper(Factory);
+
+  function Factory(options) {
+    var _this;
+
+    _classCallCheck(this, Factory);
+
+    _this = _super.call(this);
+    _this.table = options.table;
+    _this.model = options.model; // retrieve the localStorage item requiered for this tab
+
+    _this.localStorage = _this.getStorageData('table_fields', _this.table);
+    return _this;
+  }
+
+  _createClass(Factory, [{
+    key: "getContent",
+    value: function getContent() {
+      var model = this.model;
+      var fakerFields = this.getFakerFields();
+      return _templates_factory_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{model}}/g, model).replace(/{{fakerFields}}/g, fakerFields);
+    }
+  }, {
+    key: "getFakerFields",
+    value: function getFakerFields() {
+      var fields = "";
+
+      for (var i = 0; i < this.localStorage.length; i++) {
+        var record = this.localStorage[i];
+        var title = record.title;
+        var type = record.type;
+        var fakerMethod = this.getFakerMethod(type);
+
+        if (type === 'bigIncrements') {
+          continue;
+        }
+
+        if (i === this.localStorage.length - 1) {
+          fields += "'".concat(title, "' => ").concat(fakerMethod);
+        } else {
+          fields += "'".concat(title, "' => ").concat(fakerMethod, ",\n\t\t\t");
+        }
+      }
+
+      return fields;
+    }
+  }, {
+    key: "getFakerMethod",
+    value: function getFakerMethod(type) {
+      var method = "";
+
+      switch (type) {
+        case 'bigIncrements':
+          method += "$this->faker->randomNumber()";
+          break;
+
+        case 'string':
+          method += "$this->faker->sentence()";
+          break;
+
+        case 'unsignedInteger':
+          method += "$this->faker->numberBetween(1, 1000)";
+          break;
+
+        case 'text':
+          method += "$this->faker->text(600)";
+          break;
+
+        case 'boolean':
+          method += "$this->faker->numberBetween(0, 1)";
+          break;
+
+        case 'timestamp':
+          method += "$this->faker->unixTime()";
+          break;
+
+        case 'date':
+          method += "$this->faker->date()";
+          break;
+
+        case 'dateTime':
+          method += "$this->faker->iso8601()";
+          break;
+
+        case 'float':
+          method += "$this->faker->randomFloat()";
+          break;
+
+        case 'tinyInteger':
+          method += "$this->faker->randomDigit()";
+          break;
+
+        case 'bigInteger':
+          method += "$this->faker->numberBetween(0, 1000000)";
+          break;
+
+        case 'integer':
+          method += "$this->faker->randomNumber()";
+          break;
+
+        case 'uuid':
+          method += "$this->faker->uuid()";
+          break;
+
+        case 'binary':
+          method += "$this->faker->numberBetween(0, 1)";
+          break;
+
+        case 'ipAddress':
+          method += "$this->faker->ipv4()";
+          break;
+
+        case 'json':
+          method += "json_encode($this->faker->word())";
+          break;
+
+        case 'longText':
+          method += "$this->faker->text(1800)";
+          break;
+
+        case 'mediumInteger':
+          method += "$this->faker->numberBetween(0, 500000)";
+          break;
+
+        case 'mediumText':
+          method += "$this->faker->text(900)";
+          break;
+      }
+
+      return method;
+    }
+  }]);
+
+  return Factory;
+}(_download__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
+
+/***/ }),
+
 /***/ "./src/js/projects/downloads/migration.js":
 /*!************************************************!*\
   !*** ./src/js/projects/downloads/migration.js ***!
@@ -6774,6 +6954,20 @@ var updateMethod = "\n    public function update(Update{{model}} $request, int $
 __webpack_require__.r(__webpack_exports__);
 var databaseSeederFile = "<?php\n\nnamespace Database\\Seeders;\n\nuse Illuminate\\Database\\Seeder;\n\nclass DatabaseSeeder extends Seeder\n{\n    /**\n     * Seed the application's database.\n     *\n     * @return void\n     */\n    public function run()\n    {\n        $this\n            {{seederCalls}}\n    }\n}";
 /* harmony default export */ __webpack_exports__["default"] = (databaseSeederFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/factory-file.js":
+/*!*************************************************************!*\
+  !*** ./src/js/projects/downloads/templates/factory-file.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var factoryFile = "<?php\n\nnamespace DatabaseFactories;\n\nuse App\\Models\\{{model}};\nuse Illuminate\\Database\\Eloquent\\Factories\\Factory;\n\nclass {{model}}Factory extends Factory\n{\n    /**\n     * The name of the factory's corresponding model.\n     *\n     * @var string\n     */\n    protected $model = {{model}}::class;\n\n    /**\n     * Define the model's default state.\n     *\n     * @return array\n     */\n    public function definition()\n    {\n        return [\n            {{fakerFields}}\n        ];\n    }\n}";
+/* harmony default export */ __webpack_exports__["default"] = (factoryFile);
 
 /***/ }),
 
@@ -9214,18 +9408,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _downloads_migration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./downloads/migration */ "./src/js/projects/downloads/migration.js");
 /* harmony import */ var _downloads_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./downloads/model */ "./src/js/projects/downloads/model.js");
 /* harmony import */ var _downloads_seeder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./downloads/seeder */ "./src/js/projects/downloads/seeder.js");
-/* harmony import */ var _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./downloads/database-seeder */ "./src/js/projects/downloads/database-seeder.js");
-/* harmony import */ var _downloads_validation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./downloads/validation */ "./src/js/projects/downloads/validation.js");
-/* harmony import */ var _downloads_controller__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./downloads/controller */ "./src/js/projects/downloads/controller.js");
-/* harmony import */ var _downloads_view_create__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./downloads/view-create */ "./src/js/projects/downloads/view-create.js");
-/* harmony import */ var _downloads_view_edit__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./downloads/view-edit */ "./src/js/projects/downloads/view-edit.js");
-/* harmony import */ var _downloads_view_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./downloads/view-index */ "./src/js/projects/downloads/view-index.js");
-/* harmony import */ var _downloads_routes__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./downloads/routes */ "./src/js/projects/downloads/routes.js");
+/* harmony import */ var _downloads_factory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./downloads/factory */ "./src/js/projects/downloads/factory.js");
+/* harmony import */ var _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./downloads/database-seeder */ "./src/js/projects/downloads/database-seeder.js");
+/* harmony import */ var _downloads_validation__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./downloads/validation */ "./src/js/projects/downloads/validation.js");
+/* harmony import */ var _downloads_controller__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./downloads/controller */ "./src/js/projects/downloads/controller.js");
+/* harmony import */ var _downloads_view_create__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./downloads/view-create */ "./src/js/projects/downloads/view-create.js");
+/* harmony import */ var _downloads_view_edit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./downloads/view-edit */ "./src/js/projects/downloads/view-edit.js");
+/* harmony import */ var _downloads_view_index__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./downloads/view-index */ "./src/js/projects/downloads/view-index.js");
+/* harmony import */ var _downloads_routes__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./downloads/routes */ "./src/js/projects/downloads/routes.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -9293,6 +9489,8 @@ var ZipFile = /*#__PURE__*/function () {
           _this.generateMigration(zipFile, options, i);
 
           _this.generateSeeder(zipFile, options);
+
+          _this.generateFactory(zipFile, options);
 
           _this.generateModel(zipFile, options);
 
@@ -9367,11 +9565,18 @@ var ZipFile = /*#__PURE__*/function () {
       zipFile.file("database/seeders/".concat(model, "Seeder.php"), seederContent);
     }
   }, {
+    key: "generateFactory",
+    value: function generateFactory(zipFile, options) {
+      var model = options.model;
+      var factoryContent = new _downloads_factory__WEBPACK_IMPORTED_MODULE_6__["default"](options).getContent();
+      zipFile.file("database/factories/".concat(model, "Factory.php"), factoryContent);
+    }
+  }, {
     key: "generateValidations",
     value: function generateValidations(zipFile, options) {
       var model = options.model;
-      var validationlStoreContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_7__["default"](options).getStoreContent();
-      var validationlUpdateContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_7__["default"](options).getUpdateContent();
+      var validationlStoreContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_8__["default"](options).getStoreContent();
+      var validationlUpdateContent = new _downloads_validation__WEBPACK_IMPORTED_MODULE_8__["default"](options).getUpdateContent();
       zipFile.file("app/Http/Requests/Store".concat(model, ".php"), validationlStoreContent);
       zipFile.file("app/Http/Requests/Update".concat(model, ".php"), validationlUpdateContent);
     }
@@ -9379,16 +9584,16 @@ var ZipFile = /*#__PURE__*/function () {
     key: "generateController",
     value: function generateController(zipFile, options) {
       var model = options.model;
-      var controllerContent = new _downloads_controller__WEBPACK_IMPORTED_MODULE_8__["default"](options).getContent();
+      var controllerContent = new _downloads_controller__WEBPACK_IMPORTED_MODULE_9__["default"](options).getContent();
       zipFile.file("app/Http/Controllers/Admin/".concat(model, "Controller.php"), controllerContent);
     }
   }, {
     key: "generateViews",
     value: function generateViews(zipFile, options) {
       var table = options.table;
-      var ViewCreateContent = new _downloads_view_create__WEBPACK_IMPORTED_MODULE_9__["default"](options).getContent();
-      var ViewEditContent = new _downloads_view_edit__WEBPACK_IMPORTED_MODULE_10__["default"](options).getContent();
-      var ViewIndexContent = new _downloads_view_index__WEBPACK_IMPORTED_MODULE_11__["default"](options).getContent();
+      var ViewCreateContent = new _downloads_view_create__WEBPACK_IMPORTED_MODULE_10__["default"](options).getContent();
+      var ViewEditContent = new _downloads_view_edit__WEBPACK_IMPORTED_MODULE_11__["default"](options).getContent();
+      var ViewIndexContent = new _downloads_view_index__WEBPACK_IMPORTED_MODULE_12__["default"](options).getContent();
       zipFile.file("resources/views/admin/".concat(table, "/create.blade.php"), ViewCreateContent);
       zipFile.file("resources/views/admin/".concat(table, "/edit.blade.php"), ViewEditContent);
       zipFile.file("resources/views/admin/".concat(table, "/index.blade.php"), ViewIndexContent);
@@ -9396,13 +9601,13 @@ var ZipFile = /*#__PURE__*/function () {
   }, {
     key: "generateWebRoute",
     value: function generateWebRoute(zipFile, localStorage) {
-      var routesContent = new _downloads_routes__WEBPACK_IMPORTED_MODULE_12__["default"](localStorage).getContent();
+      var routesContent = new _downloads_routes__WEBPACK_IMPORTED_MODULE_13__["default"](localStorage).getContent();
       zipFile.file("routes/web.php", routesContent);
     }
   }, {
     key: "generateDatabaseSeeder",
     value: function generateDatabaseSeeder(zipFile, localStorage) {
-      var content = new _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_6__["default"](localStorage).getContent();
+      var content = new _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_7__["default"](localStorage).getContent();
       zipFile.file("database/seeders/DatabaseSeeder.php", content);
     }
   }]);
