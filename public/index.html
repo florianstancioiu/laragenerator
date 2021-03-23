@@ -53,7 +53,7 @@
                     <a class="nav-link" id="validation-tab" data-toggle="tab" href="#validation" role="tab" aria-controls="validation" aria-selected="false">Validation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="controller-tab" data-toggle="tab" href="#controller" role="tab" aria-controls="controller" aria-selected="false">Controller</a>
+                    <a class="nav-link" id="controller-tab" data-toggle="tab" href="#controller" role="tab" aria-controls="controller" aria-selected="false">Admin Controller</a>
                 </li>
                 <!--
                 <li class="nav-item">
@@ -71,7 +71,6 @@
                             <tr>
                                 <th scope="col">Title</th>
                                 <th scope="col">Type</th>
-                                <th scope="col">Length</th>
                                 <th scope="col">Default</th>
                                 <th scope="col">Nullable</th>
                                 <th scope="col">Actions</th>
@@ -90,27 +89,24 @@
                                         <option value="" selected disabled>Type</option>
                                         <option value="bigIncrements">bigIncrements</option>
                                         <option value="string">string</option>
+                                        <option value="unsignedInteger">unsignedInteger</option>
                                         <option value="text">text</option>
-                                        <option value="integer">integer</option>
+                                        <option value="boolean">boolean</option>
+                                        <option value="timestamp">timestamp</option>
+                                        <option value="date">date</option>
+                                        <option value="dateTime">dateTime</option>
+                                        <option value="float">float</option>
                                         <option value="tinyInteger">tinyInteger</option>
                                         <option value="bigInteger">bigInteger</option>
-                                        <option value="dateTime">dateTime</option>
+                                        <option value="integer">integer</option>
                                         <option value="uuid">uuid</option>
                                         <option value="binary">binary</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="date">date</option>
-                                        <option value="float">float</option>
                                         <option value="ipAddress">ipAddress</option>
                                         <option value="json">json</option>
                                         <option value="longText">longText</option>
-                                        <option value="unsignedInteger">unsignedInteger</option>
                                         <option value="mediumInteger">mediumInteger</option>
-                                        <option value="timestamp">timestamp</option>
                                         <option value="mediumText">mediumText</option>
                                     </select>
-                                </td>
-                                <td>
-                                    <input id="table-fields-length-input" type="text" class="form-control" placeholder="Length">
                                 </td>
                                 <td>
                                     <input id="table-fields-default-input" type="text" class="form-control" placeholder="Default">
@@ -315,7 +311,6 @@
                 <span class="field-title">{{ title }}</span>
             </th>
             <td class="field-type">{{ type }}</td>
-            <td class="field-length">{{ length }}</td>
             <td class="field-default">{{ default }}</td>
             <td class="field-nullable">{{ nullable }}</td>
             <td>
@@ -334,7 +329,6 @@
                     <span class="field-title">{{ title }}</span>
                 </th>
                 <td class="field-type">{{ type }}</td>
-                <td class="field-length">{{ length }}</td>
                 <td class="field-default">{{ default }}</td>
                 <td class="field-nullable">{{ nullable }}</td>
                 <td>
