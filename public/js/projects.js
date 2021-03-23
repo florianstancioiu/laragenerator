@@ -6674,7 +6674,7 @@ var Seeder = /*#__PURE__*/function (_Download) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var controllerFile = "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse Illuminate\\Http\\Request;\nuse App\\Http\\Controllers\\Controller;\nuse App\\Http\\Requests\\Store{{model}};\nuse App\\Http\\Requests\\Update{{model}};\nuse App\\Models\\{{model}};\n\nclass {{model}}Controller extends Controller\n{\n{{indexMethod}}{{createMethod}}{{storeMethod}}{{editMethod}}{{updateMethod}}{{destroyMethod}}\n}\n";
+var controllerFile = "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse Illuminate\\Http\\Request;\nuse App\\Http\\Controllers\\Controller;\nuse App\\Http\\Requests\\Store{{model}};\nuse App\\Http\\Requests\\Update{{model}};\nuse App\\Models\\{{model}};\n\nclass {{model}}Controller extends Controller\n{{{indexMethod}}{{createMethod}}{{storeMethod}}{{editMethod}}{{updateMethod}}{{destroyMethod}}\n}\n";
 /* harmony default export */ __webpack_exports__["default"] = (controllerFile);
 
 /***/ }),
@@ -8826,7 +8826,6 @@ var TableFields = /*#__PURE__*/function (_Section) {
 
       var $title = $parent.find('#table-fields-title-input');
       var $type = $parent.find('#table-fields-type-input');
-      var $length = $parent.find('#table-fields-length-input');
       var $default = $parent.find('#table-fields-default-input');
       var $nullable = $parent.find('#table-fields-nullable-input'); // make sure the field names are unique
 
@@ -8881,17 +8880,6 @@ var TableFields = /*#__PURE__*/function (_Section) {
         return false;
       }
 
-      regex = new RegExp("^[0-9]*$");
-
-      if (!regex.test($length.val())) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'The length needs to be numeric!'
-        });
-        return false;
-      }
-
       regex = new RegExp("^[0-9A-Za-z ]*$");
 
       if (!regex.test($default.val())) {
@@ -8915,7 +8903,6 @@ var TableFields = /*#__PURE__*/function (_Section) {
       var data = {
         title: $title.val(),
         type: $type.val(),
-        length: $length.val(),
         "default": $default.val(),
         nullable: $nullable.is(':checked')
       }; // add data to localStorage
@@ -8933,7 +8920,6 @@ var TableFields = /*#__PURE__*/function (_Section) {
       }); // reset the inputs
 
       $title.val('');
-      $length.val('');
       $default.val(''); // reset the nullable input
 
       if ($nullable.is(':checked')) {
@@ -8972,7 +8958,6 @@ var TableFields = /*#__PURE__*/function (_Section) {
         data.push({
           title: $row.find('.field-title').html(),
           type: $row.find('.field-type').html(),
-          length: $row.find('.field-length').html(),
           "default": $row.find('.field-default').html()
         });
       });
@@ -9229,7 +9214,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _downloads_migration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./downloads/migration */ "./src/js/projects/downloads/migration.js");
 /* harmony import */ var _downloads_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./downloads/model */ "./src/js/projects/downloads/model.js");
 /* harmony import */ var _downloads_seeder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./downloads/seeder */ "./src/js/projects/downloads/seeder.js");
-/* harmony import */ var _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./downloads/database-seeder */ "./src/js/projects/downloads/database-seeder.js");
+/* harmony import */ var _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./downloads/database-seeder */ "./src/js/projects/downloads/database-seeder.js");
 /* harmony import */ var _downloads_validation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./downloads/validation */ "./src/js/projects/downloads/validation.js");
 /* harmony import */ var _downloads_controller__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./downloads/controller */ "./src/js/projects/downloads/controller.js");
 /* harmony import */ var _downloads_view_create__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./downloads/view-create */ "./src/js/projects/downloads/view-create.js");
@@ -9351,7 +9336,7 @@ var ZipFile = /*#__PURE__*/function () {
       var datePrefix = _this.getMigrationDatePrefix(index);
 
       var migrationContent = new _downloads_migration__WEBPACK_IMPORTED_MODULE_3__["default"](options).getContent();
-      zipFile.file("database/migrations/".concat(datePrefix, "_create_").concat(table, "_table"), migrationContent);
+      zipFile.file("database/migrations/".concat(datePrefix, "_create_").concat(table, "_table.php"), migrationContent);
     }
   }, {
     key: "getMigrationDatePrefix",
@@ -9417,7 +9402,7 @@ var ZipFile = /*#__PURE__*/function () {
   }, {
     key: "generateDatabaseSeeder",
     value: function generateDatabaseSeeder(zipFile, localStorage) {
-      var content = new _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_13__["default"](localStorage).getContent();
+      var content = new _downloads_database_seeder__WEBPACK_IMPORTED_MODULE_6__["default"](localStorage).getContent();
       zipFile.file("database/seeders/DatabaseSeeder.php", content);
     }
   }]);
