@@ -6473,8 +6473,6 @@ var Model = /*#__PURE__*/function (_Download) {
       // make sure there aren't any duplicate imports
       var models = [];
       this.localStorageRelationships.map(function (item) {
-        console.dir(item);
-
         if (models.indexOf(item.foreignModel) === -1) {
           models.push(item.foreignModel);
         }
@@ -6523,11 +6521,14 @@ var Model = /*#__PURE__*/function (_Download) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Routes; });
+/* harmony import */ var _templates_route_file_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/route-file.js */ "./src/js/projects/downloads/templates/route-file.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
 
 var Routes = /*#__PURE__*/function () {
   function Routes(localStorage) {
@@ -6539,18 +6540,9 @@ var Routes = /*#__PURE__*/function () {
   _createClass(Routes, [{
     key: "getContent",
     value: function getContent() {
-      var prefix = this.getPrefix();
       var resourceRoutes = this.getResourceRoutes();
-      var suffix = this.getSuffix();
-      return "".concat(prefix).concat(resourceRoutes).concat(suffix);
-    }
-  }, {
-    key: "getPrefix",
-    value: function getPrefix() {
       var namespaceImports = this.getNamespaceImports(this.localStorage);
-      var string = "<?php\n\nuse Illuminate\\Support\\Facades\\Auth;\nuse Illuminate\\Support\\Facades\\Route;\nuse App\\Http\\Controllers\\Admin\\DashboardController;\n{{namespaceImports}}\nAuth::routes();\n\nRoute::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {\n    ";
-      string = string.replace(/{{namespaceImports}}/g, namespaceImports);
-      return string;
+      return _templates_route_file_js__WEBPACK_IMPORTED_MODULE_0__["default"].replace(/{{namespaceImports}}/g, namespaceImports).replace(/{{resourceRoutes}}/g, resourceRoutes);
     }
   }, {
     key: "getResourceRoutes",
@@ -6563,7 +6555,7 @@ var Routes = /*#__PURE__*/function () {
         var model = this.getModel(table);
 
         if (i === localStorage.length - 1) {
-          string += "Route::resource('{{table}}', {{model}}Controller::class);\n";
+          string += "Route::resource('{{table}}', {{model}}Controller::class);";
         } else {
           string += "Route::resource('{{table}}', {{model}}Controller::class);\n\t";
         }
@@ -6585,11 +6577,6 @@ var Routes = /*#__PURE__*/function () {
       }
 
       return string;
-    }
-  }, {
-    key: "getSuffix",
-    value: function getSuffix() {
-      return "});";
     }
   }, {
     key: "getModel",
@@ -6843,6 +6830,20 @@ var modelRelationship = "\n    public function {{method}}()\n    {\n        retu
 __webpack_require__.r(__webpack_exports__);
 var requestFile = "<?php\n\nnamespace App\\Http\\Requests;\n\nuse Illuminate\\Foundation\\Http\\FormRequest;\n\nclass {{method}}{{model}} extends FormRequest\n{\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return [\n            {{rules}}\n        ];\n    }\n}\n";
 /* harmony default export */ __webpack_exports__["default"] = (requestFile);
+
+/***/ }),
+
+/***/ "./src/js/projects/downloads/templates/route-file.js":
+/*!***********************************************************!*\
+  !*** ./src/js/projects/downloads/templates/route-file.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var modelFile = "<?php\n\nuse Illuminate\\Support\\Facades\\Auth;\nuse Illuminate\\Support\\Facades\\Route;\nuse App\\Http\\Controllers\\Admin\\DashboardController;\n{{namespaceImports}}\nAuth::routes();\n\nRoute::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {\n    {{resourceRoutes}}\n});";
+/* harmony default export */ __webpack_exports__["default"] = (modelFile);
 
 /***/ }),
 
