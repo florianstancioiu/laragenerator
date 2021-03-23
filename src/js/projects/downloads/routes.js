@@ -1,3 +1,5 @@
+import routeFile from './templates/route-file.js';
+
 export default class Routes {
 
     constructor(localStorage) {
@@ -5,29 +7,12 @@ export default class Routes {
     }
 
     getContent() {
-        const prefix = this.getPrefix();
         const resourceRoutes = this.getResourceRoutes();
-        const suffix = this.getSuffix();
-
-        return `${prefix}${resourceRoutes}${suffix}`;
-    }
-
-    getPrefix() {
         const namespaceImports = this.getNamespaceImports(this.localStorage);
-        let string = `<?php
 
-use Illuminate\\Support\\Facades\\Auth;
-use Illuminate\\Support\\Facades\\Route;
-use App\\Http\\Controllers\\Admin\\DashboardController;
-{{namespaceImports}}
-Auth::routes();
-
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    `;
-
-        string = string.replace(/{{namespaceImports}}/g, namespaceImports)
-
-        return string;
+        return routeFile
+            .replace(/{{namespaceImports}}/g, namespaceImports)
+            .replace(/{{resourceRoutes}}/g, resourceRoutes);
     }
 
     getResourceRoutes() {
@@ -38,7 +23,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
             let model = this.getModel(table);
 
             if (i === localStorage.length - 1) {
-                string += `Route::resource('{{table}}', {{model}}Controller::class);\n`;
+                string += `Route::resource('{{table}}', {{model}}Controller::class);`;
             } else {
                 string += `Route::resource('{{table}}', {{model}}Controller::class);\n\t`;
             }
@@ -61,10 +46,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         }
 
         return string;
-    }
-
-    getSuffix() {
-        return `});`;
     }
 
     getModel(tableName) {

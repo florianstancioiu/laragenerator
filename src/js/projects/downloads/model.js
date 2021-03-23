@@ -78,7 +78,6 @@ export default class Model extends Download {
         // make sure there aren't any duplicate imports
         const models = [];
         this.localStorageRelationships.map(function (item) {
-            console.dir(item);
             if (models.indexOf(item.foreignModel) === -1) {
                 models.push(item.foreignModel);
             }
