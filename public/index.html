@@ -255,7 +255,7 @@
         <li class="list-group-item">
             <i class="fas fa-crosshairs"></i>
             <span class="table-title">{{ tableTitle }}</span>
-            <button type="button" name="button" class="btn btn-danger">
+            <button type="button" name="button" class="btn btn-sm btn-danger">
                 <i class="fas fa-times"></i>
             </button>
         </li>
@@ -266,7 +266,7 @@
             <li class="list-group-item">
                 <i class="fas fa-crosshairs"></i>
                 <span class="table-title">{{ tableTitle }}</span>
-                <button type="button" name="button" class="btn btn-danger">
+                <button type="button" name="button" class="btn btn-sm btn-danger">
                     <i class="fas fa-times"></i>
                 </button>
             </li>
@@ -282,7 +282,7 @@
             <td class="type">{{ type }}</td>
             <td class="foreign-model">{{ foreignModel }}</td>
             <td>
-                <button class="btn btn-danger">
+                <button class="btn btn-sm btn-danger">
                     <i class="fas fa-times"></i>
                 </button>
             </td>
@@ -299,7 +299,7 @@
                 <td class="type">{{ type }}</td>
                 <td class="foreign-model">{{ foreignModel }}</td>
                 <td>
-                    <button class="btn btn-danger">
+                    <button class="btn btn-sm btn-danger">
                         <i class="fas fa-times"></i>
                     </button>
                 </td>
@@ -317,7 +317,7 @@
             <td class="field-default">{{ default }}</td>
             <td class="field-nullable">{{ nullable }}</td>
             <td>
-                <button class="btn btn-danger">
+                <button class="btn btn-sm btn-danger">
                     <i class="fas fa-times"></i>
                 </button>
             </td>
@@ -335,7 +335,7 @@
                 <td class="field-default">{{ default }}</td>
                 <td class="field-nullable">{{ nullable }}</td>
                 <td>
-                    <button class="btn btn-danger">
+                    <button class="btn btn-sm btn-danger">
                         <i class="fas fa-times"></i>
                     </button>
                 </td>
@@ -350,18 +350,18 @@
             </th>
             <td>
                 {{#fillable}}
-                    <input class="fillable" name="fillable[]" type="checkbox" class="" checked>
+                    <input class="fillable fillable-{{ fieldTitle }}" name="fillable[]" type="checkbox" checked>
                 {{/fillable}}
                 {{^fillable}}
-                    <input class="fillable" name="fillable[]" type="checkbox" class="">
+                    <input class="fillable fillable-{{ fieldTitle }}" name="fillable[]" type="checkbox">
                 {{/fillable}}
             </td>
             <td>
                 {{#hidden}}
-                    <input class="hidden" name="hidden[]" type="checkbox" class="" checked>
+                    <input class="hidden hidden-{{ fieldTitle }}" name="hidden[]" type="checkbox" checked>
                 {{/hidden}}
                 {{^hidden}}
-                    <input class="hidden" name="hidden[]" type="checkbox" class="">
+                    <input class="hidden hidden-{{ fieldTitle }}" name="hidden[]" type="checkbox">
                 {{/hidden}}
             </td>
         </tr>
@@ -375,18 +375,18 @@
                 </th>
                 <td>
                     {{#fillable}}
-                        <input class="fillable" name="fillable[]" type="checkbox" class="" checked>
+                        <input class="fillable fillable-{{ fieldTitle }}" name="fillable[]" type="checkbox" checked>
                     {{/fillable}}
                     {{^fillable}}
-                        <input class="fillable" name="fillable[]" type="checkbox" class="">
+                        <input class="fillable fillable-{{ fieldTitle }}" name="fillable[]" type="checkbox">
                     {{/fillable}}
                 </td>
                 <td>
                     {{#hidden}}
-                        <input class="hidden" name="hidden[]" type="checkbox" class="" checked>
+                        <input class="hidden hidden-{{ fieldTitle }}" name="hidden[]" type="checkbox" checked>
                     {{/hidden}}
                     {{^hidden}}
-                        <input class="hidden" name="hidden[]" type="checkbox" class="">
+                        <input class="hidden hidden-{{ fieldTitle }}" name="hidden[]" type="checkbox">
                     {{/hidden}}
                 </td>
             </tr>
@@ -397,7 +397,7 @@
         <tr>
             <th scope="row" class="field-title">{{ fieldTitle }}</th>
             <td>
-                <input type="text" class="validation form-control" name="validation[]" value="{{ rules }}" />
+                <input type="text" class="validation form-control validation-{{ fieldTitle }}" name="validation[]" value="{{ rules }}" />
             </td>
         </tr>
     </script>
@@ -407,7 +407,7 @@
             <tr>
                 <th scope="row" class="field-title">{{ fieldTitle }}</th>
                 <td>
-                    <input type="text" class="validation form-control" name="validation[]" value="{{ rules }}" />
+                    <input type="text" class="validation form-control validation-{{ fieldTitle }}" name="validation[]" value="{{ rules }}" />
                 </td>
             </tr>
         {{/validations}}
@@ -538,10 +538,10 @@
             </th>
             <td>
                 {{#include}}
-                    <input class="include" name="include[]" type="checkbox" class="" checked>
+                    <input class="include include-{{ method }}" name="include[]" type="checkbox" checked>
                 {{/include}}
                 {{^include}}
-                    <input class="include" name="include[]" type="checkbox" class="">
+                    <input class="include include-{{ method }}" name="include[]" type="checkbox">
                 {{/include}}
             </td>
         </tr>
@@ -555,10 +555,10 @@
                 </th>
                 <td>
                     {{#include}}
-                        <input class="include" name="include[]" type="checkbox" class="" checked>
+                        <input class="include include-{{ method }}" name="include[]" type="checkbox" checked>
                     {{/include}}
                     {{^include}}
-                        <input class="include" name="include[]" type="checkbox" class="">
+                        <input class="include include-{{ method }}" name="include[]" type="checkbox">
                     {{/include}}
                 </td>
             </tr>
