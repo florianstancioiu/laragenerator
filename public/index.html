@@ -252,7 +252,7 @@
 
     <!-- MUSTACHE TEMPLATES -->
     <script id="list-group-item-template" type="x-tmpl-mustache">
-        <li class="list-group-item">
+        <li class="list-group-item table-{{ tableTitle }}">
             <i class="fas fa-crosshairs"></i>
             <span class="table-title">{{ tableTitle }}</span>
             <button type="button" name="button" class="btn btn-sm btn-danger">
@@ -263,7 +263,7 @@
 
     <script id="list-group-item-multiple-template" type="x-tmpl-mustache">
         {{#tables}}
-            <li class="list-group-item">
+            <li class="list-group-item table-{{ tableTitle }}">
                 <i class="fas fa-crosshairs"></i>
                 <span class="table-title">{{ tableTitle }}</span>
                 <button type="button" name="button" class="btn btn-sm btn-danger">
@@ -274,7 +274,7 @@
     </script>
 
     <script id="relationships-row-template" type="x-tmpl-mustache">
-        <tr>
+        <tr class="relationship-{{ method }}">
             <th scope="row">
                 <i class="fas fa-crosshairs"></i>
                 <span class="method">{{ method }}</span>
@@ -291,7 +291,7 @@
 
     <script id="relationships-row-multiple-template" type="x-tmpl-mustache">
         {{#relationships}}
-            <tr>
+            <tr class="relationship-{{ method }}">
                 <th scope="row">
                     <i class="fas fa-crosshairs"></i>
                     <span class="method">{{ method }}</span>
