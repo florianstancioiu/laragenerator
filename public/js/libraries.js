@@ -37455,9 +37455,9 @@ __webpack_require__(/*! overlayscrollbars/js/OverlayScrollbars.min */ "./node_mo
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/js/libraries.js */"./src/js/libraries.js");
-__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/scss/libraries.scss */"./src/scss/libraries.scss");
-module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/scss/projects.scss */"./src/scss/projects.scss");
+__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator/src/js/libraries.js */"./src/js/libraries.js");
+__webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator/src/scss/libraries.scss */"./src/scss/libraries.scss");
+module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator/src/scss/projects.scss */"./src/scss/projects.scss");
 
 
 /***/ })

@@ -62,7 +62,7 @@
 
 .admin-project #tables-list li .btn-danger {
   position: absolute;
-  top: 5px;
+  top: 9px;
   right: 20px;
 }
 
@@ -78,14 +78,6 @@
 
 .admin-project #validation .tab-pane {
   padding-top: 10px;
-}
-
-.github-link {
-  position: absolute;
-  bottom: 0;
-  left: 25px;
-  color: black;
-  font-weight: bold;
 }
 
 .admin-project #table-fields-wrapper tbody tr {

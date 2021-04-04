@@ -9626,7 +9626,7 @@ var ZipFile = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator-js/src/js/projects.js */"./src/js/projects.js");
+module.exports = __webpack_require__(/*! /mnt/765015ff-c673-4558-8af1-1404b0d3673a/code/laragenerator/src/js/projects.js */"./src/js/projects.js");
 
 
 /***/ })
