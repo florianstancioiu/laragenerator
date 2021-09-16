@@ -1,6 +1,6 @@
 # LaraGenerator JS
 
-__!!! You can find an updated version of the laragenerator application [here on superbrackets](www.laragenerator.superbrackets.com) !!!__
+__!!! You can find an updated version of the laragenerator application [here on superbrackets](https://laragenerator.superbrackets.com/) !!!__
 
 A JavaScript application that generates basic PHP files for Laravel.
 
